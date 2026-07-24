@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="pt" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,11 +18,11 @@
       
       
       <link rel="icon" href="../../../assets/favicon/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>MkDocs - Instalando e configurando o Material for MkDocs - Luis Rodrigo - Net</title>
+        <title>Dominando o MkDocs - Guia de Instalação e Estilo - Luis Rodrigo - Net</title>
       
     
     
@@ -39,17 +36,30 @@
 
     
     
+  
       
     
+  <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tables = document.querySelectorAll("article table:not([class])");
+      tables.forEach(table => new Tablesort(table));
+    });
+  </script>
+
     
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+      <link rel="stylesheet" href="../../../static/css/admonition.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -57,7 +67,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -88,9 +108,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href="../../.." title="Luis Rodrigo - Net" class="md-header__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
       
@@ -99,7 +117,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -111,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MkDocs - Instalando e configurando o Material for MkDocs
+              Dominando o MkDocs - Guia de Instalação e Estilo
             
           </span>
         </div>
@@ -124,20 +142,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple" aria-label="Mudar para o modo claro" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange" aria-label="Mudar para o modo escuro" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
       </label>
     
   
@@ -153,29 +171,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Pesquisar">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -183,7 +201,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Inicializando a pesquisa
@@ -199,8 +217,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -298,6 +322,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../programacao/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../sobre/licenca/" class="md-tabs__link">
           
   
@@ -315,13 +361,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -329,7 +369,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -348,7 +390,7 @@
     Luis Rodrigo - Net
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -413,7 +455,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -450,7 +492,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -609,7 +651,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -646,7 +688,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -790,6 +832,8 @@
       
         
       
+        
+      
     
     
     
@@ -805,7 +849,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -842,7 +886,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -860,7 +904,7 @@
   <span class="md-ellipsis">
     
   
-    Arduido
+    Arduino
   
 
     
@@ -937,6 +981,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../iot/thingsboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ThingsBoard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../iot/componentes/" class="md-nav__link">
         
   
@@ -945,6 +1017,172 @@
     
   
     Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programacao/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/django/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSCode
   
 
     
@@ -993,10 +1231,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1014,8 +1252,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1023,7 +1261,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1096,7 +1334,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1112,13 +1352,13 @@
       <span class="md-nav__icon md-icon"></span>
       Índice
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#o-que-e-o-material-for-mkdocs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O que é o Material for MkDocs?
+        🚀 O que é o Material for MkDocs?
       
     </span>
   </a>
@@ -1129,7 +1369,7 @@
   <a href="#vantagens-de-uso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vantagens de Uso
+        📢 Vantagens de Uso
       
     </span>
   </a>
@@ -1137,33 +1377,83 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#instalacao" class="md-nav__link">
+  <a href="#maos-a-obra-instalacao-rapida" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Instalação
+        🛠️ Mãos à obra: Instalação Rápida
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modo-escuro-e-claro" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Modo escuro e claro
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modo escuro e claro">
+    <nav class="md-nav" aria-label="🛠️ Mãos à obra: Instalação Rápida">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#entendendo-a-configuracao-palette" class="md-nav__link">
+  <a href="#passo-1-instalacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Entendendo a Configuração palette
+        Passo 1: Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-inicializacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Inicialização
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-ativacao-do-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: Ativação do Tema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-4-o-live-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 4: O "Live Preview"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personalizacao-modo-claro-e-escuro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌓 Personalização: Modo Claro e Escuro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌓 Personalização: Modo Claro e Escuro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entendendo-a-paleta-de-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Entendendo a Paleta de Cores
       
     </span>
   </a>
@@ -1209,15 +1499,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entendendo-a-configuracao-features" class="md-nav__link">
+  <a href="#turbinando-com-features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entendendo a Configuração features
+        ⚡ Turbinando com features
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Entendendo a Configuração features">
+    <nav class="md-nav" aria-label="⚡ Turbinando com features">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1236,6 +1526,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#vantagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💎 Vantagens
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1249,6 +1550,8 @@
               
                 
 
+  
+
 
 
   
@@ -1258,19 +1561,23 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-<h1 id="mkdocs-instalando-e-configurando-o-material-for-mkdocs">MkDocs - Instalando e configurando o Material for MkDocs<a class="headerlink" href="#mkdocs-instalando-e-configurando-o-material-for-mkdocs" title="Permanent link">&para;</a></h1>
-<p><img alt="Banner" src="/static/img/barras/topo-002.JPG" /></p>
-<p>O MkDocs é uma ferramenta estática de construção de sites de documentação. Ele transforma arquivos de Markdown em um site totalmente navegável e com um visual profissional. E para isso, ele precisa de um tema. É aí que entra o <strong>Material for MkDocs</strong>.</p>
-<h2 id="o-que-e-o-material-for-mkdocs">O que é o Material for MkDocs?<a class="headerlink" href="#o-que-e-o-material-for-mkdocs" title="Permanent link">&para;</a></h2>
-<p>O Material for MkDocs é um tema popular, moderno e altamente personalizável para o MkDocs. Ele não é o tema padrão, mas é tão rico em funcionalidades que muitas pessoas o consideram o padrão de fato para criar documentação de alta qualidade. O nome "Material" vem da filosofia de design 
-Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, intuitiva e agradável.</p>
-<p>Imagine que o MkDocs é a estrutura da sua casa (a fundação, as paredes) e o Material for MkDocs é o design de interiores (o estilo dos móveis, as cores das paredes, a iluminação). Ele pega sua documentação básica e a transforma em algo muito mais atraente e funcional.</p>
+
+<h1 id="mkdocs-instalando-e-configurando-o-material-for-mkdocs">🤖 MkDocs: Instalando e Configurando o Material for MkDocs<a class="headerlink" href="#mkdocs-instalando-e-configurando-o-material-for-mkdocs" title="Permanent link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/static/img/barras/topo-002.JPG" data-desc-position="bottom"><img alt="Banner" src="/static/img/barras/topo-002.JPG"></a></p>
+<p>Você já sentiu que sua documentação, por mais completa que fosse, parecia "apagada" ou difícil de navegar? O segredo dos grandes projetos de código aberto não está apenas no texto, mas na <strong>apresentação</strong>. </p>
+<p>O <strong>MkDocs</strong> é o motor que transforma seus arquivos <em>Markdown</em> em sites estáticos. Mas, para dar a ele uma aparência de elite, precisamos de um "design de interiores" de alto nível. É aqui que entra o <strong>Material for MkDocs</strong>.</p>
+<hr>
+<h2 id="o-que-e-o-material-for-mkdocs">🚀 O que é o Material for MkDocs?<a class="headerlink" href="#o-que-e-o-material-for-mkdocs" title="Permanent link">¶</a></h2>
+<p>Se o <em>MkDocs</em> é a estrutura da sua casa (paredes e fundação), o <strong>Material for MkDocs</strong> é o que a transforma em uma mansão tecnológica. Baseado no <em>Material Design</em> do Google, ele oferece uma interface limpa, intuitiva e extremamente rápida.</p>
+<p>Ele não é apenas um "rostinho bonito"; é uma ferramenta de <strong>autoridade</strong>. Documentações que utilizam este tema transmitem maior confiança e profissionalismo.</p>
+<p>🎖️ <strong>Por que ele é o favorito dos desenvolvedores?</strong></p>
 <ol>
 <li>
-<p>Navegação e Estrutura Otimizadas:</p>
+<p><code>Navegação e Estrutura Otimizadas</code>:</p>
 <ul>
 <li>
 <p><strong>Navegação lateral inteligente</strong>: A barra de navegação à esquerda é "fixa" e se expande e se contrai, facilitando a navegação em projetos grandes.</p>
@@ -1284,7 +1591,7 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 </ul>
 </li>
 <li>
-<p>Pesquisa Poderosa:</p>
+<p><code>Pesquisa Poderosa</code>:</p>
 <ul>
 <li>
 <p><strong>Pesquisa instantânea</strong>: Possui uma função de pesquisa em tempo real que mostra os resultados enquanto você digita, sem a necessidade de recarregar a página. Ele também indexa o conteúdo do seu site, tornando a busca extremamente rápida e eficiente.</p>
@@ -1295,35 +1602,35 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 </ul>
 </li>
 <li>
-<p>Personalização e Estilização:</p>
+<p><code>Personalização e Estilização</code>:</p>
 <ul>
 <li>
 <p><strong>Modo claro/escuro</strong>: Inclui um botão para alternar entre o modo de visualização claro e escuro, o que é um recurso muito apreciado pelos usuários.</p>
 </li>
 <li>
-<p><strong>Opções de cor</strong>: Você pode mudar a cor principal, a cor de destaque e até mesmo a cor da fonte, tudo diretamente no arquivo de configuração mkdocs.yml.</p>
+<p><strong>Opções de cor</strong>: Você pode mudar a cor principal, a cor de destaque e até mesmo a cor da fonte, tudo diretamente no arquivo de configuração <code>mkdocs.yml</code>.</p>
 </li>
 <li>
-<p><strong>Ícones</strong>: Suporte para uma vasta biblioteca de ícones, como FontAwesome, para adicionar visualmente a títulos, botões e listas.</p>
+<p><strong>Ícones</strong>: Suporte para uma vasta biblioteca de ícones, como <em>FontAwesome</em>, para adicionar visualmente a títulos, botões e listas.</p>
 </li>
 </ul>
 </li>
 <li>
-<p>Extensões e Conteúdo Dinâmico:</p>
+<p><code>Extensões e Conteúdo Dinâmico</code>:</p>
 <ul>
 <li>
 <p><strong>Anotações e Caixas de Conteúdo</strong>: Permite adicionar caixas de aviso (info, sucesso, aviso, erro) com ícones, o que ajuda a destacar informações importantes. Por exemplo, você pode usar !!! tip "Dica" para criar uma caixa de dicas.</p>
 </li>
 <li>
-<p><strong>Blocos de código aprimorados</strong>: Suporta destaque de sintaxe para quase todas as linguagens de programação, com numeração de linhas e a possibilidade de criar abas para exibir código em diferentes linguagens (por exemplo, "Python", "JavaScript").</p>
+<p><strong>Blocos de código aprimorados</strong>: Suporta destaque de sintaxe para quase todas as linguagens de programação, com numeração de linhas e a possibilidade de criar abas para exibir código em diferentes linguagens (por exemplo, "<em>Python</em>", "<em>JavaScript</em>").</p>
 </li>
 <li>
-<p><strong>Diagramas e gráficos</strong>: Permite a integração de diagramas usando ferramentas como Mermaid, o que é essencial para documentar fluxos de trabalho ou arquiteturas.</p>
+<p><strong>Diagramas e gráficos</strong>: Permite a integração de diagramas usando ferramentas como <em>Mermaid</em>, o que é essencial para documentar fluxos de trabalho ou arquiteturas.</p>
 </li>
 </ul>
 </li>
 <li>
-<p>Multilíngue e Suporte à Comunidade:</p>
+<p><code>Multilíngue e Suporte à Comunidade</code>:</p>
 <ul>
 <li>
 <p><strong>Internacionalização (i18n)</strong>: Tem suporte integrado para criar documentação em múltiplos idiomas.</p>
@@ -1334,102 +1641,109 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 </ul>
 </li>
 </ol>
-<h2 id="vantagens-de-uso">Vantagens de Uso<a class="headerlink" href="#vantagens-de-uso" title="Permanent link">&para;</a></h2>
+<h2 id="vantagens-de-uso">📢 Vantagens de Uso<a class="headerlink" href="#vantagens-de-uso" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p><strong>Estética Profissional</strong>: Eleva o visual da sua documentação, tornando-a muito mais agradável e confiável para os usuários. Uma boa aparência passa a impressão de um projeto bem cuidado.</p>
 </li>
 <li>
-<p><strong>Experiência do Usuário (UX) Aprimorada</strong>: A navegação, pesquisa e a estrutura geral do site são muito mais intuitivas. Os usuários gastam menos tempo procurando informações e mais tempo aprendendo.</p>
+<p><strong>Experiência do Usuário (UX) Aprimorada</strong>: A navegação, pesquisa e a estrutura geral do <em>site</em> são muito mais intuitivas. Os usuários gastam menos tempo procurando informações e mais tempo aprendendo.</p>
 </li>
 <li>
 <p><strong>Produtividade</strong>: Com as extensões e funcionalidades extras, você pode criar documentação mais rica e interativa de forma mais rápida. As caixas de destaque, por exemplo, eliminam a necessidade de estilização manual em HTML.</p>
 </li>
 <li>
-<p><strong>Comunidade Ativa e Atualizações Constantes</strong>: O Material for MkDocs tem uma grande comunidade de usuários e é mantido ativamente pelo seu criador, Martin Donath. Isso significa que ele é constantemente atualizado com novos recursos e correções de bugs.</p>
+<p><strong>Comunidade Ativa e Atualizações Constantes</strong>: O <em>Material for MkDocs</em> tem uma grande comunidade de usuários e é mantido ativamente pelo seu criador, Martin Donath. Isso significa que ele é constantemente atualizado com novos recursos e correções de <em>bugs</em>.</p>
 </li>
 </ol>
-<h2 id="instalacao">Instalação<a class="headerlink" href="#instalacao" title="Permanent link">&para;</a></h2>
-<p>A instalação é bem simples, tornando a adoção rápida.</p>
-<p><img alt="1⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/31-20e3.svg" title=":one:" /> <strong>Instale o MkDocs e o tema Material</strong>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material
-</code></pre></div></td></tr></table></div>
-<p><img alt="2⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/32-20e3.svg" title=":two:" /> <strong>Crie um novo projeto</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdocs<span class="w"> </span>new<span class="w"> </span>meu-projeto
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>meu-projeto
-</code></pre></div>
-<p><img alt="3⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/33-20e3.svg" title=":three:" /> <strong>Configure o tema no mkdocs.yml</strong>: </p>
-<p>Abra o arquivo mkdocs.yml e adicione a seguinte linha:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Meu Projeto Incrível</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nt">theme</span><span class="p">:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
-</code></pre></div></td></tr></table></div>
-<p><img alt="4⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/34-20e3.svg" title=":four:" /> Inicie o servidor de desenvolvimento</p>
-<p>Para iniciar o servidor de desenvolvimento e verificar a aparência atual do site, utilize o comando abaixo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdocs<span class="w"> </span>serve<span class="w"> </span>--livereload
-</code></pre></div>
-<p>Agora, abra seu navegador no endereço <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>  e visualize sua documentação já com o tema Material for MkDocs aplicado.</p>
+<h2 id="maos-a-obra-instalacao-rapida">🛠️ Mãos à obra: Instalação Rápida<a class="headerlink" href="#maos-a-obra-instalacao-rapida" title="Permanent link">¶</a></h2>
+<p>A adoção é simples e direta. Siga os passos abaixo para preparar seu ambiente:</p>
+<h3 id="passo-1-instalacao">Passo 1: Instalação<a class="headerlink" href="#passo-1-instalacao" title="Permanent link">¶</a></h3>
+<p>No seu terminal, instale o núcleo do MkDocs e o tema Material simultaneamente:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Instalação</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material
+</span></code></pre></div>
+</div>
+<h3 id="passo-2-inicializacao">Passo 2: Inicialização<a class="headerlink" href="#passo-2-inicializacao" title="Permanent link">¶</a></h3>
+<p>Crie a estrutura do seu novo projeto:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Inicialização</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>mkdocs<span class="w"> </span>new<span class="w"> </span>meu-projeto
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">cd</span><span class="w"> </span>meu-projeto
+</span></code></pre></div>
+</div>
+<h3 id="passo-3-ativacao-do-tema">Passo 3: Ativação do Tema<a class="headerlink" href="#passo-3-ativacao-do-tema" title="Permanent link">¶</a></h3>
+<p>Abra o arquivo <code>mkdocs.yml</code> e substitua o conteúdo para ativar a "magia":</p>
+<div class="admonition codigo-fonte">
+<p class="admonition-title">mkdocs.yml</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Meu Projeto Incrível</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="nt">theme</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+</span></code></pre></div>
+</div>
+<h3 id="passo-4-o-live-preview">Passo 4: O "Live Preview"<a class="headerlink" href="#passo-4-o-live-preview" title="Permanent link">¶</a></h3>
+<p>Inicie o servidor local para ver as mudanças em tempo real:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Exxecute o comando:</p>
+<pre class="terminal"><code>mkdocs serve</code></pre>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">💡 <strong>Dica:</strong> </p>
+<p>Acesse <code>http://127.0.0.1:8000</code> no seu navegador e visualize sua documentação já com o tema <em>Material for MkDocs</em> aplicado.</p>
+</div>
 <p>A página exibida deve ser semelhante à imagem abaixo, apresentando o menu lateral à esquerda, o conteúdo principal ao centro e a barra superior com a busca e o título do projeto:</p>
-<p><img alt="Mkdocs-Pagina_Inicial" src="../../../static/img/mkdocs-dicas/mkdocs_001.png" /></p>
-<h2 id="modo-escuro-e-claro">Modo escuro e claro<a class="headerlink" href="#modo-escuro-e-claro" title="Permanent link">&para;</a></h2>
-<p>Abra o arquivo mkdocs.yml na raiz do seu projeto e ajuste-o para que contenha as seguintes linhas básicas de configuração:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span>
-<span class="normal"><a href="#__codelineno-4-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Meu Projeto Incrível</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nt">theme</span><span class="p">:</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">  </span><span class="nt">features</span><span class="p">:</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tabs</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="c1"># Modo Claro</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch-off-outline</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mucar para modo escuro</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="c1"># Modo Escuro</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mucar para modo claro</span>
-</code></pre></div></td></tr></table></div>
-<p>Recarregue a página no navegador e observe que, ao lado da caixa de pesquisa no menu superior, foi adicionado um controle deslizante que permite alternar entre os modos claro e escuro do tema.</p>
-<p>Esse recurso faz parte das funcionalidades do Material for MkDocs e permite que os usuários escolham a visualização mais confortável para leitura.</p>
-<p><img alt="Mkdocs-Modo Claro e Escuro" src="../../../static/img/mkdocs-dicas/mkdocs_002.png" /></p>
-<h3 id="entendendo-a-configuracao-palette">🎯 <strong>Entendendo a Configuração palette</strong><a class="headerlink" href="#entendendo-a-configuracao-palette" title="Permanent link">&para;</a></h3>
-<p>A configuração <code>palette</code> é um recurso do Material for MkDocs que define uma <strong>lista de esquemas de cores</strong> disponíveis para o seu site. Essa lista é usada para <strong>gerar um seletor</strong> na interface do usuário (UI), geralmente no cabeçalho, que permite aos visitantes alternar entre diferentes paletas.</p>
-<p>Essa configuração anterior define duas paletas uma chamada <strong>default (modo claro)</strong> e outra chamada <strong>slate (modo escuro)</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/mkdocs-dicas/mkdocs_001.png" data-desc-position="bottom"><img alt="Mkdocs-Pagina_Inicial" src="../../../static/img/mkdocs-dicas/mkdocs_001.png"></a></p>
+<h2 id="personalizacao-modo-claro-e-escuro">🌓 Personalização: Modo Claro e Escuro<a class="headerlink" href="#personalizacao-modo-claro-e-escuro" title="Permanent link">¶</a></h2>
+<p>Oferecer conforto aos olhos do seu leitor é um diferencial de UX (Experiência do Usuário). Vamos configurar um botão de alternância (<em>toggle</em>) elegante.</p>
+<p>Altere seu <code>mkdocs.yml</code>:</p>
+<div class="admonition codigo-fonte">
+<p class="admonition-title">mkdocs.yml</p>
+<div class="language-YAML highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Meu Projeto Incrível</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nt">theme</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tabs</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="c1"># Modo Claro</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><a href="#__codelineno-3-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><a href="#__codelineno-3-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch-off-outline</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><a href="#__codelineno-3-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mudar para modo escuro</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><a href="#__codelineno-3-15"><span class="linenos" data-linenos="15 "></span></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><a href="#__codelineno-3-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="c1"># Modo Escuro</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><a href="#__codelineno-3-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><a href="#__codelineno-3-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><a href="#__codelineno-3-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><a href="#__codelineno-3-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><a href="#__codelineno-3-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a><a href="#__codelineno-3-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mudar para modo claro</span>
+</span></code></pre></div>
+</div>
+<p>Recarregue a página no navegador e observe que, ao lado da caixa de pesquisa no menu superior, foi adicionado um controle que permite alternar entre os modos claro e escuro do tema.</p>
+<p>Esse recurso faz parte das funcionalidades do <em>Material for MkDocs</em> e permite que os usuários escolham a visualização mais confortável para leitura.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/mkdocs-dicas/mkdocs_002.png" data-desc-position="bottom"><img alt="Mkdocs-Modo Claro e Escuro" src="../../../static/img/mkdocs-dicas/mkdocs_002.png"></a></p>
+<h3 id="entendendo-a-paleta-de-cores">🎯 Entendendo a Paleta de Cores<a class="headerlink" href="#entendendo-a-paleta-de-cores" title="Permanent link">¶</a></h3>
+<p>O campo <code>palette</code> permite que você defina a identidade visual. O <code>scheme: default</code> é o modo claro, enquanto o <code>scheme: slate</code> ativa o modo escuro. Note que os ícones <code>brightness</code> ajudam o usuário a identificar a função intuitivamente.</p>
 <p>O <code>scheme</code> define o nome do esquema de cores. O Material for MkDocs já vem com alguns esquemas pré-definidos que você pode usar, como:</p>
 <ul>
 <li><code>default</code>: O esquema padrão, que geralmente tem um fundo claro e texto escuro.</li>
 <li><code>slate</code>: Um esquema escuro, com fundo cinza-azulado e texto claro.</li>
 </ul>
 <p>Você também pode criar seus próprios esquemas de cores se precisar de algo mais específico.</p>
-<p>MkDocs é uma excelente ferramenta para criar documentação de forma rápida e eficiente. Uma das grandes vantagens é a possibilidade de customizar a aparência do seu site, e o tema <strong>Material for MkDocs</strong> oferece muitas opções para isso. A configuração <code>palette</code> é um dos recursos mais populares para personalizar o esquema de cores do seu site, permitindo que os usuários alternem entre o modo claro e o modo escuro, por exemplo.</p>
-<h3 id="paleta-1-modo-claro-light-mode">🌕 <strong>Paleta 1: Modo Claro (Light Mode)</strong><a class="headerlink" href="#paleta-1-modo-claro-light-mode" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">toggle</span><span class="p">:</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch-off-outline</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mucar para modo escuro</span>
-</code></pre></div>
+<p><em>MkDocs</em> é uma excelente ferramenta para criar documentação de forma rápida e eficiente. Uma das grandes vantagens é a possibilidade de customizar a aparência do seu site, e o tema <strong>Material for MkDocs</strong> oferece muitas opções para isso. A configuração <code>palette</code> é um dos recursos mais populares para personalizar o esquema de cores do seu site, permitindo que os usuários alternem entre o modo claro e o modo escuro, por exemplo.</p>
+<h3 id="paleta-1-modo-claro-light-mode">🌕 <strong>Paleta 1: Modo Claro (Light Mode)</strong><a class="headerlink" href="#paleta-1-modo-claro-light-mode" title="Permanent link">¶</a></h3>
+<div class="admonition codigo-fonte">
+<p class="admonition-title">mkdocs.yml</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="nt">toggle</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch-off-outline</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mucar para modo escuro</span>
+</span></code></pre></div>
+</div>
 <ul>
 <li><strong><code>scheme: default</code></strong>: Define a paleta padrão, que é o modo claro.</li>
 <li><strong><code>toggle</code></strong>: Esta chave configura como o botão de alternância para essa paleta será exibido.<ul>
@@ -1438,12 +1752,15 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 </ul>
 </li>
 </ul>
-<h3 id="paleta-2-modo-escuro-dark-mode">🌑 Paleta 2: Modo Escuro (Dark Mode)<a class="headerlink" href="#paleta-2-modo-escuro-dark-mode" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">toggle</span><span class="p">:</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mudar para modo claro</span>
-</code></pre></div>
+<h3 id="paleta-2-modo-escuro-dark-mode">🌑 Paleta 2: Modo Escuro (Dark Mode)<a class="headerlink" href="#paleta-2-modo-escuro-dark-mode" title="Permanent link">¶</a></h3>
+<div class="admonition codigo-fonte">
+<p class="admonition-title">mkdocs.yml</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="nt">toggle</span><span class="p">:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/toggle-switch</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mudar para modo claro</span>
+</span></code></pre></div>
+</div>
 <ul>
 <li><strong><code>scheme: slate</code></strong>: Define a paleta para o modo escuro.</li>
 <li><strong><code>toggle</code></strong>: Configura o botão de alternância para esta paleta.<ul>
@@ -1454,11 +1771,11 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 </ul>
 <p>Quando o usuário acessa o seu site, o <strong>Material for MkDocs</strong> verifica a configuração <code>palette</code>. Se mais de um esquema estiver definido, ele adiciona um botão de alternância no canto superior direito da página.</p>
 <ul>
-<li>Quando o site está no modo claro (<code>scheme: default</code>), o botão exibe o ícone de interruptor desligado e a dica de ferramenta "Switch to dark mode".</li>
+<li>Quando o site está no modo claro (<code>scheme: default</code>), o botão exibe o ícone de interruptor desligado e a dica de ferramenta "<em>Switch to dark mode</em>".</li>
 <li>Quando o usuário clica no botão, o tema muda para o modo escuro (<code>scheme: slate</code>), e o botão é atualizado para exibir o ícone de interruptor ligado e a dica de ferramenta "Switch to light mode".</li>
 </ul>
 <p>Essa alternância é feita de forma fluida, sem a necessidade de recarregar a página.</p>
-<h3 id="observacoes-adicionais">🤖 Observações Adicionais<a class="headerlink" href="#observacoes-adicionais" title="Permanent link">&para;</a></h3>
+<h3 id="observacoes-adicionais">🤖 Observações Adicionais<a class="headerlink" href="#observacoes-adicionais" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p><strong>Ordem Importa</strong>: A ordem das paletas na lista define a ordem em que elas aparecerão no menu de alternância. O <strong>Material for MkDocs</strong> também usará a primeira paleta da lista como a padrão para o seu site. No exemplo fornecido, o site será carregado inicialmente no modo claro.</p>
@@ -1467,18 +1784,34 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 <p><strong>Ícones e Nomes Claros</strong>: Use ícones e nomes de alternância que sejam intuitivos para o usuário. A combinação de ícones e nomes como "Mudar para modo claro" e "Mudar para modo escuro" é uma prática recomendada, pois deixa claro qual é a ação do botão.</p>
 </li>
 </ol>
-<h2 id="entendendo-a-configuracao-features">Entendendo a Configuração <code>features</code><a class="headerlink" href="#entendendo-a-configuracao-features" title="Permanent link">&para;</a></h2>
-<p>A configuração <code>features</code> é um recurso do <strong>Material for MkDocs</strong> que permite habilitar funcionalidades específicas do tema. Essas funcionalidades são ativadas adicionando seus nomes à lista <code>features</code> no seu arquivo de configuração <code>mkdocs.yml</code>.</p>
-<p>Vamos analisar a configuração em detalhes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">features</span><span class="p">:</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tabs</span>
-</code></pre></div>
+<h2 id="turbinando-com-features">⚡ Turbinando com <code>features</code><a class="headerlink" href="#turbinando-com-features" title="Permanent link">¶</a></h2>
+<p>As <em>features</em> (funcionalidades) são extensões que tornam seu site mais poderoso sem precisar de código complexo.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Busca Inteligente</label><label for="__tabbed_1_2">Abas de Conteúdo</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>O <code>search.suggest</code> oferece sugestões de preenchimento automático enquanto o usuário digita.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">features</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>O <code>content.tabs</code> permite organizar informações em abas, ideal para tutoriais com várias linguagens.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">features</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tabs</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>🎯 Vamos analisar a configuração em detalhes:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">features</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.tabs</span>
+</span></code></pre></div>
 <p>Essa configuração habilita duas funcionalidades: a sugestão na busca (<code>search.suggest</code>) e as abas de conteúdo (<code>content.tabs</code>).</p>
-<h3 id="searchsuggest">🔎 <code>search.suggest</code><a class="headerlink" href="#searchsuggest" title="Permanent link">&para;</a></h3>
-<p>O recurso <code>search.suggest</code> melhora a experiência de busca no seu site. Quando um usuário começa a digitar algo no campo de busca, o MkDocs não apenas filtra os resultados, mas também exibe sugestões de preenchimento automático.</p>
+<h3 id="searchsuggest">🔎 <code>search.suggest</code><a class="headerlink" href="#searchsuggest" title="Permanent link">¶</a></h3>
+<p>O recurso <code>search.suggest</code> melhora a experiência de busca no seu <em>site</em>. Quando um usuário começa a digitar algo no campo de busca, o <em>MkDocs</em> não apenas filtra os resultados, mas também exibe sugestões de preenchimento automático.</p>
 <ul>
-<li><strong>O que ele faz?</strong>: Ele exibe sugestões de termos de busca com base no conteúdo do seu site. Por exemplo, se o usuário digitar "inst", o sistema pode sugerir "instalação", "instalar" ou "instruções".</li>
+<li><strong>O que ele faz?</strong>: Ele exibe sugestões de termos de busca com base no conteúdo do seu <em>site</em>. Por exemplo, se o usuário digitar "inst", o sistema pode sugerir "instalação", "instalar" ou "instruções".</li>
 <li><strong>Por que usá-lo?</strong>:<ul>
 <li><strong>Melhora a experiência do usuário</strong>: Ajuda o usuário a encontrar o que procura mais rapidamente, mesmo que ele não saiba o termo exato.</li>
 <li><strong>Reduz erros de digitação</strong>: As sugestões automáticas ajudam a corrigir pequenos erros de digitação.</li>
@@ -1486,6 +1819,20 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 </ul>
 </li>
 </ul>
+<h2 id="vantagens">💎 Vantagens<a class="headerlink" href="#vantagens" title="Permanent link">¶</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Por que usar este tema?</p>
+<ul>
+<li><strong>Estética de Autoridade</strong>: Um <em>site</em> bonito valida a qualidade do seu código.</li>
+<li><strong>Retenção do Usuário</strong>: Menus organizados fazem o leitor ficar mais tempo na página.</li>
+<li><strong>Comunidade Gigante</strong>: Mantido por Martin Donath, o tema recebe atualizações quase semanais, garantindo segurança e novos recursos.</li>
+</ul>
+</div>
+<hr>
+<div class="admonition quote">
+<p class="admonition-title"><strong>Observação</strong> ⚠️</p>
+<p>Este conteúdo foi revisado e otimizado com o apoio de <strong>IA Generativa</strong>, garantindo as melhores práticas de <em>SEO</em> e legibilidade.</p>
+</div>
 
 
 
@@ -1498,6 +1845,8 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 
 
 
+
+  
 
 
 
@@ -1511,9 +1860,9 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Voltar ao topo
 </button>
         
@@ -1528,7 +1877,7 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2025 Luis Rodrigo - Net
+      Copyright © 2026 Luis Rodrigo - Net
     </div>
   
   
@@ -1542,7 +1891,7 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
     
     
     <a href="https://github.com/luisrodrigonet" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
     </a>
   
     
@@ -1550,7 +1899,7 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
     
     
     <a href="https://x.com/luisrodrigoog" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
     </a>
   
     
@@ -1558,7 +1907,7 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
     
     
     <a href="https://linkedin.com/in/luisrodrigoog" target="_blank" rel="noopener" title="Linkedin" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
     </a>
   
     
@@ -1566,7 +1915,7 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
     
     
     <a href="https://www.instagram.com/luisrodrigoog/" target="_blank" rel="noopener" title="Instagram" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
     </a>
   
 </div>
@@ -1584,11 +1933,13 @@ Material Design, desenvolvida pelo Google, conhecida por sua interface limpa, in
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs", "content.tabs.link", "content.tooltips", "content.code.select", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

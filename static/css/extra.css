@@ -1,0 +1,84 @@
+/** CSS para icones e emojis >>> **/
+
+.youtube {
+    color: #FF0000;
+}
+
+.github {
+    color: #333333;
+}
+
+.twitter {
+    color: #1DA1F2;
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}
+
+.green { color: #10b981; }
+.red { color: #ef4444; }
+.yellow { color: #f59e0b; }
+.online { color: #10b981; }
+.warning { color: #f59e0b; }
+.offline { color: #ef4444; }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.bounce {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/**
+.md-typeset__table {  
+
+}
+**/
+
+
+/** Icones dentro das tabelas **/
+.md-typeset table td .twemoji svg {
+  height: 2em;
+  width: 2em;
+  font-size: 2em;
+}
+
+
+/** Icones dentro das tabelas **/
+.md-typeset  table thead {
+  background-color: black;
+  color: darkgray;
+  width:100%;
+
+}
+
+/** <<< CSS para icones e emojis **/

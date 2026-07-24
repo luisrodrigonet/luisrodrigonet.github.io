@@ -1,0 +1,2347 @@
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Um guia prático e completo para integrar o ESP32 rodando MicroPython com a plataforma ThingsBoard via MQTT.">
+      
+      
+        <meta name="author" content="Luís Rodrigo - Net">
+      
+      
+        <link rel="canonical" href="https://luisrodrigonet.github.io/iot/iot_esp_micropython/_esp32_thingsBoard-001/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>ESP32, MicroPython e ThingsBoard - Luis Rodrigo - Net</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+  
+      
+    
+  <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tables = document.querySelectorAll("article table:not([class])");
+      tables.forEach(table => new Tablesort(table));
+    });
+  </script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+      <link rel="stylesheet" href="../../../static/css/admonition.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#utilizando-o-thingsboard-com-esp32-e-micropython" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Luis Rodrigo - Net" class="md-header__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
+      
+  <img src="../../../assets/favicon/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Luis Rodrigo - Net
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ESP32, MicroPython e ThingsBoard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple" aria-label="Mudar para o modo claro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange" aria-label="Mudar para o modo escuro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cursos/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cursos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../dicas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Dicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  IOT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programacao/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sobre/licenca/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Sobre
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Luis Rodrigo - Net" class="md-nav__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
+      
+  <img src="../../../assets/favicon/favicon.png" alt="logo">
+
+    </a>
+    Luis Rodrigo - Net
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cursos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/html_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/css_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/bootstrap_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/django_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dicas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dicas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dicas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/lnx_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/docker_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/mkdocs_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/copywriting_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copywriting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IOT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IOT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arduino/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../esp_8266/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP 8266
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../esp_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thingsboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ThingsBoard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../componentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programacao/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/django/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sobre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/licenca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licença
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/privacidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral-esp32-micropython-e-thingsboard-trabalhando-juntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visão geral: ESP32, MicroPython e ThingsBoard trabalhando juntos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visão geral: ESP32, MicroPython e ThingsBoard trabalhando juntos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-e-o-thingsboard-e-por-que-usar-com-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é o ThingsBoard (e por que usar com ESP32)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-o-micropython-traz-para-o-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que o MicroPython traz para o ESP32
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitetura-da-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitetura da solução
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos-e-cenario-do-exemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos e cenário do exemplo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pré-requisitos e cenário do exemplo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-voce-precisa-ter-em-maos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que você precisa ter em mãos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projeto-de-exemplo-estacao-de-temperatura-iot-com-led-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projeto de exemplo: estação de temperatura IoT com LED remoto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-1-conectando-o-esp32-a-wi-fi-com-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: conectando o ESP32 à Wi-Fi com MicroPython
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 1: conectando o ESP32 à Wi-Fi com MicroPython">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#codigo-basico-de-conexao-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Código básico de conexão Wi-Fi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-2-criando-o-dispositivo-no-thingsboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: criando o dispositivo no ThingsBoard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 2: criando o dispositivo no ThingsBoard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criando-o-device-e-obtendo-o-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criando o device e obtendo o access token
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-3-instalando-o-client-micropython-para-thingsboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: instalando o client MicroPython para ThingsBoard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 3: instalando o client MicroPython para ThingsBoard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcoes-de-cliente-micropython-para-thingsboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opções de cliente MicroPython para ThingsBoard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalando-via-mip-no-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalando via mip (no ESP32)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-4-primeiro-envio-de-telemetria-hello-thingsboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 4: primeiro envio de telemetria (Hello ThingsBoard!)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 4: primeiro envio de telemetria (Hello ThingsBoard!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-basica-do-codigo-telemetria-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrutura básica do código (telemetria simples)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-5-leitura-de-sensor-adc-no-esp32-com-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 5: leitura de sensor (ADC) no ESP32 com MicroPython
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 5: leitura de sensor (ADC) no ESP32 com MicroPython">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lendo-um-valor-no-adc-com-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lendo um valor no ADC com MicroPython
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-6-controlando-um-led-via-rpc-comando-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 6: controlando um LED via RPC (comando remoto)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 6: controlando um LED via RPC (comando remoto)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurando-o-led-no-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurando o LED no ESP32
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assinando-comandos-rpc-com-o-sdk-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assinando comandos RPC com o SDK MicroPython
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criando-o-botao-de-controle-no-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criando o botão de controle no dashboard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-7-atributos-do-dispositivo-metadados-e-configuracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 7: atributos do dispositivo – metadados e configurações
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 7: atributos do dispositivo – metadados e configurações">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publicando-atributos-do-lado-do-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicando atributos do lado do cliente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erros-comuns-dicas-avancadas-e-proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erros comuns, dicas avançadas e próximos passos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erros comuns, dicas avançadas e próximos passos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#erros-comuns-ao-integrar-esp32-thingsboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erros comuns ao integrar ESP32 + ThingsBoard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boas-praticas-para-projetos-de-verdade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boas práticas para projetos de verdade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao-de-script-solitario-a-solucao-iot-profissional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusão: de script solitário a solução IoT profissional
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="utilizando-o-thingsboard-com-esp32-e-micropython">Utilizando o ThingsBoard com ESP32 e MicroPython<a class="headerlink" href="#utilizando-o-thingsboard-com-esp32-e-micropython" title="Permanent link">¶</a></h1>
+<p>Você já montou um projeto com ESP32, mediu temperatura, umidade, corrente… e quando terminou percebeu que tudo o que tinha era um <code>print()</code> no terminal e alguns gráficos improvisados em planilha?</p>
+<p>Você não está sozinho.</p>
+<p><strong>Problema</strong>: a maioria dos projetos com ESP32 e sensores morre no cabo USB. Sem uma boa plataforma de IoT, fica difícil:</p>
+<ul>
+<li>Visualizar dados em tempo real de forma bonita;</li>
+<li>Guardar histórico para análise;</li>
+<li>Controlar o dispositivo remotamente;</li>
+<li>Escalar de “um protótipo na bancada” para “dezenas ou centenas de dispositivos em campo”.</li>
+</ul>
+<p><strong>Agitação</strong>: isso significa retrabalho, frustração e projetos que não passam da fase de testes. Cada nova prova de conceito exige um back-end diferente, dashboards novos, scripts artesanais… e, quando alguém pergunta “dá pra ver isso na nuvem?”, o projeto trava.</p>
+<p><strong>Solução</strong>: combinar o <strong>ESP32 rodando MicroPython</strong> com o <strong>ThingsBoard</strong>, uma plataforma IoT open-source robusta, usada em contextos reais de automação, telemetria e SCADA de baixo custo. Neste guia, você vai do zero até: <a href="http://www.aimspress.com/article/10.3934/ElectrEng.2020.1.57">aimspress</a></p>
+<ul>
+<li>Conectar seu <strong>ESP32 + MicroPython</strong> ao ThingsBoard via MQTT;</li>
+<li>Enviar <strong>telemetria</strong> (ex.: temperatura, umidade);</li>
+<li>Publicar <strong>atributos</strong> do dispositivo;</li>
+<li>Receber <strong>comandos RPC</strong> para acionar, por exemplo, um LED ou relé;</li>
+<li>Visualizar dados em <strong>dashboards profissionais</strong>, prontos para impressionar clientes, professores ou gestores.</li>
+</ul>
+<p>Tudo isso com código limpo, exemplos práticos e explicações detalhadas.</p>
+<hr>
+<h2 id="visao-geral-esp32-micropython-e-thingsboard-trabalhando-juntos">Visão geral: ESP32, MicroPython e ThingsBoard trabalhando juntos<a class="headerlink" href="#visao-geral-esp32-micropython-e-thingsboard-trabalhando-juntos" title="Permanent link">¶</a></h2>
+<p>Nesta seção, você vai entender a arquitetura básica da solução antes de escrever qualquer linha de código. A ideia é que você enxergue “o filme completo”: do sensor no ESP32 até o gráfico no navegador.</p>
+<h3 id="o-que-e-o-thingsboard-e-por-que-usar-com-esp32">O que é o ThingsBoard (e por que usar com ESP32)?<a class="headerlink" href="#o-que-e-o-thingsboard-e-por-que-usar-com-esp32" title="Permanent link">¶</a></h3>
+<p>O <strong>ThingsBoard</strong> é uma plataforma IoT open-source que oferece:</p>
+<ul>
+<li>Coleta e armazenamento de dados de dispositivos;</li>
+<li>Dashboards dinâmicos e responsivos;</li>
+<li>Processamento de eventos, alarmes e regras;</li>
+<li>Controle de dispositivos através de <strong>RPC</strong>;</li>
+<li>Controle de usuários, tenants, perfis de dispositivos e muito mais. <a href="https://www.youtube.com/watch?v=k_DZZLQqORw">youtube</a></li>
+</ul>
+<p>Ele já possui <strong>exemplos oficiais para ESP32</strong> e integrações prontas para telemetria, atributos e RPC via MQTT. <a href="https://thingsboard.io/docs/pe/devices-library/esp32-dev-kit-v1/">thingsboard</a></p>
+<h3 id="o-que-o-micropython-traz-para-o-esp32">O que o MicroPython traz para o ESP32<a class="headerlink" href="#o-que-o-micropython-traz-para-o-esp32" title="Permanent link">¶</a></h3>
+<p>O <strong>MicroPython</strong> permite programar o ESP32 em Python, com:</p>
+<ul>
+<li>API de hardware (<code>machine</code>, <code>network</code>, <code>esp32</code>, etc.) para GPIO, ADC, PWM, etc.;</li>
+<li>Suporte oficial ao ESP32, com documentação e exemplos claros; <a href="https://docs.micropython.org/en/latest/esp32/quickref.html">docs.micropython</a></li>
+<li>Facilidade para testar interativamente via REPL.</li>
+</ul>
+<p>Isso significa que:</p>
+<ul>
+<li>Você escreve menos código do que em C/C++;</li>
+<li>Itera mais rápido;</li>
+<li>Aprende conceitos de IoT focando na lógica, não na linguagem.</li>
+</ul>
+<h3 id="arquitetura-da-solucao">Arquitetura da solução<a class="headerlink" href="#arquitetura-da-solucao" title="Permanent link">¶</a></h3>
+<p>Em alto nível, o fluxo é:</p>
+<ol>
+<li><strong>ESP32 + MicroPython</strong> coleta dados de sensores (ex.: temperatura);</li>
+<li>O ESP32 conecta na Wi-Fi e abre uma sessão MQTT com o ThingsBoard;</li>
+<li>Os dados são enviados como <strong>telemetria</strong> usando o <strong>SDK MicroPython para ThingsBoard</strong>; <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a></li>
+<li>ThingsBoard armazena, processa e exibe em dashboards;</li>
+<li>Opcionalmente, o ThingsBoard envia comandos (RPC) para o ESP32, que reage em tempo real.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Arquitetura típica</p>
+<ul>
+<li><strong>Protocolo</strong>: MQTT sobre TCP (com ou sem TLS)</li>
+<li><strong>Formato dos dados</strong>: JSON</li>
+<li><strong>Autenticação</strong>: token de acesso ou outro método definido no ThingsBoard</li>
+<li><strong>Topologia mínima</strong>: 1 ESP32 → 1 instância do ThingsBoard → 1 dashboard</li>
+</ul>
+</div>
+<hr>
+<h2 id="pre-requisitos-e-cenario-do-exemplo">Pré-requisitos e cenário do exemplo<a class="headerlink" href="#pre-requisitos-e-cenario-do-exemplo" title="Permanent link">¶</a></h2>
+<p>Aqui você vê o que precisa ter instalado e qual será o <strong>projeto de exemplo</strong> que vamos construir juntos.</p>
+<h3 id="o-que-voce-precisa-ter-em-maos">O que você precisa ter em mãos<a class="headerlink" href="#o-que-voce-precisa-ter-em-maos" title="Permanent link">¶</a></h3>
+<ul>
+<li>1 placa <strong>ESP32</strong> compatível com MicroPython;</li>
+<li>Cabo USB para programação;</li>
+<li>Acesso a uma rede <strong>Wi-Fi 2.4 GHz</strong>;</li>
+<li>Acesso a uma instância do <strong>ThingsBoard</strong>:</li>
+<li>Pode ser a instância demo (<code>demo.thingsboard.io</code>);</li>
+<li>Ou uma instalação local/servidor configurada por você;</li>
+<li>Firmware <strong>MicroPython</strong> gravado na placa ESP32; <a href="https://docs.micropython.org/en/latest/esp32/quickref.html">docs.micropython</a></li>
+<li>Um ambiente para enviar scripts:</li>
+<li>Thonny, Mu Editor, rshell, mpremote ou similar.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Recomendação prática</p>
+<p>Se você está apenas testando, use o <strong>demo.thingsboard.io</strong>.<br>
+Ele é ideal para protótipos e para aprender o fluxo completo sem precisar instalar nada no servidor.</p>
+</div>
+<h3 id="projeto-de-exemplo-estacao-de-temperatura-iot-com-led-remoto">Projeto de exemplo: estação de temperatura IoT com LED remoto<a class="headerlink" href="#projeto-de-exemplo-estacao-de-temperatura-iot-com-led-remoto" title="Permanent link">¶</a></h3>
+<p>Ao final do tutorial, você terá:</p>
+<ul>
+<li>Um ESP32 lendo um valor de “temperatura” (podemos simular no ADC ou com uma constante);</li>
+<li>Enviando essa temperatura periodicamente para o ThingsBoard (telemetria);</li>
+<li>Recebendo um comando RPC do ThingsBoard para ligar/desligar um LED (ou GPIO que poderia acionar um relé);</li>
+<li>Um <strong>dashboard</strong> com:</li>
+<li>Gráfico da temperatura ao longo do tempo;</li>
+<li>Um botão para controlar o LED remotamente.</li>
+</ul>
+<hr>
+<h2 id="passo-1-conectando-o-esp32-a-wi-fi-com-micropython">Passo 1: conectando o ESP32 à Wi-Fi com MicroPython<a class="headerlink" href="#passo-1-conectando-o-esp32-a-wi-fi-com-micropython" title="Permanent link">¶</a></h2>
+<p>Nesta seção, você vai configurar a conexão Wi-Fi do ESP32 com MicroPython, base para qualquer projeto IoT.</p>
+<h3 id="codigo-basico-de-conexao-wi-fi">Código básico de conexão Wi-Fi<a class="headerlink" href="#codigo-basico-de-conexao-wi-fi" title="Permanent link">¶</a></h3>
+<p>Crie um arquivo <code>wifi.py</code> no seu ESP32 com o seguinte conteúdo:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="n">SSID</span> <span class="o">=</span> <span class="s2">"SUA_REDE_WIFI"</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">"SUA_SENHA_WIFI"</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">conecta_wifi</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="n">SSID</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">():</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>        <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectando ao Wi-Fi..."</span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a>        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a>        <span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a>            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a>                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Falha ao conectar ao Wi-Fi"</span><span class="p">)</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><a href="#__codelineno-0-20"><span class="linenos" data-linenos="20 "></span></a>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><a href="#__codelineno-0-21"><span class="linenos" data-linenos="21 "></span></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><a href="#__codelineno-0-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectado! IP:"</span><span class="p">,</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><a href="#__codelineno-0-23"><span class="linenos" data-linenos="23 "></span></a>    <span class="k">return</span> <span class="n">wlan</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Boas práticas de segurança</p>
+<p>Evite commitar SSID e senha de Wi-Fi em repositórios públicos.<br>
+Use arquivos <code>.gitignore</code>, variáveis de ambiente ou scripts de configuração separados quando for publicar seu código.</p>
+</div>
+<hr>
+<h2 id="passo-2-criando-o-dispositivo-no-thingsboard">Passo 2: criando o dispositivo no ThingsBoard<a class="headerlink" href="#passo-2-criando-o-dispositivo-no-thingsboard" title="Permanent link">¶</a></h2>
+<p>Agora vamos criar o <strong>dispositivo lógico</strong> no ThingsBoard, que representa o seu ESP32 dentro da plataforma.</p>
+<h3 id="criando-o-device-e-obtendo-o-access-token">Criando o device e obtendo o access token<a class="headerlink" href="#criando-o-device-e-obtendo-o-access-token" title="Permanent link">¶</a></h3>
+<ol>
+<li>Acesse sua instância ThingsBoard (ex.: <code>https://demo.thingsboard.io</code>).</li>
+<li>Faça login (use uma conta de teste ou de desenvolvimento).</li>
+<li>No menu lateral, vá em <strong>Devices</strong> (Dispositivos).</li>
+<li>Clique em <strong>“+” → Add new device</strong>.</li>
+<li>Dê um nome amigável (ex.: <code>ESP32-MicroPython-01</code>).</li>
+<li>Salve.</li>
+</ol>
+<p>Depois:</p>
+<ol>
+<li>Clique no dispositivo criado.</li>
+<li>Vá em <strong>“Copy access token”</strong> (geralmente em <em>Credentials</em>).</li>
+<li>Guarde esse <strong>token</strong>, pois será usado no ESP32 para autenticar no ThingsBoard.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Tokens de acesso</p>
+<p>O token é, na prática, a “senha” do seu dispositivo IoT.<br>
+Não compartilhe esses valores em código público, prints, ou repositórios sem proteção.</p>
+</div>
+<hr>
+<h2 id="passo-3-instalando-o-client-micropython-para-thingsboard">Passo 3: instalando o client MicroPython para ThingsBoard<a class="headerlink" href="#passo-3-instalando-o-client-micropython-para-thingsboard" title="Permanent link">¶</a></h2>
+<p>Nesta seção, você vai instalar o <strong>SDK MQTT para ThingsBoard em MicroPython</strong>, que torna o código muito mais simples e legível.</p>
+<h3 id="opcoes-de-cliente-micropython-para-thingsboard">Opções de cliente MicroPython para ThingsBoard<a class="headerlink" href="#opcoes-de-cliente-micropython-para-thingsboard" title="Permanent link">¶</a></h3>
+<p>Existem duas abordagens principais:</p>
+<ol>
+<li><strong>SDK oficial MicroPython da ThingsBoard</strong>:<br>
+   Fornecido no repositório <code>thingsboard-micropython-client-sdk</code>, com suporte a:</li>
+<li>Telemetria,</li>
+<li>Atributos,</li>
+<li>RPC,</li>
+<li>Provisionamento,</li>
+<li>
+<p>Conexões criptografadas (TLS). <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a></p>
+</li>
+<li>
+<p><strong>Cliente ThingsBoard para MicroPython via PyPI</strong>:<br>
+<code>thingsboard-micropython</code> é uma biblioteca baseada em <code>umqtt.robust</code>, oferecendo um client para a Device API do ThingsBoard. <a href="https://pypi.org/project/thingsboard-micropython/">pypi</a></p>
+</li>
+</ol>
+<p>Neste artigo, vamos considerar o uso do <strong>SDK MicroPython da ThingsBoard</strong> por ser mantido pela equipe da própria plataforma e suportar os principais recursos MQTT da Device API. <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a></p>
+<h3 id="instalando-via-mip-no-esp32">Instalando via <code>mip</code> (no ESP32)<a class="headerlink" href="#instalando-via-mip-no-esp32" title="Permanent link">¶</a></h3>
+<p>No REPL do MicroPython (via Thonny, mpremote etc.), rode:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">mip</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">mip</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">'github:thingsboard/thingsboard-micropython-client-sdk'</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Isso vai fazer o download do SDK diretamente para a placa, tornando-o disponível para importação.</p>
+<div class="admonition tip">
+<p class="admonition-title">Sem <code>mip</code> disponível?</p>
+<p>Se não conseguir usar <code>mip</code> (por rede restrita ou firmware antigo),<br>
+você pode:
+- Fazer download do repositório no seu PC;
+- Copiar a pasta do SDK para o ESP32 usando Thonny, rshell ou outra ferramenta.</p>
+</div>
+<hr>
+<h2 id="passo-4-primeiro-envio-de-telemetria-hello-thingsboard">Passo 4: primeiro envio de telemetria (Hello ThingsBoard!)<a class="headerlink" href="#passo-4-primeiro-envio-de-telemetria-hello-thingsboard" title="Permanent link">¶</a></h2>
+<p>Agora começa a parte divertida: vamos enviar nosso primeiro dado de telemetria da placa para o dashboard.</p>
+<h3 id="estrutura-basica-do-codigo-telemetria-simples">Estrutura básica do código (telemetria simples)<a class="headerlink" href="#estrutura-basica-do-codigo-telemetria-simples" title="Permanent link">¶</a></h3>
+<p>Crie um arquivo <code>main.py</code> no ESP32 com o seguinte:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">wifi</span><span class="w"> </span><span class="kn">import</span> <span class="n">conecta_wifi</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">thingsboard_sdk.tb_device_mqtt</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBDeviceMqttClient</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="n">THINGSBOARD_HOST</span> <span class="o">=</span> <span class="s2">"demo.thingsboard.io"</span>  <span class="c1"># ou IP/host da sua instância</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="s2">"SEU_ACCESS_TOKEN_AQUI"</span>    <span class="c1"># copiado do ThingsBoard</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">conecta_thingsboard</span><span class="p">():</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectando ao ThingsBoard..."</span><span class="p">)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TBDeviceMqttClient</span><span class="p">(</span><span class="n">THINGSBOARD_HOST</span><span class="p">,</span> <span class="n">ACCESS_TOKEN</span><span class="p">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectado ao ThingsBoard!"</span><span class="p">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="k">return</span> <span class="n">client</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><a href="#__codelineno-2-15"><span class="linenos" data-linenos="15 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="c1"># 1. Conecta na Wi-Fi</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><a href="#__codelineno-2-17"><span class="linenos" data-linenos="17 "></span></a>    <span class="n">conecta_wifi</span><span class="p">()</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><a href="#__codelineno-2-18"><span class="linenos" data-linenos="18 "></span></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="c1"># 2. Conecta ao ThingsBoard</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><a href="#__codelineno-2-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">conecta_thingsboard</span><span class="p">()</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><a href="#__codelineno-2-21"><span class="linenos" data-linenos="21 "></span></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><a href="#__codelineno-2-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="c1"># 3. Envia alguns valores de exemplo</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><a href="#__codelineno-2-23"><span class="linenos" data-linenos="23 "></span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><a href="#__codelineno-2-24"><span class="linenos" data-linenos="24 "></span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><a href="#__codelineno-2-25"><span class="linenos" data-linenos="25 "></span></a>            <span class="n">temperatura</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.1</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><a href="#__codelineno-2-26"><span class="linenos" data-linenos="26 "></span></a>            <span class="n">dados</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><a href="#__codelineno-2-27"><span class="linenos" data-linenos="27 "></span></a>                <span class="s2">"temperature"</span><span class="p">:</span> <span class="n">temperatura</span><span class="p">,</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><a href="#__codelineno-2-28"><span class="linenos" data-linenos="28 "></span></a>                <span class="s2">"enabled"</span><span class="p">:</span> <span class="kc">True</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><a href="#__codelineno-2-29"><span class="linenos" data-linenos="29 "></span></a>            <span class="p">}</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><a href="#__codelineno-2-30"><span class="linenos" data-linenos="30 "></span></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"Enviando telemetria:"</span><span class="p">,</span> <span class="n">dados</span><span class="p">)</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><a href="#__codelineno-2-31"><span class="linenos" data-linenos="31 "></span></a>            <span class="n">client</span><span class="o">.</span><span class="n">send_telemetry</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><a href="#__codelineno-2-32"><span class="linenos" data-linenos="32 "></span></a>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a><a href="#__codelineno-2-33"><span class="linenos" data-linenos="33 "></span></a>    <span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a><a href="#__codelineno-2-34"><span class="linenos" data-linenos="34 "></span></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Desconectando..."</span><span class="p">)</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><a href="#__codelineno-2-35"><span class="linenos" data-linenos="35 "></span></a>        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a><a href="#__codelineno-2-36"><span class="linenos" data-linenos="36 "></span></a>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a><a href="#__codelineno-2-37"><span class="linenos" data-linenos="37 "></span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a><a href="#__codelineno-2-38"><span class="linenos" data-linenos="38 "></span></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Após salvar e rodar:</p>
+<ol>
+<li>No ThingsBoard, abra o dispositivo;</li>
+<li>Vá em <strong>Latest telemetry</strong> ou em um dashboard conectado a esse device;</li>
+<li>Confira se os dados de <code>temperature</code> começam a aparecer.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Primeira validação rápida</p>
+<ul>
+<li>Se você vê a temperatura mudando na aba <strong>Latest telemetry</strong>,<br>
+  o canal <strong>ESP32 → MQTT → ThingsBoard</strong> está funcionando.</li>
+<li>O próximo passo é transformar isso em um <strong>gráfico bonito</strong> no dashboard.</li>
+</ul>
+</div>
+<hr>
+<h2 id="passo-5-leitura-de-sensor-adc-no-esp32-com-micropython">Passo 5: leitura de sensor (ADC) no ESP32 com MicroPython<a class="headerlink" href="#passo-5-leitura-de-sensor-adc-no-esp32-com-micropython" title="Permanent link">¶</a></h2>
+<p>Nesta seção, vamos trocar o valor “fake” da temperatura por algo que <strong>vem do hardware</strong> – por exemplo, um sensor conectado em uma entrada analógica (ADC).</p>
+<h3 id="lendo-um-valor-no-adc-com-micropython">Lendo um valor no ADC com MicroPython<a class="headerlink" href="#lendo-um-valor-no-adc-com-micropython" title="Permanent link">¶</a></h3>
+<p>O MicroPython oferece a classe <code>ADC</code> para ler entradas analógicas no ESP32. <a href="https://docs.micropython.org/en/latest/esp32/quickref.html">docs.micropython</a>
+Segue um exemplo simplificado:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="n">adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span>         <span class="c1"># Use um pino ADC válido da sua placa</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="n">adc</span><span class="o">.</span><span class="n">atten</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">ATTN_11DB</span><span class="p">)</span>   <span class="c1"># faixa de ~0-3.3V</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="n">adc</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">WIDTH_12BIT</span><span class="p">)</span> <span class="c1"># resolução 0-4095</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">le_sensor</span><span class="p">():</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="n">valor_bruto</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="c1"># Exemplo: converter para "temperatura" fictícia</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">temperatura</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">(</span><span class="n">valor_bruto</span> <span class="o">/</span> <span class="mi">4095</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>  <span class="c1"># 20°C a 30°C</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="k">return</span> <span class="n">temperatura</span>
+</span></code></pre></div>
+<p>Agora integre isso ao seu <code>main.py</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">wifi</span><span class="w"> </span><span class="kn">import</span> <span class="n">conecta_wifi</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">thingsboard_sdk.tb_device_mqtt</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBDeviceMqttClient</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="n">THINGSBOARD_HOST</span> <span class="o">=</span> <span class="s2">"demo.thingsboard.io"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="s2">"SEU_ACCESS_TOKEN_AQUI"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="n">adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="n">adc</span><span class="o">.</span><span class="n">atten</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">ATTN_11DB</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a><span class="n">adc</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">WIDTH_12BIT</span><span class="p">)</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">le_temperatura</span><span class="p">():</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a>    <span class="n">valor</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><a href="#__codelineno-4-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="n">temperatura</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">(</span><span class="n">valor</span> <span class="o">/</span> <span class="mi">4095</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><a href="#__codelineno-4-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">temperatura</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><a href="#__codelineno-4-17"><span class="linenos" data-linenos="17 "></span></a>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><a href="#__codelineno-4-18"><span class="linenos" data-linenos="18 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">conecta_thingsboard</span><span class="p">():</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a><a href="#__codelineno-4-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectando ao ThingsBoard..."</span><span class="p">)</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><a href="#__codelineno-4-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TBDeviceMqttClient</span><span class="p">(</span><span class="n">THINGSBOARD_HOST</span><span class="p">,</span> <span class="n">ACCESS_TOKEN</span><span class="p">)</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><a href="#__codelineno-4-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><a href="#__codelineno-4-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectado ao ThingsBoard!"</span><span class="p">)</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><a href="#__codelineno-4-23"><span class="linenos" data-linenos="23 "></span></a>    <span class="k">return</span> <span class="n">client</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><a href="#__codelineno-4-24"><span class="linenos" data-linenos="24 "></span></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><a href="#__codelineno-4-25"><span class="linenos" data-linenos="25 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><a href="#__codelineno-4-26"><span class="linenos" data-linenos="26 "></span></a>    <span class="n">conecta_wifi</span><span class="p">()</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><a href="#__codelineno-4-27"><span class="linenos" data-linenos="27 "></span></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">conecta_thingsboard</span><span class="p">()</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28"></a><a href="#__codelineno-4-28"><span class="linenos" data-linenos="28 "></span></a>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29"></a><a href="#__codelineno-4-29"><span class="linenos" data-linenos="29 "></span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30"></a><a href="#__codelineno-4-30"><span class="linenos" data-linenos="30 "></span></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31"></a><a href="#__codelineno-4-31"><span class="linenos" data-linenos="31 "></span></a>            <span class="n">temp</span> <span class="o">=</span> <span class="n">le_temperatura</span><span class="p">()</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32"></a><a href="#__codelineno-4-32"><span class="linenos" data-linenos="32 "></span></a>            <span class="n">dados</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"temperature"</span><span class="p">:</span> <span class="n">temp</span><span class="p">}</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33"></a><a href="#__codelineno-4-33"><span class="linenos" data-linenos="33 "></span></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"Telemetria:"</span><span class="p">,</span> <span class="n">dados</span><span class="p">)</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34"></a><a href="#__codelineno-4-34"><span class="linenos" data-linenos="34 "></span></a>            <span class="n">client</span><span class="o">.</span><span class="n">send_telemetry</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35"></a><a href="#__codelineno-4-35"><span class="linenos" data-linenos="35 "></span></a>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36"></a><a href="#__codelineno-4-36"><span class="linenos" data-linenos="36 "></span></a>    <span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37"></a><a href="#__codelineno-4-37"><span class="linenos" data-linenos="37 "></span></a>        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38"></a><a href="#__codelineno-4-38"><span class="linenos" data-linenos="38 "></span></a>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39"></a><a href="#__codelineno-4-39"><span class="linenos" data-linenos="39 "></span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40"></a><a href="#__codelineno-4-40"><span class="linenos" data-linenos="40 "></span></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Substitua o ADC por um sensor real</p>
+<p>Se você tiver um sensor de temperatura (DHT22, DS18B20, etc.),<br>
+basta trocar a função <code>le_temperatura()</code> pela leitura real do seu sensor<br>
+e manter o restante do fluxo exatamente igual.</p>
+</div>
+<hr>
+<h2 id="passo-6-controlando-um-led-via-rpc-comando-remoto">Passo 6: controlando um LED via RPC (comando remoto)<a class="headerlink" href="#passo-6-controlando-um-led-via-rpc-comando-remoto" title="Permanent link">¶</a></h2>
+<p>Aqui está a parte que impressiona: receber um comando do ThingsBoard para <strong>ligar/desligar um LED</strong> conectado ao ESP32.</p>
+<h3 id="configurando-o-led-no-esp32">Configurando o LED no ESP32<a class="headerlink" href="#configurando-o-led-no-esp32" title="Permanent link">¶</a></h3>
+<p>No ESP32, escolha um pino digital (por exemplo, GPIO 2):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_led_estado</span><span class="p">(</span><span class="n">ligado</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">ligado</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="assinando-comandos-rpc-com-o-sdk-micropython">Assinando comandos RPC com o SDK MicroPython<a class="headerlink" href="#assinando-comandos-rpc-com-o-sdk-micropython" title="Permanent link">¶</a></h3>
+<p>O <code>TBDeviceMqttClient</code> permite assinar <strong>RPC calls</strong> (server-side) do ThingsBoard. <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a>
+Um fluxo básico:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">wifi</span><span class="w"> </span><span class="kn">import</span> <span class="n">conecta_wifi</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">thingsboard_sdk.tb_device_mqtt</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBDeviceMqttClient</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="n">THINGSBOARD_HOST</span> <span class="o">=</span> <span class="s2">"demo.thingsboard.io"</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="s2">"SEU_ACCESS_TOKEN_AQUI"</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_led_estado</span><span class="p">(</span><span class="n">ligado</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">ligado</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"LED ligado"</span> <span class="k">if</span> <span class="n">ligado</span> <span class="k">else</span> <span class="s2">"LED desligado"</span><span class="p">)</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><a href="#__codelineno-6-15"><span class="linenos" data-linenos="15 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">on_rpc_request</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="n">request_body</span><span class="p">):</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><a href="#__codelineno-6-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"RPC recebido:"</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="n">request_body</span><span class="p">)</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><a href="#__codelineno-6-17"><span class="linenos" data-linenos="17 "></span></a>    <span class="n">metodo</span> <span class="o">=</span> <span class="n">request_body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"method"</span><span class="p">)</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><a href="#__codelineno-6-18"><span class="linenos" data-linenos="18 "></span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">request_body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"params"</span><span class="p">)</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><a href="#__codelineno-6-19"><span class="linenos" data-linenos="19 "></span></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><a href="#__codelineno-6-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="k">if</span> <span class="n">metodo</span> <span class="o">==</span> <span class="s2">"setLed"</span><span class="p">:</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><a href="#__codelineno-6-21"><span class="linenos" data-linenos="21 "></span></a>        <span class="c1"># 'params' pode ser True/False ou algo equivalente</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a><a href="#__codelineno-6-22"><span class="linenos" data-linenos="22 "></span></a>        <span class="n">estado</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a><a href="#__codelineno-6-23"><span class="linenos" data-linenos="23 "></span></a>        <span class="n">set_led_estado</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a><a href="#__codelineno-6-24"><span class="linenos" data-linenos="24 "></span></a>        <span class="c1"># Opcional: responder com um status</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><a href="#__codelineno-6-25"><span class="linenos" data-linenos="25 "></span></a>        <span class="n">client</span><span class="o">.</span><span class="n">send_rpc_reply</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"ok"</span><span class="p">,</span> <span class="s2">"led"</span><span class="p">:</span> <span class="n">estado</span><span class="p">})</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a><a href="#__codelineno-6-26"><span class="linenos" data-linenos="26 "></span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><a href="#__codelineno-6-27"><span class="linenos" data-linenos="27 "></span></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Método RPC desconhecido:"</span><span class="p">,</span> <span class="n">metodo</span><span class="p">)</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><a href="#__codelineno-6-28"><span class="linenos" data-linenos="28 "></span></a>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><a href="#__codelineno-6-29"><span class="linenos" data-linenos="29 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a><a href="#__codelineno-6-30"><span class="linenos" data-linenos="30 "></span></a>    <span class="n">conecta_wifi</span><span class="p">()</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a><a href="#__codelineno-6-31"><span class="linenos" data-linenos="31 "></span></a>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a><a href="#__codelineno-6-32"><span class="linenos" data-linenos="32 "></span></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TBDeviceMqttClient</span><span class="p">(</span><span class="n">THINGSBOARD_HOST</span><span class="p">,</span> <span class="n">ACCESS_TOKEN</span><span class="p">)</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a><a href="#__codelineno-6-33"><span class="linenos" data-linenos="33 "></span></a>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a><a href="#__codelineno-6-34"><span class="linenos" data-linenos="34 "></span></a>    <span class="c1"># Registra o callback para RPC</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a><a href="#__codelineno-6-35"><span class="linenos" data-linenos="35 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">set_server_side_rpc_request_handler</span><span class="p">(</span><span class="n">on_rpc_request</span><span class="p">)</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a><a href="#__codelineno-6-36"><span class="linenos" data-linenos="36 "></span></a>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a><a href="#__codelineno-6-37"><span class="linenos" data-linenos="37 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a><a href="#__codelineno-6-38"><span class="linenos" data-linenos="38 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Conectado com suporte a RPC."</span><span class="p">)</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a><a href="#__codelineno-6-39"><span class="linenos" data-linenos="39 "></span></a>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a><a href="#__codelineno-6-40"><span class="linenos" data-linenos="40 "></span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a><a href="#__codelineno-6-41"><span class="linenos" data-linenos="41 "></span></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a><a href="#__codelineno-6-42"><span class="linenos" data-linenos="42 "></span></a>            <span class="c1"># Mantém o loop rodando e processando mensagens MQTT</span>
+</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43"></a><a href="#__codelineno-6-43"><span class="linenos" data-linenos="43 "></span></a>            <span class="n">client</span><span class="o">.</span><span class="n">check_msg</span><span class="p">()</span>
+</span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44"></a><a href="#__codelineno-6-44"><span class="linenos" data-linenos="44 "></span></a>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45"></a><a href="#__codelineno-6-45"><span class="linenos" data-linenos="45 "></span></a>    <span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46"></a><a href="#__codelineno-6-46"><span class="linenos" data-linenos="46 "></span></a>        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47"></a><a href="#__codelineno-6-47"><span class="linenos" data-linenos="47 "></span></a>
+</span><span id="__span-6-48"><a id="__codelineno-6-48" name="__codelineno-6-48"></a><a href="#__codelineno-6-48"><span class="linenos" data-linenos="48 "></span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-6-49"><a id="__codelineno-6-49" name="__codelineno-6-49"></a><a href="#__codelineno-6-49"><span class="linenos" data-linenos="49 "></span></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="criando-o-botao-de-controle-no-dashboard">Criando o botão de controle no dashboard<a class="headerlink" href="#criando-o-botao-de-controle-no-dashboard" title="Permanent link">¶</a></h3>
+<p>No ThingsBoard:</p>
+<ol>
+<li>Crie (ou edite) um dashboard associado ao seu device;</li>
+<li>Adicione um widget de <strong>RPC</strong> (ex.: “Switch control”);</li>
+<li>Configure para:</li>
+<li><strong>RPC method</strong>: <code>setLed</code> (mesmo texto usado no código);</li>
+<li><strong>Parameters</strong>: <code>true</code>/<code>false</code> conforme o estado do botão.</li>
+</ol>
+<p>Agora, quando você clicar no botão no dashboard:</p>
+<ul>
+<li>O ThingsBoard envia um comando RPC <code>setLed</code> para o ESP32;</li>
+<li>O ESP32 recebe no <code>on_rpc_request</code>;</li>
+<li>O LED muda de estado em tempo real.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Cenário prático</p>
+<p>Imagine esse LED ligado a um <strong>relé</strong> controlando uma lâmpada ou uma bomba d’água.<br>
+Com poucas linhas de código, você sai do “protótipo isolado” para um <strong>atuador remoto controlado via nuvem</strong>.</p>
+</div>
+<hr>
+<h2 id="passo-7-atributos-do-dispositivo-metadados-e-configuracoes">Passo 7: atributos do dispositivo – metadados e configurações<a class="headerlink" href="#passo-7-atributos-do-dispositivo-metadados-e-configuracoes" title="Permanent link">¶</a></h2>
+<p>Além de telemetria e RPC, o ThingsBoard permite trabalhar com <strong>atributos</strong> (device attributes), que são ideais para:</p>
+<ul>
+<li>Guardar configurações (ex.: intervalo de envio, thresholds);</li>
+<li>Registrar informações estáticas do device (ex.: localização, firmware).</li>
+</ul>
+<p>O SDK MicroPython também expõe APIs para isso. <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a></p>
+<h3 id="publicando-atributos-do-lado-do-cliente">Publicando atributos do lado do cliente<a class="headerlink" href="#publicando-atributos-do-lado-do-cliente" title="Permanent link">¶</a></h3>
+<p>Exemplo simples de envio de atributos:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">wifi</span><span class="w"> </span><span class="kn">import</span> <span class="n">conecta_wifi</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">thingsboard_sdk.tb_device_mqtt</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBDeviceMqttClient</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="n">THINGSBOARD_HOST</span> <span class="o">=</span> <span class="s2">"demo.thingsboard.io"</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="s2">"SEU_ACCESS_TOKEN_AQUI"</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="n">conecta_wifi</span><span class="p">()</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TBDeviceMqttClient</span><span class="p">(</span><span class="n">THINGSBOARD_HOST</span><span class="p">,</span> <span class="n">ACCESS_TOKEN</span><span class="p">)</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">atributos</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><a href="#__codelineno-7-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="s2">"fw_version"</span><span class="p">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><a href="#__codelineno-7-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="s2">"modelo"</span><span class="p">:</span> <span class="s2">"ESP32-MP-ThingBoard"</span><span class="p">,</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><a href="#__codelineno-7-15"><span class="linenos" data-linenos="15 "></span></a>        <span class="s2">"local"</span><span class="p">:</span> <span class="s2">"Laboratório 1"</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><a href="#__codelineno-7-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="p">}</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Enviando atributos:"</span><span class="p">,</span> <span class="n">atributos</span><span class="p">)</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a><a href="#__codelineno-7-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">send_attributes</span><span class="p">(</span><span class="n">atributos</span><span class="p">)</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><a href="#__codelineno-7-20"><span class="linenos" data-linenos="20 "></span></a>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><a href="#__codelineno-7-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a><a href="#__codelineno-7-22"><span class="linenos" data-linenos="22 "></span></a>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a><a href="#__codelineno-7-23"><span class="linenos" data-linenos="23 "></span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a><a href="#__codelineno-7-24"><span class="linenos" data-linenos="24 "></span></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<p>No ThingsBoard, você verá esses atributos no painel do dispositivo, em <strong>Attributes → Client attributes</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Configurações dinâmicas com atributos compartilhados</p>
+<p>Você pode usar <strong>shared attributes</strong> para mandar configurações do servidor para o device<br>
+(ex.: mudar o intervalo de envio de telemetria sem regravar o firmware).<br>
+Basta assinar mudanças de atributos no SDK e reagir às atualizações no código.</p>
+</div>
+<hr>
+<h2 id="erros-comuns-dicas-avancadas-e-proximos-passos">Erros comuns, dicas avançadas e próximos passos<a class="headerlink" href="#erros-comuns-dicas-avancadas-e-proximos-passos" title="Permanent link">¶</a></h2>
+<p>Até aqui, você já consegue:</p>
+<ul>
+<li>Conectar o ESP32 à Wi-Fi;</li>
+<li>Autenticar no ThingsBoard via MQTT;</li>
+<li>Enviar telemetria real ou simulada;</li>
+<li>Receber comandos RPC e acionar um LED;</li>
+<li>Enviar atributos do dispositivo.</li>
+</ul>
+<p>Agora, alguns pontos importantes para você evoluir com segurança e profissionalismo.</p>
+<h3 id="erros-comuns-ao-integrar-esp32-thingsboard">Erros comuns ao integrar ESP32 + ThingsBoard<a class="headerlink" href="#erros-comuns-ao-integrar-esp32-thingsboard" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Credenciais erradas</strong>:</li>
+<li>Token de acesso copiado do dispositivo errado;</li>
+<li>Host incorreto (<code>demo.thingsboard.io</code> vs. IP local).</li>
+<li><strong>Rede bloqueando MQTT</strong>:</li>
+<li>Firewalls corporativos podem bloquear a porta 1883 (MQTT sem TLS);</li>
+<li>Considere usar portas e configurações compatíveis com sua infraestrutura.</li>
+<li><strong>Loop principal sem <code>check_msg()</code></strong>:</li>
+<li>Se você não chama <code>check_msg()</code> periodicamente, RPC e atualizações não chegam.</li>
+<li><strong>Watchdog “invisível”</strong>:</li>
+<li>Loops bloqueantes sem <code>sleep</code> podem travar a placa ou impedir a manutenção da conexão MQTT.</li>
+</ul>
+<h3 id="boas-praticas-para-projetos-de-verdade">Boas práticas para projetos de verdade<a class="headerlink" href="#boas-praticas-para-projetos-de-verdade" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Separar ambientes</strong>:</li>
+<li>Tenha uma instância ThingsBoard para desenvolvimento e outra para produção.</li>
+<li><strong>Provisionamento em massa</strong>:</li>
+<li>Explore os recursos de <strong>provisioning devices</strong> do ThingsBoard para escalar centenas de dispositivos sem configurar um a um. <a href="https://thingsboard.io/docs/user-guide/device-provisioning/">thingsboard</a></li>
+<li><strong>Segurança</strong>:</li>
+<li>Considere usar MQTT com TLS e métodos de autenticação mais robustos para ambientes críticos. <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a></li>
+<li><strong>Organização do código</strong>:</li>
+<li>Modularize em arquivos (<code>wifi.py</code>, <code>sensors.py</code>, <code>thingsboard_client.py</code>, <code>main.py</code>) para facilitar manutenção.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Não subestime logs e monitoramento</p>
+<p>Sempre que possível, logue <strong>eventos-chave</strong> (conexão, reconexão, falhas de envio, comandos recebidos).<br>
+Em campo, isso reduz drasticamente o tempo de diagnóstico quando algo “misteriosamente” para de funcionar.</p>
+</div>
+<hr>
+<h2 id="conclusao-de-script-solitario-a-solucao-iot-profissional">Conclusão: de script solitário a solução IoT profissional<a class="headerlink" href="#conclusao-de-script-solitario-a-solucao-iot-profissional" title="Permanent link">¶</a></h2>
+<p>Ao longo deste artigo, você viu como:</p>
+<ul>
+<li>Sair de um <strong>ESP32 isolado no cabo USB</strong> para um dispositivo IoT integrado a uma plataforma robusta;</li>
+<li>Usar <strong>MicroPython</strong> para acelerar o desenvolvimento, mantendo acesso ao hardware do ESP32; <a href="https://docs.micropython.org/en/latest/esp32/quickref.html">docs.micropython</a></li>
+<li>Integrar com o <strong>ThingsBoard</strong> usando o SDK MicroPython oficial, aproveitando telemetria, atributos e RPC de forma simples e clara; <a href="https://github.com/thingsboard/thingsboard-micropython-client-sdk">github</a></li>
+<li>Criar a base de um projeto que pode escalar para dezenas ou centenas de dispositivos – sem reinventar dashboards, back-ends ou protocolos.</li>
+</ul>
+<p>O próximo passo é seu:</p>
+<ul>
+<li>Troque o sensor simulado por sensores reais;</li>
+<li>Crie dashboards mais ricos (mapas, múltiplos gráficos, indicadores);</li>
+<li>Experimente regras de alarme e notificações (e-mail, Telegram, etc.);</li>
+<li>Explore provisionamento, firmware OTA e outras funcionalidades avançadas da plataforma.</li>
+</ul>
+<p>Se você já domina ESP32 e MicroPython, <strong>conectar ao ThingsBoard</strong> é o movimento natural para transformar seus projetos em <strong>soluções IoT de verdade</strong> – com cara, estrutura e poder de produto.</p>
+<p>Boa construção de dashboards e bons testes em campo!</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Luis Rodrigo - Net
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/luisrodrigonet" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/luisrodrigoog" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://linkedin.com/in/luisrodrigoog" target="_blank" rel="noopener" title="Linkedin" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.instagram.com/luisrodrigoog/" target="_blank" rel="noopener" title="Instagram" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs", "content.tabs.link", "content.tooltips", "content.code.select", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

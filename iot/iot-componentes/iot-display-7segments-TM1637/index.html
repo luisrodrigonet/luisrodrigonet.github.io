@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="pt" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,11 +18,11 @@
       
       
       <link rel="icon" href="../../../assets/favicon/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>iot display 7segments TM1637 - Luis Rodrigo - Net</title>
+        <title>IOT - LED 4-Digit Display com TM1637 - Luis Rodrigo - Net</title>
       
     
     
@@ -39,17 +36,30 @@
 
     
     
+  
       
     
+  <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tables = document.querySelectorAll("article table:not([class])");
+      tables.forEach(table => new Tablesort(table));
+    });
+  </script>
+
     
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+      <link rel="stylesheet" href="../../../static/css/admonition.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -57,7 +67,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -88,9 +108,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href="../../.." title="Luis Rodrigo - Net" class="md-header__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
       
@@ -99,7 +117,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -111,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              iot display 7segments TM1637
+              IOT - LED 4-Digit Display com TM1637
             
           </span>
         </div>
@@ -124,20 +142,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple" aria-label="Mudar para o modo claro" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange" aria-label="Mudar para o modo escuro" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
       </label>
     
   
@@ -153,29 +171,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Pesquisar">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -183,7 +201,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Inicializando a pesquisa
@@ -199,8 +217,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -298,6 +322,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../programacao/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../sobre/licenca/" class="md-tabs__link">
           
   
@@ -315,13 +361,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -329,7 +369,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -348,7 +390,7 @@
     Luis Rodrigo - Net
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -413,7 +455,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -450,7 +492,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -609,7 +651,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -646,7 +688,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -790,6 +832,8 @@
       
         
       
+        
+      
     
     
     
@@ -805,7 +849,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -842,7 +886,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -860,7 +904,7 @@
   <span class="md-ellipsis">
     
   
-    Arduido
+    Arduino
   
 
     
@@ -937,6 +981,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../thingsboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ThingsBoard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../componentes/" class="md-nav__link">
         
   
@@ -945,6 +1017,172 @@
     
   
     Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programacao/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/django/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSCode
   
 
     
@@ -993,10 +1231,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1014,8 +1252,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1023,7 +1261,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1096,7 +1334,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1112,25 +1352,25 @@
       <span class="md-nav__icon md-icon"></span>
       Índice
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-introducao" class="md-nav__link">
+  <a href="#1-visao-geral-e-especificacoes-do-sensor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Introdução
+        1️⃣ Visão Geral e Especificações do Sensor
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Introdução">
+    <nav class="md-nav" aria-label="1️⃣ Visão Geral e Especificações do Sensor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-importancia-e-papel-em-projetos-iot" class="md-nav__link">
+  <a href="#vantagens" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. Importância e Papel em Projetos IoT
+        🔖 Vantagens
       
     </span>
   </a>
@@ -1138,10 +1378,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-nivel-de-dificuldade" class="md-nav__link">
+  <a href="#limitacoes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2. Nível de Dificuldade
+        🔖 Limitações
       
     </span>
   </a>
@@ -1149,10 +1389,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-descricao-resumida" class="md-nav__link">
+  <a href="#especificacoes-tecnicas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3. Descrição Resumida
+        🔖 Especificações Técnicas
       
     </span>
   </a>
@@ -1165,22 +1405,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-visao-geral-e-especificacoes-do-sensor" class="md-nav__link">
+  <a href="#2-hardware-conexao-com-o-arduino" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Visão Geral e Especificações do Sensor
+        2️⃣ Hardware: Conexão com o Arduino
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Visão Geral e Especificações do Sensor">
+    <nav class="md-nav" aria-label="2️⃣ Hardware: Conexão com o Arduino">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-vantagens" class="md-nav__link">
+  <a href="#materiais-necessarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1. Vantagens
+        🛰️ Materiais Necessários
       
     </span>
   </a>
@@ -1188,32 +1428,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-limitacoes" class="md-nav__link">
+  <a href="#esquema-de-ligacao-circuito" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2. Limitações
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-especificacoes-tecnicas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3. Especificações Técnicas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-vantagens-e-limitacoes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4 Vantagens e Limitações
+        🛰️ Esquema de Ligação (Circuito)
       
     </span>
   </a>
@@ -1226,91 +1444,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-hardware-conexao-com-o-arduino" class="md-nav__link">
+  <a href="#4-aplicacoes-praticas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Hardware: Conexão com o Arduino
+        4️⃣ Aplicações Práticas
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3. Hardware: Conexão com o Arduino">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-materiais-necessarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 Materiais Necessários
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-esquema-de-ligacao-circuito" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 Esquema de Ligação (Circuito)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-passo-a-passo-da-montagem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 Passo a Passo da Montagem
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-software-programacao-na-arduino-ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Software: Programação na Arduino IDE
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Software: Programação na Arduino IDE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-instalacao-da-biblioteca" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Instalação da Biblioteca
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-aplicacoes-praticas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 Aplicações Práticas
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1318,99 +1458,10 @@
   <a href="#5-observacoes-adicionais-e-melhores-praticas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Observações Adicionais e Melhores Práticas
+        5️⃣ Observações Adicionais e Melhores Práticas
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="5. Observações Adicionais e Melhores Práticas">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-dicas-de-hardware" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1. Dicas de Hardware
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-armadilhas-comuns-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2. Armadilhas Comuns (Troubleshooting)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#53-melhores-praticas-de-codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.3. Melhores Práticas de Código
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#54-aplicacoes-avancadas-integracao-com-esp8266esp32" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4. Aplicações Avançadas: Integração com ESP8266/ESP32
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5.4. Aplicações Avançadas: Integração com ESP8266/ESP32">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#541-envio-de-dados-via-mqtt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4.1. Envio de Dados via MQTT 🛸
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#542-dashboard-na-nuvem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4.2. Dashboard na Nuvem 🛸
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#55-manutencao-e-calibracao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.5. Manutenção e Calibração
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1418,7 +1469,7 @@
   <a href="#6-conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Conclusão
+        6️⃣ Conclusão
       
     </span>
   </a>
@@ -1438,6 +1489,8 @@
               
                 
 
+  
+
 
 
   
@@ -1447,65 +1500,39 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-<hr />
-<p>title: 🤖 IOT - LED 4-Digit Display com TM1637
-summary: Aprenda tudo sobre o sensor ED 4-Digit Display com TM1637: funcionamento, montagem, uso e aplicações em projetos IoT.
-authors:
-    - Luis Rodrigo - Papagaio
-tags:
-  - iot
-  - sensor
-  - Arduino
-  - TM1637
-  - LED display
-  - 7-segmentos
-  - 4 dígitos
-  - programação
-  - protótipo
-  - automação
-  - monitoramento
-  - interface digital
-  - circuito eletrônico
-  - microcontrolador
-  - prototipagem
-  - WiFi
-  - MQTT
-  - dashboard
-  - termômetro digital
-  - contador eletrônico</p>
-<p>date: 2025-11-06
-icon: material/home_iot_device
-lang: pt</p>
-<hr />
-<h1 id="led-4-digit-display-com-tm1637">LED 4-Digit Display com TM1637 🚏<a class="headerlink" href="#led-4-digit-display-com-tm1637" title="Permanent link">&para;</a></h1>
-<h2 id="1-introducao">1. Introdução<a class="headerlink" href="#1-introducao" title="Permanent link">&para;</a></h2>
-<p>O <strong>LED 4-Digit Display com TM1637</strong> é um módulo e vdisualização de dados extremamente popular em projetos IoT e Arduino. Este dispositivo combina quatro dígitos de 7 segmentos (totalizando 28 segmentos individuais) com o controlador <code>TM1637</code>, um circuito integrado especializado que gerencia toda a complexidade de uma exibição tradicional <strong>usando</strong> apenas <strong>dois pinos de comunicação</strong>. </p>
-<p>Este display pode ser utilizaado para exibir grandezas como temperatura, umidade, velocidade, contagem de eventos e tempo com uma clareza e vivacidade impressionantes graças aos LEDs de alta intensidade em cores variadas (vermelho, azul, verde). Diferentemente de um display tradicional de 7 segmentos que exigiria 12 ou mais conexões, o TM1637 reduz drasticamente essa necessidade, tornando o projeto mais compacto e elegante.</p>
-<h3 id="11-importancia-e-papel-em-projetos-iot">1.1. Importância e Papel em Projetos IoT<a class="headerlink" href="#11-importancia-e-papel-em-projetos-iot" title="Permanent link">&para;</a></h3>
+
+<h1 id="led-4-digit-display-com-tm1637">👾 LED 4-Digit Display com TM1637 🚏<a class="headerlink" href="#led-4-digit-display-com-tm1637" title="Permanent link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/iot/banner-esp-004a.jpg" data-desc-position="bottom"><img alt="Banner" src="../../../static/img/iot/banner-esp-004a.jpg"></a></p>
+<p>O <strong>TM1637 é um controlador LED serial de alta eficiência</strong>, integrado a um módulo de display de 4 dígitos 7-segmentos, amplamente utilizado em projetos de IoT, clocks digitais, termômetros e contadores. </p>
+<p>O <strong>LED 4-Digit Display com TM1637</strong> é um módulo e visualização de dados extremamente popular em projetos IoT e Arduino. Este dispositivo combina quatro dígitos de 7 segmentos (totalizando 28 segmentos individuais) com o controlador <code>TM1637</code>, um circuito integrado especializado que gerencia toda a complexidade de uma exibição tradicional <strong>usando</strong> apenas <strong>dois pinos de comunicação</strong>. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/iot-comp/display-tm1637-7-segmentos-4-digitos_001.jpg" data-desc-position="bottom"><img _="," align="right" alt="LED 4-Digit Display com TM1637" src="../../../static/img/iot-comp/display-tm1637-7-segmentos-4-digitos_001.jpg" width="300"></a></p>
+<p>Este <em>display</em> pode ser utilizado para exibir grandezas como temperatura, umidade, velocidade, contagem de eventos e tempo com uma clareza e vivacidade impressionantes graças aos LEDs de alta intensidade em cores variadas (vermelho, azul, verde). Diferentemente de um display tradicional de 7 segmentos que exigiria 12 ou mais conexões, o TM1637 reduz drasticamente essa necessidade, tornando o projeto mais compacto e elegante.</p>
+<p>Este display opera entre <strong>3.3V</strong> e <strong>5.5V,</strong> comunica-se via <strong>protocolo bidirecional</strong> em apenas dois pinos, e <strong>gerencia automaticamente o refresh</strong> da exibição após cada atualização de dados.</p>
+<p><strong>📢 Importância e Papel em Projetos IoT ✒️</strong></p>
 <p>Em sistemas de <strong>automação residencial inteligente</strong>, o <code>TM1637</code> exibe informações críticas em tempo real: temperatura ambiente, umidade relativa do ar, nível de luminosidade ou até mesmo alertas de segurança. </p>
 <p>Na <strong>agricultura inteligente</strong>, ele monitora variáveis como solo umidade, temperatura da estufa e pH da água de irrigação. Em <strong>monitoramento ambiental</strong>, contribui para estações meteorológicas amadores mostrando dados coletados via sensores DHT11, BMP280 e LDR. </p>
 <p>A utilidade prática é imediata: qualquer entusiasta de Arduino consegue construir um relógio digital, um cronômetro, um contador de pessoas em ambientes, um termômetro <code>WiFi</code> conectado à nuvem, ou até mesmo uma placa de placar para competições. O display oferece <strong>feedback</strong> visual instantâneo, fundamental para validar o funcionamento do código durante o desenvolvimento.</p>
-<h3 id="12-nivel-de-dificuldade">1.2. Nível de Dificuldade<a class="headerlink" href="#12-nivel-de-dificuldade" title="Permanent link">&para;</a></h3>
-<p><strong>Iniciante a Intermediário</strong> — A conexão é trivial (apenas 4 fios), a programação requer apenas uma biblioteca bem documentada, e a curva de aprendizado é suave. Mesmo assim, compreender o protocolo de comunicação I2C-like e lidar com possíveis problemas de hardware (como capacitores defeituosos) posiciona o projeto em nível intermediário para iniciantes determinados.</p>
-<h3 id="13-descricao-resumida">1.3. Descrição Resumida<a class="headerlink" href="#13-descricao-resumida" title="Permanent link">&para;</a></h3>
-<p>O <strong>TM1637 é um controlador LED serial de alta eficiência</strong>, integrado a um módulo de display de 4 dígitos 7-segmentos, amplamente utilizado em projetos de IoT, clocks digitais, termômetros e contadores. </p>
-<p>Opera entre <strong>3.3V</strong> e <strong>5.5V,</strong> comunica-se via <strong>protocolo bidirecional</strong> em apenas dois pinos, e <strong>gerencia automaticamente o refresh</strong> da exibição após cada atualização de dados.</p>
-<h2 id="2-visao-geral-e-especificacoes-do-sensor">2. Visão Geral e Especificações do Sensor<a class="headerlink" href="#2-visao-geral-e-especificacoes-do-sensor" title="Permanent link">&para;</a></h2>
+<p><strong>📢 Nível de Dificuldade ✒️</strong></p>
+<ul>
+<li><strong>Iniciante a Intermediário</strong> — A conexão é trivial (apenas 4 fios), a programação requer apenas uma biblioteca bem documentada, e a curva de aprendizado é suave. Mesmo assim, compreender o protocolo de comunicação I2C-like e lidar com possíveis problemas de <em>hardware</em> (como capacitores defeituosos) posiciona o projeto em nível intermediário para iniciantes determinados.</li>
+</ul>
+<h2 id="1-visao-geral-e-especificacoes-do-sensor">1️⃣ Visão Geral e Especificações do Sensor<a class="headerlink" href="#1-visao-geral-e-especificacoes-do-sensor" title="Permanent link">¶</a></h2>
 <p>O <code>TM1637</code> é um <strong>circuito integrado produtor de LED (Light Emitting Diode driver)</strong> com interface de teclado integrada, fabricado pela <strong>Titan MicroElectronics</strong>. Internamente, ele contém um decodificador de 7 segmentos, latches de dados, drivers de alta corrente para LEDs e lógica de controle de brilho. </p>
 <p>💾 <strong>Princípio de Funcionamento:</strong></p>
-<p>O <code>TM1637</code> utiliza uma técnica chamada <strong>multiplexação dinâmica</strong> para controlar os quatro dígitos. Em vez de alimentar todos os segmentos continuamente, o chip alterna rapidamente entre os dígitos (tipicamente a uma taxa de 1 kHz ou superior), acendendo apenas os segmentos necessários para cada dígito por um breve período. Para o olho humano, isso cria a ilusão de todos os segmentos estarem acesos simultaneamente, mas na verdade consome muito menos energia.</p>
+<p>O <code>TM1637</code> utiliza uma técnica chamada <strong>multiplexação dinâmica</strong> para controlar os quatro dígitos. Em vez de alimentar todos os segmentos continuamente, o chip alterna rapidamente entre os dígitos (tipicamente a uma taxa de 1 kHz ou superior), acendendo apenas os segmentos necessários para cada dígito por um breve período. Para o olho humano, isso <strong>cria a ilusão de todos os segmentos estarem acesos simultaneamente</strong>, mas na verdade consome muito menos energia.</p>
 <p>O microcontrolador (Arduino, ESP32, etc.) envia dados ao TM1637 através de um <strong>protocolo serial similar ao I2C</strong>, mas não totalmente compatível. A comunicação ocorre por dois pinos:</p>
 <ul>
 <li><strong>CLK (Clock):</strong> Fornece o sinal de sincronização</li>
 <li><strong>DIO (Data Input/Output):</strong> Carrega os comandos e dados</li>
 </ul>
-<p>O protocolo é bidirecional: o Arduino envia comandos para ligar/desligar segmentos, ajustar brilho e controlar o display, enquanto o TM1637 pode teoricamente enviar dados de volta (por exemplo, status de botões, se implementados).</p>
+<p>O protocolo é bidirecional, ou seja o Arduino envia comandos para ligar/desligar segmentos, ajustar brilho e controlar o display, enquanto o TM1637 pode teoricamente enviar dados de volta (por exemplo, status de botões, se implementados).</p>
 <p>💾 <strong>Tipo de Sinal Enviado ao Arduino:</strong></p>
 <p>O TM1637 usa sinais digitais de dois níveis (HIGH/LOW), correspondentes a 5V (ou 3.3V, dependendo da tensão de operação). Não há saída analógica. A comunicação é <strong>100% digital</strong>, baseada em bits seriais transmitidos em sequência.</p>
-<h3 id="21-vantagens">2.1. Vantagens<a class="headerlink" href="#21-vantagens" title="Permanent link">&para;</a></h3>
+<h3 id="vantagens">🔖 Vantagens<a class="headerlink" href="#vantagens" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Simplicidade na fiação:</strong> Apenas 2 pinos de controle + 2 de alimentação (total 4)</li>
 <li><strong>Compatibilidade versátil:</strong> Funciona com qualquer microcontrolador que ofereça pinos GPIO (Arduino, ESP8266, ESP32, STM32, Raspberry Pi Pico, etc.)</li>
@@ -1515,7 +1542,7 @@ lang: pt</p>
 <li><strong>Custo reduzido:</strong> Módulos prontos custam entre R$ 10-20 em fornecedores brasileiros</li>
 <li><strong>Compatibilidade de tensão:</strong> Opera em 3.3V (ESP32) e 5V (Arduino UNO), com proteção contra polaridade invertida</li>
 </ul>
-<h3 id="22-limitacoes">2.2. Limitações<a class="headerlink" href="#22-limitacoes" title="Permanent link">&para;</a></h3>
+<h3 id="limitacoes">🔖 Limitações<a class="headerlink" href="#limitacoes" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Precisão de visualização limitada:</strong> Apenas 4 dígitos; números maiores ou displays de valores fracionários requerem lógica de código</li>
 <li><strong>Responsividade limitada:</strong> Embora rápido, o protocolo serial tem latência mínima mas não é instantâneo</li>
@@ -1524,7 +1551,7 @@ lang: pt</p>
 <li><strong>Faixa de operação limitada:</strong> Temperatura de funcionamento entre -20°C e 70°C</li>
 <li><strong>Sem funcionalidade de entrada (teclado):</strong> Embora o chip suporte entrada de teclado, os módulos comerciais geralmente não expõem essa funcionalidade</li>
 </ul>
-<h3 id="23-especificacoes-tecnicas">2.3. Especificações Técnicas<a class="headerlink" href="#23-especificacoes-tecnicas" title="Permanent link">&para;</a></h3>
+<h3 id="especificacoes-tecnicas">🔖 Especificações Técnicas<a class="headerlink" href="#especificacoes-tecnicas" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
@@ -1635,25 +1662,10 @@ lang: pt</p>
 <p>A <strong>tensão de 3.3V-5.5V</strong> permite conectar diretamente ao Arduino UNO (5V), Arduino Nano (5V) e ESP32 (3.3V) sem reguladores adicionais. </p>
 <p>A <strong>corrente de 80 mA máxima</strong> é segura para os pinos de saída do Arduino (máximo recomendado é 200 mA por pino), mas em projetos com múltiplos displays, recomenda-se alimentação externa. </p>
 <p>A <strong>comunicação serial</strong> utiliza qualquer par de pinos digitais via software emulation, oferecendo flexibilidade total. O <strong>tempo de resposta &lt;10 ms</strong> é praticamente imperceptível, adequado para interfaces de usuário responsivas. Os <strong>8 níveis de brilho</strong> permitem economizar bateria em projetos portáteis reduzindo a intensidade. As <strong>dimensões compactas</strong> facilitam integração em enclosures pequenos.</p>
-<h3 id="24-vantagens-e-limitacoes">2.4 Vantagens e Limitações<a class="headerlink" href="#24-vantagens-e-limitacoes" title="Permanent link">&para;</a></h3>
-<p>🧰 <strong>Vantagens:</strong>
-- Reduz a fiação de 12+ pinos para apenas 4 pinos
-- Multiplexação eficiente economiza energia
-- Brilho ajustável em 8 níveis
-- Compatível com qualquer microcontrolador com GPIO
-- Custo muito baixo (R$ 15-30)
-- Proteção integrada contra polaridade invertida
-- Refresh automático, sem necessidade de gerenciamento contínuo</p>
-<p>🧰 <strong>Limitações:</strong>
-- Apenas 4 dígitos; números maiores requerem módulos adicionais
-- Sem suporte nativo para caracteres alfabéticos completos
-- Sensível ao ruído; capacitores de filtragem inadequados causam falhas
-- Muitos módulos comerciais têm capacitores defeituosos (produção de baixa qualidade)
-- Não oferece entrada de dados além do protocolo serial
-- Faixa de temperatura limitada
-- Não adequado para ambientes com muito ruído eletromagnético sem blindagem adequada</p>
-<h2 id="3-hardware-conexao-com-o-arduino">3. Hardware: Conexão com o Arduino<a class="headerlink" href="#3-hardware-conexao-com-o-arduino" title="Permanent link">&para;</a></h2>
-<h3 id="31-materiais-necessarios">3.1 Materiais Necessários<a class="headerlink" href="#31-materiais-necessarios" title="Permanent link">&para;</a></h3>
+<h2 id="2-hardware-conexao-com-o-arduino">2️⃣ Hardware: Conexão com o Arduino<a class="headerlink" href="#2-hardware-conexao-com-o-arduino" title="Permanent link">¶</a></h2>
+<h3 id="materiais-necessarios">🛰️ Materiais Necessários<a class="headerlink" href="#materiais-necessarios" title="Permanent link">¶</a></h3>
+<details class="info">
+<summary>Lista de componentes 🧰</summary>
 <p>Para um projeto básico de display com TM1637, você precisará de:</p>
 <ul>
 <li><strong>1x Módulo Display TM1637</strong> (4 dígitos 7-segmentos)</li>
@@ -1665,7 +1677,9 @@ lang: pt</p>
 <li>Para Arduino: Cabo USB do computador, ou fonte 5V/2A externa</li>
 <li>Para display: Energia fornecida pelo Arduino (via pinos 5V e GND) ou fonte externa se múltiplos displays</li>
 </ul>
-<p>🧰 <strong>Componentes Adicionais Opcionais:</strong></p>
+</details>
+<details class="info">
+<summary>Componentes Adicionais Opcionais 🧰</summary>
 <ul>
 <li><strong>Resistores de Pull-up 4.7kΩ</strong> (2x): Recomendados em ligações longas ou com ruído ambiental, conectados entre CLK-VCC e DIO-VCC</li>
 <li><strong>Capacitor de Desacoplamento 100nF</strong> (1x): Conectado entre VCC e GND do display para filtrar ruído de alta frequência</li>
@@ -1674,15 +1688,20 @@ lang: pt</p>
 <li><strong>Sensor de Temperatura DS18B20</strong> (opcional): Alternativa ao DHT11</li>
 <li><strong>Chave de Botão</strong> (opcional): Para interfaces interativas (seleção de modo, reset, etc.)</li>
 </ul>
-<p>🧰 <strong>Kit Básico para Iniciantes (Sugestão):</strong></p>
+</details>
+<details class="info">
+<summary>Kit Básico para Iniciantes (Sugestão) 🧰</summary>
 <p>Se você está começando, procure kits pré-montados que incluem:
-- Arduino Uno ou Nano
-- Display TM1637
-- Sensores comuns (DHT11, LDR, sensor de som)
-- Jumper wires, protoboard, LEDs, resistores variados
-- Cable USB para programação</p>
-<h3 id="32-esquema-de-ligacao-circuito">3.2 Esquema de Ligação (Circuito)<a class="headerlink" href="#32-esquema-de-ligacao-circuito" title="Permanent link">&para;</a></h3>
-<p>🧰 <strong>Tabela de Pinagem:</strong></p>
+  - Arduino Uno ou Nano
+  - Display TM1637
+  - Sensores comuns (DHT11, LDR, sensor de som)
+  - Jumper wires, protoboard, LEDs, resistores variados
+  - Cable USB para programação</p>
+</details>
+<h3 id="esquema-de-ligacao-circuito">🛰️ Esquema de Ligação (Circuito)<a class="headerlink" href="#esquema-de-ligacao-circuito" title="Permanent link">¶</a></h3>
+<p>| <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/iot-comp/display-tm1637-7-segmentos-4-digitos_002.jpg" data-desc-position="bottom"><img alt="TM1637 Pinout" src="../../../static/img/iot-comp/display-tm1637-7-segmentos-4-digitos_002.jpg" width="400"></a> | <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/iot-comp/display-tm1637-7-segmentos-4-digitos_003.jpg" data-desc-position="bottom"><img alt="TM1637 Pinout" src="../../../static/img/iot-comp/display-tm1637-7-segmentos-4-digitos_003.jpg" width="400"></a> |</p>
+<details class="note">
+<summary>Tabela de Pinagem 🧰</summary>
 <table>
 <thead>
 <tr>
@@ -1724,24 +1743,28 @@ lang: pt</p>
 </tr>
 </tbody>
 </table>
-<p>🧰 <strong>Esquema Detalhado de Ligação:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Display TM1637          Arduino UNO
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>-----------------       -----------
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>CLK     ----+---------&gt; D2 (ou outro pino configurável)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>            |
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            [10k Ω resistor de pull-up, opcional]
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>            |
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>DIO     ----+---------&gt; D3 (ou outro pino configurável)
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            |
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            [10k Ω resistor de pull-up, opcional]
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            |
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>VCC     ----+---------&gt; +5V
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            |
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            [100nF capacitor para GND, opcional]
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            |
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>GND     ----+---------&gt; GND (IMPORTANTE!)
-</code></pre></div>
-<p>🧰 <strong>Descrição Detalhada do Circuito:</strong></p>
+</details>
+<details class="note">
+<summary>Esquema Detalhado de Ligação 🧰</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a>Display TM1637          Arduino UNO
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>-----------------       -----------
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>CLK     ----+---------&gt; D2 (ou outro pino configurável)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>            |
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>            [10k Ω resistor de pull-up, opcional]
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>            |
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>DIO     ----+---------&gt; D3 (ou outro pino configurável)
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>            |
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>            [10k Ω resistor de pull-up, opcional]
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>            |
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>VCC     ----+---------&gt; +5V
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>            |
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a>            [100nF capacitor para GND, opcional]
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>            |
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a>GND     ----+---------&gt; GND (IMPORTANTE!)
+</span></code></pre></div>
+</details>
+<details class="note">
+<summary>Descrição Detalhada do Circuito 🧰</summary>
 <ol>
 <li>
 <p><strong>Pino <code>CLK</code>:</strong> Conecta-se a qualquer pino digital do Arduino (D2 no exemplo, mas pode ser D4, D5, etc.). Este pino envia o sinal de sincronização. Alguns módulos deficientes podem beneficiar de um resistor de pull-up 10kΩ entre CLK e VCC para melhorar a estabilidade da comunicação.</p>
@@ -1756,7 +1779,9 @@ lang: pt</p>
 <p><strong>Pino <code>GND</code>:</strong> O mais crítico. DEVE estar conectado ao GND do Arduino. É a referência comum para toda a comunicação. Sem essa ligação, o protocolo serial não consegue estabelecer níveis lógicos válidos.</p>
 </li>
 </ol>
-<p>🧰 <strong>Observações Importantes sobre a Montagem:</strong></p>
+</details>
+<details class="note">
+<summary>Observações Importantes sobre a Montagem 🧰</summary>
 <ul>
 <li><strong>Cabos curtos:</strong> Mantenha os fios entre Arduino e display o mais curto possível (idealmente &lt;20 cm) para reduzir ruído capacitivo.</li>
 <li><strong>Resistores de Pull-up:</strong> O módulo TM1637 já possui resistores de pull-up internos (tipicamente 10kΩ), então resistores adicionais geralmente não são necessários a menos que:</li>
@@ -1767,333 +1792,215 @@ lang: pt</p>
 <li><strong>Aterramento Comum:</strong> Todos os componentes DEVEM compartilhar o mesmo GND. Nunca deixe o display e o Arduino com referências GND diferentes.</li>
 <li><strong>Proteção de Alimentação:</strong> Se utilizar fonte externa para o display (recomendado para múltiplos módulos), certifique-se de que ambas as fontes (Arduino e display) compartilham o mesmo GND para manter a integridade do protocolo serial.</li>
 </ul>
-<h3 id="33-passo-a-passo-da-montagem">3.3 Passo a Passo da Montagem<a class="headerlink" href="#33-passo-a-passo-da-montagem" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Preparação Inicial:</strong></li>
-<li>Desligue o Arduino e remova-o da fonte de alimentação</li>
-<li>Coloque o protoboard sobre uma superfície limpa</li>
-<li>
-<p>Identifique as colunas positiva (+5V) e negativa (GND) do protoboard</p>
-</li>
-<li>
-<p><strong>Alimentação do Arduino:</strong></p>
-</li>
-<li>Conecte o +5V do Arduino à coluna positiva do protoboard</li>
-<li>Conecte o GND do Arduino à coluna negativa do protoboard</li>
-<li>
-<p>Verifique a polaridade; inversão pode danificar componentes</p>
-</li>
-<li>
-<p><strong>Posicionamento do Display:</strong></p>
-</li>
-<li>Insira o módulo TM1637 no protoboard com os 4 pinos nas fileiras apropriadas</li>
-<li>
-<p>Deixe espaço mínimo de 5 cm entre o display e o Arduino para facilitar leitura dos pinos</p>
-</li>
-<li>
-<p><strong>Conexão do CLK:</strong></p>
-</li>
-<li>Pegue um jumper wire</li>
-<li>Conecte uma extremidade ao pino CLK do display (geralmente o 1º pino)</li>
-<li>Conecte a outra extremidade ao pino D2 do Arduino (ou outro pino escolhido)</li>
-<li>
-<p>Verifique que não há conexão solta</p>
-</li>
-<li>
-<p><strong>Conexão do DIO:</strong></p>
-</li>
-<li>Pegue outro jumper wire</li>
-<li>Conecte uma extremidade ao pino DIO do display (geralmente o 2º pino)</li>
-<li>
-<p>Conecte a outra extremidade ao pino D3 do Arduino</p>
-</li>
-<li>
-<p><strong>Conexão de Alimentação (VCC):</strong></p>
-</li>
-<li>Pegue um jumper wire e conecte do pino VCC do display</li>
-<li>Conecte à coluna positiva (+5V) do protoboard</li>
-<li>
-<p>Verifique que está na linha correta do protoboard</p>
-</li>
-<li>
-<p><strong>Conexão de Terra (GND):</strong></p>
-</li>
-<li>Pegue o último jumper wire</li>
-<li>Conecte do pino GND do display à coluna negativa do protoboard</li>
-<li>
-<p>Confirme visualmente que está conectado ao GND do Arduino</p>
-</li>
-<li>
-<p><strong>Verificação Visual:</strong></p>
-</li>
-<li>Inspeçione todo o circuito</li>
-<li>Procure por fios soltos, inversões de polaridade ou conexões em fileiras incorretas</li>
-<li>
-<p>Use cores de jumper wires para facilitar identificação: vermelho para +5V, preto para GND, azul/verde para CLK/DIO</p>
-</li>
-<li>
-<p><strong>Alimentação do Arduino:</strong></p>
-</li>
-<li>Conecte o cabo USB do Arduino ao computador ou aplique alimentação externa</li>
-<li>Observe se o display acende (alguns módulos têm um LED indicador de poder)</li>
-<li>
-<p>Se não acender, verifique a conexão de alimentação</p>
-</li>
-<li>
-<p><strong>Teste Preliminar:</strong></p>
-<ul>
-<li>Antes de carregar código, verifique se o display está respondendo (às vezes exibe um padrão de teste)</li>
-<li>Se nada acontecer, revise as conexões GND</li>
-</ul>
-</li>
-</ol>
-<p>🧰 <strong>Observações de Segurança:</strong></p>
+</details>
+<details class="warning">
+<summary>Observações de Segurança 🧰</summary>
 <ul>
 <li>Nunca toque em pinos do Arduino enquanto conectado à alimentação</li>
-<li>Não force os jumper wires; eles devem encaixar suavemente</li>
+<li>Não force os jumper; eles devem encaixar suavemente</li>
 <li>Se o módulo ficar muito quente durante operação, verifique se não há curto-circuito</li>
 <li>Não coloque o protoboard onde possa sofrer vibração ou queda</li>
 <li>Mantenha o Arduino e display longe de fontes de água ou umidade excessiva</li>
 </ul>
-<h2 id="4-software-programacao-na-arduino-ide">4. Software: Programação na Arduino IDE<a class="headerlink" href="#4-software-programacao-na-arduino-ide" title="Permanent link">&para;</a></h2>
-<h3 id="41-instalacao-da-biblioteca">4.1 Instalação da Biblioteca<a class="headerlink" href="#41-instalacao-da-biblioteca" title="Permanent link">&para;</a></h3>
-<p>A biblioteca mais popular e recomendada para o TM1637 é a <strong>TM1637Display</strong>, criada por <strong>Avishay Orpaz</strong>. Esta é a mais bem documentada, possui exemplos claros, e funciona perfeitamente com Arduino UNO, Nano, Mega, ESP8266, ESP32 e outros.</p>
-<p>🧰 <strong>Bibliotecas Compatíveis com TM1637:</strong></p>
-<ol>
-<li><strong>TM1637Display</strong> (recomendada)</li>
-<li>Autor: Avishay Orpaz</li>
-<li>GitHub: github.com/avishorp/TM1637</li>
-<li>
-<p>Estável, bem mantida, excelente documentação</p>
-</li>
-<li>
-<p><strong>TM1637TinyDisplay</strong></p>
-</li>
-<li>Autor: Jason Cox</li>
-<li>GitHub: github.com/jasonacox/TM1637TinyDisplay</li>
-<li>
-<p>Suporta 4 e 6 dígitos, interface simplificada</p>
-</li>
-<li>
-<p><strong>SevenSegmentTM1637</strong></p>
-</li>
-<li>Suporta TM1636 e TM1637</li>
-<li>Herda da classe Print (permite usar print() e println())</li>
-<li>
-<p>Menos popular, mas funcional</p>
-</li>
-<li>
-<p><strong>Tasmota (para IoT avançado)</strong></p>
-</li>
-<li>Suporte integrado para TM1637</li>
-<li>Requer firmware ESP32/ESP8266 específico</li>
-</ol>
-<p>🧰 <strong>Instalação via Arduino IDE (Recomendado):</strong></p>
-<ol>
-<li>Abra a Arduino IDE no seu computador</li>
-<li>Vá para <strong>Sketch → Include Library → Manage Libraries...</strong></li>
-<li>Na barra de busca, digite <strong>TM1637</strong></li>
-<li>Procure por <strong>TM1637Display by Avishay Orpaz</strong></li>
-<li>Clique no resultado e pressione <strong>Install</strong></li>
-<li>Aguarde a instalação completar (pode levar 30 segundos)</li>
-<li>Feche o gerenciador de bibliotecas</li>
-</ol>
-<p>Pronto! A biblioteca está instalada.</p>
-<p>🧰 <strong>Instalação Manual (Se a Busca Falhar):</strong></p>
-<ol>
-<li>Visite: <a href="https://github.com/avishorp/TM1637">https://github.com/avishorp/TM1637</a></li>
-<li>Clique em <strong>Code → Download ZIP</strong></li>
-<li>Na Arduino IDE, vá a <strong>Sketch → Include Library → Add .ZIP Library...</strong></li>
-<li>Selecione o arquivo ZIP baixado</li>
-<li>A biblioteca será extraída e instalada automaticamente</li>
-</ol>
-<p>🧰 <strong>Dependências:</strong></p>
-<p>A <strong>TM1637Display</strong> não possui dependências externas. Usa apenas a biblioteca padrão do Arduino (<code>Arduino.h</code>). Isso significa que funciona imediatamente após instalação, sem necessidade de instalar outras bibliotecas.</p>
-<h3 id="42-aplicacoes-praticas">4.2 Aplicações Práticas<a class="headerlink" href="#42-aplicacoes-praticas" title="Permanent link">&para;</a></h3>
+</details>
+<h2 id="4-aplicacoes-praticas">4️⃣ Aplicações Práticas<a class="headerlink" href="#4-aplicacoes-praticas" title="Permanent link">¶</a></h2>
 <p>O <code>TM1637</code> é incrivelmente versátil. Aqui estão 8 ideias de projetos práticos que você pode construir:</p>
-<p>🔖 <strong>Termômetro Digital com Sensor DHT11</strong>
-- Um clássico entre iniciantes. O display mostra temperatura em tempo real (ex: 23°C) capturada por um sensor DHT11. A DHT11 fornece leituras a cada ~2 segundos. Você pode expandir para mostrar alternadamente temperatura e umidade pressionando um botão. Integração avançada: enviar os dados via WiFi (ESP32) para um dashboard na nuvem via MQTT, monitorando a temperatura histórica da sua casa.</p>
-<p>🔖 <strong>Relógio Digital com Sincronização NTP</strong>
-- Construa um relógio que exibe horas e minutos (ex: 14:35). Em Arduino com módulo RTC (DS3231), o relógio mantém a hora mesmo desligado. Com ESP32 + WiFi, sincronize a hora automaticamente com servidores NTP na internet, garantindo precisão. Adicione alarmes que soem quando a hora atingir um valor específico.</p>
-<p>🔖 <strong>Contador de Pessoas com Sensor Infravermelho</strong>
-- Use um sensor infravermelho (IR) para detectar movimento. Cada pessoa que passa incrementa um contador exibido no display. Útil para contar visitantes de um evento, fluxo em portas de lojas, ou frequência em ambientes. Variação avançada: integre com IoT para monitoramento remoto de ocupação em tempo real.</p>
-<p>🔖 <strong>Cronômetro / Timer</strong>
-- Um contador decrescente ou crescente. Pressione um botão para iniciar, outro para pausar, e um terceiro para reset. Perfeito para treinos esportivos, cozinha (timer de alimentos), ou jogos. Com ESP32, transmita tempos registrados para análise em nuvem.</p>
-<p>🔖 <strong>Estação Meteorológica Inteligente</strong>
-- Combine múltiplos sensores: DHT11/DHT22 (temperatura e umidade), BMP280 (pressão), LDR (luminosidade). Cicle entre exibições: 1º tela mostra temperatura, 2ª tela mostra umidade, 3ª mostra pressão. Com ESP32 + MQTT, publique dados para um broker (HiveMQ, Mosquitto) e visualize em plataformas como Node-RED ou Grafana. Perfeito para agricultura inteligente ou monitoramento de estufas.</p>
-<p>🔖 <strong>Medidor de Velocidade / RPM</strong>
-- Use um sensor óptico (LDR + LED IR) ou magnético (Hall effect) para detectar rotações. Calcule RPM (rotações por minuto) e exiba no display. Aplicações: medir velocidade de ventiladores, motores, ou até mesmo bicicletas estacionárias. Com IoT, monitore performance de motores remotamente.</p>
-<p>🔖 <strong>Monitor de Consumo de Energia</strong>
-- Com um sensor de corrente (ACS712), meça o consumo instantâneo em Watts e exiba. Integre com IoT para alertas automáticos se o consumo exceder um limite (ex: indicativo de vazamento elétrico ou aparelho quebrado). Envie dados para nuvem para análise histórica de padrões de consumo.</p>
-<p>🔖 <strong>Alarme com Sensor de Gás / Fumaça</strong>
-- Um sensor MQ-2 ou MQ-5 detecta gás ou fumaça. Se detectado, o display exibe "ALRT" ou um código de alarme. Acione um buzzer piezoelétrico e envie notificação push via ESP32 para celular dos moradores. Sistema de alerta residencial de baixo custo.</p>
-<p>🔖 <strong>Estação de Trabalho com Indicador de Umidade e Temperatura para Conforto</strong>
-- Baseado no sensor DHT11, o display mostra a temperatura atual. Sistema de recomendação: se muito quente (&gt;28°C), ligue um ventilador automaticamente. Se muito frio (&lt;18°C), ligue um aquecedor. Display oferece feedback contínuo. Com IoT, registre padrões de clima para otimizar horários de uso de aparelhos.</p>
-<p>🔖 <strong>Placar Eletrônico para Jogos/Competições</strong>
-- Dois displays TM1637 (ou um único com lógica de seleção): um mostra pontos do time A, outro do time B. Botões incrementam / decrementam pontos. Perfeito para competições de dardos, sinuca, ou qualquer jogo. Com IoT, transmita marcadores ao vivo para uma plataforma de streaming ou painel de exibição remoto.</p>
-<p><strong>Padrão de Integração Avançada com IoT:</strong></p>
-<p>Para qualquer um dos projetos acima, a arquitetura IoT típica é:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Arduino / ESP32
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    ↓ (dados em JSON via WiFi)
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>MQTT Broker (ex: HiveMQ Cloud, Mosquitto)
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    ↓ (subscrito ao tópico)
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Node-RED / Grafana / Dashboard Custom
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    ↓ (visualização e alertas)
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Aplicativo Mobile / Navegador Web
-</code></pre></div>
-<p>Exemplo de tópico MQTT: <code>casa/sala/temperatura</code> → valor: <code>23.5</code></p>
-<h2 id="5-observacoes-adicionais-e-melhores-praticas">5. Observações Adicionais e Melhores Práticas<a class="headerlink" href="#5-observacoes-adicionais-e-melhores-praticas" title="Permanent link">&para;</a></h2>
-<h3 id="51-dicas-de-hardware">5.1. Dicas de Hardware<a class="headerlink" href="#51-dicas-de-hardware" title="Permanent link">&para;</a></h3>
-<p>📦 <strong>Resistores de Pull-up:</strong>
-Embora o TM1637 possua pull-ups internos, em alguns casos adicionar resistores <strong>4.7kΩ - 10kΩ</strong> entre CLK-VCC e DIO-VCC melhora a estabilidade. Especialmente se:
-- Os fios forem muito longos (&gt;50 cm)
-- Houver muito ruído eletromagnético próximo (motores, fontes chaveadas)
-- O módulo específico for de qualidade duvidosa</p>
-<p>📦 <strong>Tipo de Cabo:</strong>
-Prefira cabos de boa qualidade (stranded wire ou jumper dupont blindado) em vez de fios de cobre nu. Cabos blindados reduzem significativamente a susceptibilidade eletromagnética.</p>
-<p>📦 <strong>Fontes de Alimentação Adequadas:</strong>
-- Um único display: alimentação via USB do Arduino é suficiente
-- 2-4 displays: considere fonte externa 5V/2A conectada ao Arduino, liberando o USB para programação
-- Múltiplos displays + sensores: fonte 5V/5A+ com regulador integrado LDO (ex: LM7805 ou chaveada melhor)</p>
-<p>📦 <strong>Bypass Capacitors:</strong>
-Coloque um capacitor 100nF (cerâmico X7R/X5R) muito próximo aos pinos VCC-GND de cada display. Reduz spikes de tensão durante chaveamento rápido dos segmentos.</p>
-<h3 id="52-armadilhas-comuns-troubleshooting">5.2. Armadilhas Comuns (Troubleshooting)<a class="headerlink" href="#52-armadilhas-comuns-troubleshooting" title="Permanent link">&para;</a></h3>
-<p>🚨 <strong>Display não acende, mesmo com alimentação</strong>
-- <strong>Verificar:</strong> Conexão GND. Este é o culpado mais comum.
-- <strong>Solução:</strong> Toque um multímetro entre GND do display e GND do Arduino. Deve medir 0Ω.
-- <strong>Verificar:</strong> Polaridade de VCC. Se invertido, alguns módulos falham silenciosamente.
-- <strong>Solução:</strong> Revise o fio vermelho (VCC) e preto (GND).
-- <strong>Verificar:</strong> Módulo defeituoso. Teste em outro Arduino ou fonte direta 5V.</p>
-<p>🚨 <strong>Pinos invertidos (CLK e DIO trocados)</strong>
-- <strong>Sintoma:</strong> Código compila, mas display não responde ou mostra lixo aleatório.
-- <strong>Solução:</strong> Troque os pinos CLK e DIO no código e na fiação.
-- <strong>Verificar:</strong> Código define corretamente <code>#define CLK 2</code> e <code>#define DIO 3</code>.</p>
-<p>🚨  <strong>Ruído Elétrico / Leitura Incorreta</strong>
-- <strong>Sintoma:</strong> Display pisca, mostra caracteres aleatórios, ou se "congela".
-- <strong>Causas Possíveis:</strong>
-  - Capacitores inadequados no módulo (muito comuns em compras aliexpress/ebay)
-  - Fios muito compridos sem blindagem
-  - Fonte de alimentação com muita ondulação (ripple)
-  - Motores ou aparelhos chaveados próximos causando interferência
-- <strong>Soluções:</strong>
-  - Adicionar capacitor 100nF entre VCC-GND do display
-  - Adicionar resistores de pull-up 10kΩ se não estiverem presentes
-  - Encurtar fios de conexão
-  - Usar fonte estabilizada com filtro LC
-  - Remover capacitores defeituosos do módulo (se tiver conhecimento de soldagem)</p>
-<p>🚨 <strong>Necessidade de Delay Entre Leituras</strong>
-- <strong>Sintoma:</strong> Se o código atualiza o display muito rapidamente (a cada millisegundo), o protocolo não consegue acompanhar.
-- <strong>Solução:</strong> Adicione <code>delay(100);</code> ou superior entre atualizações do display.
-- <strong>Recomendação:</strong> Atualizar entre 100-500 ms é o padrão confortável.</p>
-<p>🚨 <strong>Leituras Incorretas de Sensores Acoplados</strong>
-- <strong>Sintoma:</strong> Temperatura exibida está 5-10°C fora da realidade.
-- <strong>Causas:</strong> Sensor mal calibrado, ou o Arduino está tendo problemas para ler o sensor (hardware I2C congestionado).
-- <strong>Solução:</strong> 
-  - Calibre o sensor (compare com termômetro confiável)
-  - Se usar DHT11, certifique-se de <code>delay(2000)</code> entre leituras (especificação do sensor)</p>
-<p>🚨 <strong>"NaN" ou "Inf" Exibido</strong>
-- <strong>Sintoma:</strong> Display mostra "NaN" (Not a Number) ou "Inf" (Infinity).
-- <strong>Causa:</strong> Valor matemático inválido (divisão por zero, raiz de negativo, etc.).
-- <strong>Solução:</strong> 
-  - Valide dados antes de exibir: <code>if (!isnan(valor) &amp;&amp; !isinf(valor)) { display.showNumber(valor); }</code></p>
-<p>🚨 <strong>Capacitores Errados no Módulo (Problema de Manufatura)</strong>
-- <strong>Sintoma:</strong> Alguns módulos chineses chegam com capacitores 10nF em vez de 100pF nos pinos CLK/DIO.
-- <strong>Resultado:</strong> Comunicação falha ou muito lenta.
-- <strong>Solução (Avançada):</strong> Se tiver soldering iron, remova os capacitores grandes e substitua por 100pF, ou remova completamente se não conseguir soldar.
-- <strong>Alternativa:</strong> Procure módulos de fabricantes confiáveis (Seeed Studio, AZ-Delivery, Adafruit).</p>
-<h3 id="53-melhores-praticas-de-codigo">5.3. Melhores Práticas de Código<a class="headerlink" href="#53-melhores-praticas-de-codigo" title="Permanent link">&para;</a></h3>
-<p>🚀 <strong>Usar float Corretamente</strong>
-Sensores como DHT11 retornam valores float (ex: 23.5°C). Ao exibir em display de 4 dígitos:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>float temperatura = 23.5;
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>int tempInteira = (int)round(temperatura); // Converte para int
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>display.showNumberDec(tempInteira); // Exibe &quot;0023&quot; (com zeros à esquerda)
-</code></pre></div></p>
-<p>🚀 <strong>Verificação de Erros (isnan)</strong>
-Especialmente ao ler sensores como DHT:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>float temp = dht.readTemperature();
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>if (!isnan(temp)) {
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    display.showNumberDec((int)temp);
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>} else {
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    // Sensor falhou, exiba código de erro ou última leitura válida
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>}
-</code></pre></div></p>
-<p>🚀 <strong>Intervalo Entre Leituras</strong>
-Não atualizar o display a cada milissegundo. Típico é 200-500 ms:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>unsigned long ultimaAtualizacao = 0;
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>const unsigned long INTERVALO_ATUALIZACAO = 250; // 250 ms
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>void loop() {
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  if (millis() - ultimaAtualizacao &gt;= INTERVALO_ATUALIZACAO) {
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    float valor = lerSensor();
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    display.showNumberDec((int)valor);
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    ultimaAtualizacao = millis();
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  }
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>}
-</code></pre></div></p>
-<p>🚀 <strong>Ajuste de Brilho Dinâmico</strong>
-Para economizar energia ou adaptar ao ambiente:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>display.setBrightness(7); // Máximo (0-7)
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>// Ou reduzir para economizar:
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>display.setBrightness(2); // Bem fraco, economiza ~30% de energia
-</code></pre></div></p>
-<p>🚀 <strong>Exibir Valores com Ponto Decimal</strong>
-TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>// Exibe &quot;12.34&quot;
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>display.showNumberDecEx(1234, 0b01100000, true);
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>// O segundo parâmetro é máscara de pontos (cada bit = um ponto possível)
-</code></pre></div></p>
-<h3 id="54-aplicacoes-avancadas-integracao-com-esp8266esp32">5.4. Aplicações Avançadas: Integração com ESP8266/ESP32<a class="headerlink" href="#54-aplicacoes-avancadas-integracao-com-esp8266esp32" title="Permanent link">&para;</a></h3>
-<h4 id="541-envio-de-dados-via-mqtt">5.4.1. Envio de Dados via MQTT 🛸<a class="headerlink" href="#541-envio-de-dados-via-mqtt" title="Permanent link">&para;</a></h4>
-<p>Com um <strong>ESP32</strong>, você pode conectar WiFi e publicar dados para um broker MQTT:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>1. Conectar WiFi
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>2. Conectar ao MQTT Broker (ex: HiveMQ, Mosquitto)
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>3. Publicar dados: &quot;temperatura: 23.5&quot;
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>4. Display mostra valor local
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>5. Dashboard na nuvem recebe e visualiza
-</code></pre></div>
-<p><strong>Benefícios:</strong>
-- Monitoramento remoto em tempo real
-- Histórico de dados na nuvem
-- Alertas automáticos se temperatura &gt; 30°C
-- Integração com outras plataformas (Node-RED, Grafana, ThingSpeak)</p>
-<h4 id="542-dashboard-na-nuvem">5.4.2. Dashboard na Nuvem 🛸<a class="headerlink" href="#542-dashboard-na-nuvem" title="Permanent link">&para;</a></h4>
-<p>Plataformas populares:</p>
+<div class="grid cards">
 <ul>
-<li><strong>ThingSpeak:</strong> Gratuita, integração fácil com MQTT</li>
-<li><strong>Adafruit IO:</strong> Excelente interface, free tier generoso</li>
-<li><strong>Node-RED + InfluxDB + Grafana:</strong> Full stack profissional, mais complexo</li>
-<li><strong>Blynk:</strong> Mobile app integrada, muito intuitiva</li>
+<li>
+<p>🔖 <strong>Termômetro Digital com Sensor DHT11</strong></p>
+<hr>
+<ul>
+<li>Um clássico entre iniciantes. O display mostra temperatura em tempo real (ex: 23°C) capturada por um sensor DHT11. A DHT11 fornece leituras a cada ~2 segundos. Você pode expandir para mostrar alternadamente temperatura e umidade pressionando um botão. Integração avançada: enviar os dados via WiFi (ESP32) para um dashboard na nuvem via MQTT, monitorando a temperatura histórica da sua casa.</li>
 </ul>
-<h3 id="55-manutencao-e-calibracao">5.5. Manutenção e Calibração<a class="headerlink" href="#55-manutencao-e-calibracao" title="Permanent link">&para;</a></h3>
-<p>🎯 <strong>Cuidados Físicos</strong></p>
+</li>
+<li>
+<p>🔖 <strong>Relógio Digital com Sincronização NTP</strong></p>
+<hr>
+<ul>
+<li>Construa um relógio que exibe horas e minutos (ex: 14:35). Em Arduino com módulo RTC (DS3231), o relógio mantém a hora mesmo desligado. Com ESP32 + WiFi, sincronize a hora automaticamente com servidores NTP na internet, garantindo precisão. Adicione alarmes que soem quando a hora atingir um valor específico.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Contador de Pessoas com Sensor Infravermelho</strong></p>
+<hr>
+<ul>
+<li>Use um sensor infravermelho (IR) para detectar movimento. Cada pessoa que passa incrementa um contador exibido no display. Útil para contar visitantes de um evento, fluxo em portas de lojas, ou frequência em ambientes. Variação avançada: integre com IoT para monitoramento remoto de ocupação em tempo real.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Cronômetro / Timer</strong></p>
+<hr>
+<ul>
+<li>Um contador decrescente ou crescente. Pressione um botão para iniciar, outro para pausar, e um terceiro para reset. Perfeito para treinos esportivos, cozinha (timer de alimentos), ou jogos. Com ESP32, transmita tempos registrados para análise em nuvem.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Estação Meteorológica Inteligente</strong></p>
+<hr>
+<ul>
+<li>Combine múltiplos sensores: DHT11/DHT22 (temperatura e umidade), BMP280 (pressão), LDR (luminosidade). Cicle entre exibições: 1º tela mostra temperatura, 2ª tela mostra umidade, 3ª mostra pressão. Com ESP32 + MQTT, publique dados para um broker (HiveMQ, Mosquitto) e visualize em plataformas como Node-RED ou Grafana. Perfeito para agricultura inteligente ou monitoramento de estufas.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Medidor de Velocidade / RPM</strong></p>
+<hr>
+<ul>
+<li>Use um sensor óptico (LDR + LED IR) ou magnético (Hall effect) para detectar rotações. Calcule RPM (rotações por minuto) e exiba no display. Aplicações: medir velocidade de ventiladores, motores, ou até mesmo bicicletas estacionárias. Com IoT, monitore performance de motores remotamente.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Monitor de Consumo de Energia</strong></p>
+<hr>
+<ul>
+<li>Com um sensor de corrente (ACS712), meça o consumo instantâneo em Watts e exiba. Integre com IoT para alertas automáticos se o consumo exceder um limite (ex: indicativo de vazamento elétrico ou aparelho quebrado). Envie dados para nuvem para análise histórica de padrões de consumo.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Alarme com Sensor de Gás / Fumaça</strong></p>
+<hr>
+<ul>
+<li>Um sensor MQ-2 ou MQ-5 detecta gás ou fumaça. Se detectado, o display exibe "ALRT" ou um código de alarme. Acione um buzzer piezoelétrico e envie notificação push via ESP32 para celular dos moradores. Sistema de alerta residencial de baixo custo.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Estação de Trabalho com Indicador de Umidade e Temperatura para Conforto</strong></p>
+<hr>
+<ul>
+<li>Baseado no sensor DHT11, o display mostra a temperatura atual. Sistema de recomendação: se muito quente (&gt;28°C), ligue um ventilador automaticamente. Se muito frio (&lt;18°C), ligue um aquecedor. Display oferece feedback contínuo. Com IoT, registre padrões de clima para otimizar horários de uso de aparelhos.</li>
+</ul>
+</li>
+<li>
+<p>🔖 <strong>Placar Eletrônico para Jogos/Competições</strong></p>
+<hr>
+<ul>
+<li>Dois displays TM1637 (ou um único com lógica de seleção): um mostra pontos do time A, outro do time B. Botões incrementam / decrementam pontos. Perfeito para competições de dardos, sinuca, ou qualquer jogo. Com IoT, transmita marcadores ao vivo para uma plataforma de streaming ou painel de exibição remoto.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>⚠️ <strong>Padrão de Integração Avançada com IoT:</strong> ✒️</p>
+<p>Para qualquer um dos projetos acima, a arquitetura IoT típica é:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>Arduino / ESP32
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>    ↓ (dados em JSON via WiFi)
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>MQTT Broker (ex: HiveMQ Cloud, Mosquitto)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a>    ↓ (subscrito ao tópico)
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>Node-RED / Grafana / Dashboard Custom
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a>    ↓ (visualização e alertas)
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a>Aplicativo Mobile / Navegador Web
+</span></code></pre></div>
+<p>Exemplo de tópico MQTT: <code>casa/sala/temperatura</code> → valor: <code>23.5</code></p>
+<h2 id="5-observacoes-adicionais-e-melhores-praticas">5️⃣ Observações Adicionais e Melhores Práticas<a class="headerlink" href="#5-observacoes-adicionais-e-melhores-praticas" title="Permanent link">¶</a></h2>
+<p>🎯 <strong>Dicas de Hardware</strong> 🧰</p>
+<details class="tip">
+<summary>Resistores de Pull-up: 📦 </summary>
+<p>Embora o TM1637 possua pull-ups internos, em alguns casos adicionar resistores <strong>4.7kΩ - 10kΩ</strong> entre CLK-VCC e DIO-VCC melhora a estabilidade. Especialmente se:</p>
+<ul>
+<li>Os fios forem muito longos (&gt;50 cm)</li>
+<li>Houver muito ruído eletromagnético próximo (motores, fontes chaveadas)</li>
+<li>O módulo específico for de qualidade duvidosa</li>
+</ul>
+</details>
+<details class="tip">
+<summary>Tipo de Cabo: 📦 </summary>
+<p>Prefira cabos de boa qualidade (stranded wire ou jumper dupont blindado) em vez de fios de cobre nu. Cabos blindados reduzem significativamente a susceptibilidade eletromagnética.</p>
+</details>
+<details class="tip">
+<summary>Fontes de Alimentação Adequadas: 📦 </summary>
+<ul>
+<li>Um único display: alimentação via USB do Arduino é suficiente</li>
+<li>2-4 displays: considere fonte externa 5V/2A conectada ao Arduino, liberando o USB para programação</li>
+<li>Múltiplos displays + sensores: fonte 5V/5A+ com regulador integrado LDO (ex: LM7805 ou chaveada melhor)</li>
+</ul>
+</details>
+<details class="tip">
+<summary>Bypass Capacitors: 📦 </summary>
+<p>Coloque um capacitor 100nF (cerâmico X7R/X5R) muito próximo aos pinos <mark>VCC-GND</mark> de cada display. Reduz spikes de tensão durante chaveamento rápido dos segmentos.</p>
+</details>
+<p>📢 <strong>Armadilhas Comuns (Troubleshooting)</strong> 🐞</p>
+<details class="warning">
+<summary>Display não acende, mesmo com alimentação 🚨</summary>
+<ul>
+<li><strong>Verificar:</strong> Conexão <mark>GND</mark>. Este é o culpado mais comum.</li>
+<li><strong>Solução:</strong> Toque um multímetro entre <mark>GND</mark> do display e <mark>GND</mark> do Arduino. Deve medir <strong>0Ω</strong>.</li>
+<li><strong>Verificar:</strong> Polaridade de <mark>VCC</mark>. Se invertido, alguns módulos falham silenciosamente.</li>
+<li><strong>Solução:</strong> Revise o fio vermelho (<mark>VCC</mark>) e preto (<mark>GND</mark>).</li>
+<li><strong>Verificar:</strong> Módulo defeituoso. Teste em outro Arduino ou <strong>fonte direta 5V</strong>.</li>
+</ul>
+</details>
+<details class="warning">
+<summary>Pinos invertidos (CLK e DIO trocados) 🚨</summary>
+<ul>
+<li><strong>Sintoma:</strong> Código compila, mas display não responde ou mostra lixo aleatório.</li>
+<li><strong>Solução:</strong> Troque os pinos <mark>CLK</mark> e <mark>DIO</mark> no código e na fiação.</li>
+<li><strong>Verificar:</strong> Código define corretamente <code>#define CLK 2</code> e <code>#define DIO 3</code>.</li>
+</ul>
+</details>
+<details class="warning">
+<summary>Ruído Elétrico / Leitura Incorreta 🚨</summary>
+<ul>
+<li><strong>Sintoma:</strong> Display pisca, mostra caracteres aleatórios, ou se "congela".</li>
+<li><strong>Causas Possíveis:</strong></li>
+<li>Capacitores inadequados no módulo (muito comuns em compras aliexpress/ebay)</li>
+<li>Fios muito compridos sem blindagem</li>
+<li>Fonte de alimentação com muita ondulação (ripple)</li>
+<li>Motores ou aparelhos chaveados próximos causando interferência</li>
+<li><strong>Soluções:</strong></li>
+<li>Adicionar <strong>capacitor 100nF</strong> entre <mark>VCC-GND</mark> do display</li>
+<li>Adicionar <strong>resistores de pull-up 10kΩ</strong> se não estiverem presentes</li>
+<li>Encurtar fios de conexão</li>
+<li>Usar <strong>fonte estabilizada com filtro LC</strong></li>
+<li>Remover capacitores defeituosos do módulo (se tiver conhecimento de soldagem)</li>
+</ul>
+</details>
+<details class="warning">
+<summary>Capacitores Errados no Módulo (Problema de Manufatura) 🚨</summary>
+<ul>
+<li><strong>Sintoma:</strong> Alguns módulos chineses chegam com capacitores <mark>10nF</mark> em vez de <mark>100pF</mark> nos pinos CLK/DIO.</li>
+<li><strong>Resultado:</strong> Comunicação falha ou muito lenta.</li>
+<li><strong>Solução (Avançada):</strong> Remova os capacitores grandes e substitua por 100pF, ou remova completamente se não conseguir soldar.</li>
+<li><strong>Alternativa:</strong> Procure módulos de fabricantes confiáveis (Seeed Studio, AZ-Delivery, Adafruit).</li>
+</ul>
+</details>
+<p>🧰 <strong>Manutenção e Calibração</strong> 🏗️</p>
+<details class="note">
+<summary>Cuidados Físicos 🎯</summary>
 <ul>
 <li>Não submergir em água</li>
 <li>Proteger de poeira com protetor de tela acrílico transparente</li>
 <li>Evitar quedas; o módulo é frágil</li>
 <li>Se ficar muito quente, verifique causa (pode ser curto-circuito)</li>
 </ul>
-<p>🎯 <strong>Limpeza</strong></p>
+</details>
+<details class="note">
+<summary>Limpeza 🎯</summary>
 <ul>
 <li>Higiene: usar ar comprimido para remover poeira</li>
 <li>Não usar álcool ou água diretamente; prejudica componentes</li>
 <li>Se necessário limpeza profunda: álcool isopropílico em pequena quantidade, secar imediatamente</li>
 </ul>
-<p>🎯 <strong>Conservação</strong></p>
+</details>
+<details class="note">
+<summary>Conservação 🎯</summary>
 <ul>
 <li>Armazenar em local seco, temperatura ambiente</li>
-<li>Se desusado por longos períodos, guardar em caixa com dessecante</li>
+<li>Se ficar sem uso por longos períodos, guardar em caixa com dessecante</li>
 <li>Proteger de luz solar direta prolongada (degradação de pigmentos dos LEDs)</li>
 </ul>
-<p>🎯 <strong>Recalibração</strong></p>
-<p>Diferentemente de sensores analógicos, o TM1637 não requer calibração. É apenas um display. Entretanto:</p>
-<ul>
-<li>Se o sensor acoplado (ex: DHT11) for impreciso, calibre o sensor</li>
-<li>Compare leitura com equipamento confiável</li>
-<li>Ajuste código se necessário (soma de offset, ou divisor de escala)</li>
-</ul>
-<h2 id="6-conclusao">6. Conclusão<a class="headerlink" href="#6-conclusao" title="Permanent link">&para;</a></h2>
+</details>
+<details class="note">
+<summary>Recalibração 🎯</summary>
+<p>Diferentemente de sensores analógicos, o TM1637 não requer calibração. É apenas um display. </p>
+</details>
+<h2 id="6-conclusao">6️⃣ Conclusão<a class="headerlink" href="#6-conclusao" title="Permanent link">¶</a></h2>
 <p>O <strong>TM1637 é a escolha perfeita para quem deseja exibir dados numéricos em projetos Arduino e IoT</strong>. Sua simplicidade, custo reduzido e versatilidade o tornam um componente indispensável em qualquer kit de desenvolvimento. Da sala de aula até aplicações comerciais, o TM1637 prova ser um aliado confiável.</p>
 <p>Comece com um projeto simples como um termômetro, e quando estiver confortável, avance para integrações com IoT, MQTT e dashboards na nuvem. O caminho para dominar eletrônica e IoT passa por componentes assim!</p>
+<hr>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este conteúdo foi revisado e otimizado com o apoio de <strong>IA Generativa</strong>, garantindo as melhores práticas de SEO e legibilidade.</p>
+</div>
+<hr>
 
 
 
@@ -2101,8 +2008,13 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -2116,9 +2028,9 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Voltar ao topo
 </button>
         
@@ -2133,7 +2045,7 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2025 Luis Rodrigo - Net
+      Copyright © 2026 Luis Rodrigo - Net
     </div>
   
   
@@ -2147,7 +2059,7 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
     
     
     <a href="https://github.com/luisrodrigonet" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
     </a>
   
     
@@ -2155,7 +2067,7 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
     
     
     <a href="https://x.com/luisrodrigoog" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
     </a>
   
     
@@ -2163,7 +2075,7 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
     
     
     <a href="https://linkedin.com/in/luisrodrigoog" target="_blank" rel="noopener" title="Linkedin" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
     </a>
   
     
@@ -2171,7 +2083,7 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
     
     
     <a href="https://www.instagram.com/luisrodrigoog/" target="_blank" rel="noopener" title="Instagram" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
     </a>
   
 </div>
@@ -2189,11 +2101,13 @@ TM1637 suporta dois pontos (colon) no meio. Para separadores decimais:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs", "content.tabs.link", "content.tooltips", "content.code.select", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

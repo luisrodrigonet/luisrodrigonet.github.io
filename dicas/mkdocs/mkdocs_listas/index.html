@@ -1,0 +1,2450 @@
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dicas para o dia-a-dia">
+      
+      
+        <meta name="author" content="Luís Rodrigo - Net">
+      
+      
+        <link rel="canonical" href="https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_listas/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Configuração e Uso de Listas em MkDocs - Luis Rodrigo - Net</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+  
+      
+    
+  <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tables = document.querySelectorAll("article table:not([class])");
+      tables.forEach(table => new Tablesort(table));
+    });
+  </script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+      <link rel="stylesheet" href="../../../static/css/admonition.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-verdade-sobre-listas-que-ninguem-te-conta" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Luis Rodrigo - Net" class="md-header__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
+      
+  <img src="../../../assets/favicon/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Luis Rodrigo - Net
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuração e Uso de Listas em MkDocs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple" aria-label="Mudar para o modo claro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange" aria-label="Mudar para o modo escuro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cursos/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cursos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Dicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../iot/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  IOT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programacao/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sobre/licenca/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Sobre
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Luis Rodrigo - Net" class="md-nav__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
+      
+  <img src="../../../assets/favicon/favicon.png" alt="logo">
+
+    </a>
+    Luis Rodrigo - Net
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cursos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/html_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/css_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/bootstrap_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/django_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dicas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dicas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copywriting_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copywriting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../iot/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IOT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IOT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/arduino/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/esp_8266/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP 8266
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/esp_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/thingsboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ThingsBoard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/componentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programacao/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/django/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sobre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/licenca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licença
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/privacidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#a-verdade-sobre-listas-que-ninguem-te-conta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📜 A Verdade Sobre Listas que Ninguém te Conta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-descobrir-aqui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📢 O Que Você Vai Descobrir Aqui
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentos-entendendo-listas-em-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Fundamentos: Entendendo Listas em Markdown
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listas-nao-ordenadas-flexibilidade-e-clareza" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Listas Não Ordenadas: Flexibilidade e Clareza
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Listas Não Ordenadas: Flexibilidade e Clareza">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sintaxe-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Sintaxe Básica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quando-usar-listas-nao-ordenadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Quando Usar Listas Não Ordenadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listas-ordenadas-sequencia-e-autoridade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Listas Ordenadas: Sequência e Autoridade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Listas Ordenadas: Sequência e Autoridade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sintaxe-basica_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Sintaxe Básica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quando-usar-listas-ordenadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Quando Usar Listas Ordenadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-arte-do-aninhamento-listas-dentro-de-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📗 A Arte do Aninhamento: Listas Dentro de Listas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📗 A Arte do Aninhamento: Listas Dentro de Listas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sintaxe-de-aninhamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Sintaxe de Aninhamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-misturando-tipos-de-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Misturando Tipos de Listas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admonitions-transformando-listas-em-experiencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Admonitions: Transformando Listas em Experiências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Admonitions: Transformando Listas em Experiências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sintaxe-de-admonitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Sintaxe de Admonitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tipos-de-admonitions-disponiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Tipos de Admonitions Disponíveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listas-dentro-de-admonitions-combinacao-explosiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📙 Listas Dentro de Admonitions: Combinação Explosiva
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplos-praticos-aplicando-conhecimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Exemplos Práticos: Aplicando Conhecimento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Exemplos Práticos: Aplicando Conhecimento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-documentacao-de-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Documentação de API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tutorial-passo-a-passo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Tutorial Passo a Passo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-documentacao-de-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Documentação de Características
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erros-criticos-que-documentadores-cometem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚨 Erros Críticos Que Documentadores Cometem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 Erros Críticos Que Documentadores Cometem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-listas-mal-formatadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Listas Mal Formatadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-aninhamento-inconsistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Aninhamento Inconsistente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-misturar-marcadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣: Misturar Marcadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-listas-sem-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Listas Sem Contexto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tecnicas-avancadas-de-escaneabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛰️ Técnicas Avançadas de Escaneabilidade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛰️ Técnicas Avançadas de Escaneabilidade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-listas-com-descricoes-detalhadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Listas com Descrições Detalhadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-listas-com-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Listas com Links
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-listas-numeradas-com-estimativas-de-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Listas Numeradas com Estimativas de Tempo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otimizacoes-para-seo-e-acessibilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚏 Otimizações para SEO e Acessibilidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-final-listas-profissionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚊 Checklist Final: Listas Profissionais
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao-o-poder-das-listas-bem-feitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚉 Conclusão: O Poder das Listas Bem Feitas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚆 Recursos Adicionais
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+  
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+  <h1>Configuração e Uso de Listas em MkDocs</h1>
+
+<h2 id="a-verdade-sobre-listas-que-ninguem-te-conta">📜 A Verdade Sobre Listas que Ninguém te Conta<a class="headerlink" href="#a-verdade-sobre-listas-que-ninguem-te-conta" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/mkdocs/banner-mkdocs-001.JPG" data-desc-position="bottom"><img alt="Banner" src="../../../static/img/mkdocs/banner-mkdocs-001.JPG"></a></p>
+<p>Você já parou para pensar em como uma simples lista pode ser a diferença entre um leitor que compreende imediatamente o conteúdo e outro que se perde em parágrafos densos? As listas não são apenas ferramentas de formatação — elas são <strong>arquitetos da clareza</strong>.</p>
+<p>Quando você estrutura informações em listas, está fazendo mais do que organizar dados. Está criando <strong>pontos de parada visuais</strong> que permitem ao cérebro do leitor processar informações em pequenos blocos digeríveis. É por isso que os melhores <em>sites</em> da <em>internet</em>, as documentações mais profissionais e os artigos que viralizam usam listas como arma estratégica.</p>
+<p>Este artigo vai revelar o que você precisa saber sobre listas em <strong>MkDocs</strong> — desde o básico que a maioria faz errado, até técnicas avançadas que farão sua documentação ser considerada a <strong>melhor da sua categoria</strong>.</p>
+<hr>
+<h2 id="o-que-voce-vai-descobrir-aqui">📢 O Que Você Vai Descobrir Aqui<a class="headerlink" href="#o-que-voce-vai-descobrir-aqui" title="Permanent link">¶</a></h2>
+<p>Neste guia, você vai entender:</p>
+<ul>
+<li><strong>Os fundamentos</strong> das listas em <em>Markdown</em> e como <strong>MkDocs</strong> as renderiza</li>
+<li><strong>Tipos de listas</strong> e quando usar cada uma para máxima efetividade</li>
+<li><strong>Técnicas de aninhamento</strong> que deixam seu conteúdo profissional</li>
+<li><strong>Otimizações visuais</strong> usando <em>Admonitions</em> e sintaxe avançada</li>
+<li><strong>Casos de uso reais</strong> com exemplos que você pode aplicar hoje</li>
+<li><strong>Erros comuns</strong> que até documentadores experientes cometem</li>
+</ul>
+<p>Prepare-se para transformar a forma como você apresenta informações.</p>
+<hr>
+<h2 id="fundamentos-entendendo-listas-em-markdown">📋 Fundamentos: Entendendo Listas em <em>Markdown</em><a class="headerlink" href="#fundamentos-entendendo-listas-em-markdown" title="Permanent link">¶</a></h2>
+<p>As listas em <em>Markdown</em> são elementos estruturais que organizam informações em sequências — sejam ordenadas (numeradas) ou não ordenadas (com marcadores). Quando usadas em <strong>MkDocs</strong>, elas se tornam <strong>componentes visuais poderosos</strong> que melhoram a legibilidade em até 40% segundo estudos de <em>UX</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Autoridade na Matéria</p>
+<p>A Nielsen Norman Group, referência mundial em pesquisa de usabilidade, comprova que usuários escaneiam <em>websites</em>, não leem linearmente. Listas são estruturas que <strong>atraem esse escaneamento</strong> e entregam valor imediato.</p>
+</div>
+<p>Existem dois tipos principais de listas no Markdown:</p>
+<ol>
+<li><strong>Listas não ordenadas</strong> — para quando a ordem não importa</li>
+<li><strong>Listas ordenadas</strong> — para sequências, passos ou prioridades</li>
+</ol>
+<p>Cada uma tem seu lugar estratégico na documentação.</p>
+<hr>
+<h2 id="listas-nao-ordenadas-flexibilidade-e-clareza">📋 Listas Não Ordenadas: Flexibilidade e Clareza<a class="headerlink" href="#listas-nao-ordenadas-flexibilidade-e-clareza" title="Permanent link">¶</a></h2>
+<h3 id="1-sintaxe-basica">1️⃣ Sintaxe Básica<a class="headerlink" href="#1-sintaxe-basica" title="Permanent link">¶</a></h3>
+<p>As listas não ordenadas usam <code>-</code>, <code>*</code> ou <code>+</code> como marcadores. Em <strong>MkDocs</strong>, todos funcionam, mas para <strong>consistência profissional</strong>, recomenda-se usar <code>-</code> (hífen).</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Primeiro item
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">-</span><span class="w"> </span>Segundo item
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>Terceiro item
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização Visual</p>
+<p>Quando você digita o código acima em um arquivo <strong>MkDocs</strong>, ele aparece assim para o leitor:</p>
+<ul>
+<li>Primeiro item</li>
+<li>Segundo item</li>
+<li>Terceiro item</li>
+</ul>
+</div>
+<h3 id="2-quando-usar-listas-nao-ordenadas">2️⃣ Quando Usar Listas Não Ordenadas<a class="headerlink" href="#2-quando-usar-listas-nao-ordenadas" title="Permanent link">¶</a></h3>
+<p>Use listas não ordenadas quando:</p>
+<ul>
+<li>A ordem dos itens não é essencial</li>
+<li>Você está listando características ou benefícios</li>
+<li>Está apresentando opções equivalentes</li>
+<li>Deseja máxima clareza visual sem complexidade numérica</li>
+</ul>
+<p><strong>Exemplo prático:</strong> Se está documentando os benefícios de uma ferramenta, a ordem não importa — então lista não ordenada é perfeita.</p>
+<div class="admonition warning">
+<p class="admonition-title">Erro Comum #1</p>
+<p>Muitos  usam listas ordenadas para informações que não precisam de sequência. Isso causa confusão visual desnecessária. </p>
+<p><strong>Pense</strong>: "A ordem importa?" Se não, use não ordenada.</p>
+</div>
+<hr>
+<h2 id="listas-ordenadas-sequencia-e-autoridade">📋 Listas Ordenadas: Sequência e Autoridade<a class="headerlink" href="#listas-ordenadas-sequencia-e-autoridade" title="Permanent link">¶</a></h2>
+<h3 id="1-sintaxe-basica_1">1️⃣ Sintaxe Básica<a class="headerlink" href="#1-sintaxe-basica_1" title="Permanent link">¶</a></h3>
+<p>Listas ordenadas usam números seguidos de ponto e espaço. <strong>MkDocs</strong> aceita números em qualquer ordem — ele automaticamente renumera sequencialmente.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">1.</span> Primeiro passo
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">2.</span> Segundo passo
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">3.</span> Terceiro passo
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização Visual</p>
+<p>O resultado que o leitor vê:</p>
+<ol>
+<li>Primeiro passo</li>
+<li>Segundo passo</li>
+<li>Terceiro passo</li>
+</ol>
+</div>
+<h3 id="2-quando-usar-listas-ordenadas">2️⃣ Quando Usar Listas Ordenadas<a class="headerlink" href="#2-quando-usar-listas-ordenadas" title="Permanent link">¶</a></h3>
+<p>Use listas ordenadas quando:</p>
+<ol>
+<li>A sequência é crítica (como em tutoriais ou receitas)</li>
+<li>Está descrevendo um processo passo a passo</li>
+<li>Precisa estabelecer prioridades numeradas</li>
+<li>Quer criar sensação de progresso e estrutura</li>
+</ol>
+<p><strong>Exemplo estratégico:</strong> Um tutorial de "Como configurar MkDocs" <strong>deve</strong> ser ordenado — porque o passo 3 não funciona sem o passo 2.</p>
+<div class="admonition tip">
+<p class="admonition-title">Gatilho Mental: Progressão</p>
+<p>Listas numeradas criam psicologicamente uma sensação de "avanço" no leitor. Seu cérebro registra: "Estou avançando, aprendendo, progredindo." Use isso a seu favor em tutoriais.</p>
+</div>
+<hr>
+<h2 id="a-arte-do-aninhamento-listas-dentro-de-listas">📗 A Arte do Aninhamento: Listas Dentro de Listas<a class="headerlink" href="#a-arte-do-aninhamento-listas-dentro-de-listas" title="Permanent link">¶</a></h2>
+<p>O aninhamento (listas dentro de listas) é a técnica que <strong>transforma documentação confusa em arquitetura de informação clara</strong>. Permite criar hierarquias de conceitos sem perder o leitor.</p>
+<h3 id="1-sintaxe-de-aninhamento">1️⃣ Sintaxe de Aninhamento<a class="headerlink" href="#1-sintaxe-de-aninhamento" title="Permanent link">¶</a></h3>
+<p>Para aninhar uma lista, adicione <strong>4 espaços</strong> (ou <strong>1 tab</strong>) antes do marcador da sublista:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item principal
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Subitém
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Outro subitém
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">-</span><span class="w"> </span>Outro item principal
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Subitém relacionado
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização Visual</p>
+<p>Observe a hierarquia visual criada:</p>
+<ul>
+<li>Item principal<ul>
+<li>Subitém</li>
+<li>Outro subitém</li>
+</ul>
+</li>
+<li>Outro item principal<ul>
+<li>Subitém relacionado</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="2-misturando-tipos-de-listas">2️⃣ Misturando Tipos de Listas<a class="headerlink" href="#2-misturando-tipos-de-listas" title="Permanent link">¶</a></h3>
+<p>Uma técnica avançada é misturar tipos — lista ordenada dentro de não ordenada, ou vice-versa. Veja este caso de uso real:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Funcionalidades do <span class="gs">**MkDocs**</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="k">1.</span> Suporte a <span class="ge">*Markdown*</span> puro
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="k">2.</span> Tema Material responsivo
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="k">3.</span> Busca integrada
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">-</span><span class="w"> </span>Requisitos de instalação
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Python 3.8 ou superior
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Pip (gestor de pacotes)
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização Visual</p>
+<ul>
+<li>Funcionalidades do MkDocs<ol>
+<li>Suporte a Markdown puro</li>
+<li>Tema Material responsivo</li>
+<li>Busca integrada</li>
+</ol>
+</li>
+<li>Requisitos de instalação<ul>
+<li>Python 3.8 ou superior</li>
+<li>Pip (gestor de pacotes)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Limite de Aninhamento</p>
+<p>Recomenda-se não exceder 3 níveis de profundidade. Além disso, o leitor se perde. Se você precisa de mais de 3 níveis, considere quebrar em seções separadas — isso melhora a legibilidade e <em>SEO</em>.</p>
+</div>
+<hr>
+<h2 id="admonitions-transformando-listas-em-experiencias">📘 Admonitions: Transformando Listas em Experiências<a class="headerlink" href="#admonitions-transformando-listas-em-experiencias" title="Permanent link">¶</a></h2>
+<p><strong>Admonitions</strong> são <strong>caixas visuais destacadas</strong> que complementam seu conteúdo com notas, dicas, avisos e exemplos. Em <em>MkDocs</em>, elas são poderosas ferramentas para criar <strong>contraste visual</strong>.</p>
+<h3 id="1-sintaxe-de-admonitions">1️⃣ Sintaxe de Admonitions<a class="headerlink" href="#1-sintaxe-de-admonitions" title="Permanent link">¶</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>!!! note "Título Opcional"
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a>    Conteúdo da admonition. Pode ter múltiplas linhas.
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos="4 "></span></a>    E até listas dentro!
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Item um
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Item dois
+</span></code></pre></div>
+<h3 id="2-tipos-de-admonitions-disponiveis">2️⃣ Tipos de Admonitions Disponíveis<a class="headerlink" href="#2-tipos-de-admonitions-disponiveis" title="Permanent link">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note / Nota</p>
+<ul>
+<li>Use quando quer apenas destacar uma informação adicional. </li>
+<li>Sua cor é neutra — ótima para contexto.</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract / Resumo</p>
+<ul>
+<li>Para sintetizar conceitos ou apresentar visão geral. </li>
+<li>Útil em tópicos complexos.</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info / Informação</p>
+<ul>
+<li>Informações gerais e contextuais. </li>
+<li>Cria sensação de "você precisa saber disso".</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip / Dica</p>
+<ul>
+<li><strong>Use para dicas que adicionam valor real.</strong> </li>
+<li>Gatilho mental: "Há um atalho aqui que outros não conhecem."</li>
+</ul>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success / Sucesso</p>
+<ul>
+<li>Para celebrar conclusões ou marcos. </li>
+<li>Psicologicamente, aumenta engajamento.</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question / Pergunta</p>
+<ul>
+<li>Para levantar questionamentos estratégicos que o leitor deve considerar.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning / Aviso</p>
+<ul>
+<li><strong>Para erros comuns e armadilhas.</strong> </li>
+<li>Crítico em documentação técnica. </li>
+<li>Impede que o leitor faça besteiras.</li>
+</ul>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Failure / Falha</p>
+<ul>
+<li>Para explicar o que deu errado e como evitar.</li>
+</ul>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger / Perigo</p>
+<ul>
+<li>Use raramente, quando há risco real. </li>
+<li>Cria urgência e atenção máxima.</li>
+</ul>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<ul>
+<li>Para documentar problemas conhecidos. </li>
+<li>Transmite transparência.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example / Exemplo</p>
+<ul>
+<li><strong>Cada admonition "example" seu aumenta compreensão</strong>. </li>
+<li>Use generosamente.</li>
+</ul>
+</div>
+<hr>
+<h2 id="listas-dentro-de-admonitions-combinacao-explosiva">📙 Listas Dentro de Admonitions: Combinação Explosiva<a class="headerlink" href="#listas-dentro-de-admonitions-combinacao-explosiva" title="Permanent link">¶</a></h2>
+<p>A combinação de admonitions com listas cria <strong>estruturas de informação irresistíveis</strong> para o cérebro do leitor. É clareza estratificada.</p>
+<p>🏗️ <strong>Exemplo Prático: Checklist de Boas Práticas</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>!!! success "Checklist: Listas Perfeitas"
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>    Garanta qualidade com este checklist:
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Use <span class="sb">`-`</span> consistentemente
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Aninhe até 3 níveis no máximo
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Deixe espaço em branco entre itens longos
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Use admonitions para destacar
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos="8 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Revise visualmente antes de publicar
+</span></code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Checklist: Listas Perfeitas</p>
+<p>Garanta qualidade com este checklist:</p>
+<ul>
+<li>Use <code>-</code> consistentemente</li>
+<li>Aninhe até 3 níveis no máximo</li>
+<li>Deixe espaço em branco entre itens longos</li>
+<li>Use admonitions para destacar</li>
+<li>Revise visualmente antes de publicar</li>
+</ul>
+</div>
+<hr>
+<h2 id="exemplos-praticos-aplicando-conhecimento">📚 Exemplos Práticos: Aplicando Conhecimento<a class="headerlink" href="#exemplos-praticos-aplicando-conhecimento" title="Permanent link">¶</a></h2>
+<h3 id="1-documentacao-de-api">1️⃣ Documentação de API<a class="headerlink" href="#1-documentacao-de-api" title="Permanent link">¶</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="gu">## Endpoints Disponíveis</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a>!!! info "Estrutura de Resposta"
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a>    Todos os endpoints retornam os seguintes campos:
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span><span class="sb">`status`</span> — estado da requisição (success, error)
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span><span class="sb">`data`</span> — dados retornados pela operação
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span><span class="sb">`message`</span> — mensagem descritiva para o usuário
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span><span class="sb">`timestamp`</span> — quando a resposta foi gerada
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a><span class="gu">### POST /usuarios</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a>Cria um novo usuário. Requer:
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><a href="#__codelineno-6-15"><span class="linenos" data-linenos="15 "></span></a><span class="k">1.</span> <span class="sb">`nome`</span> — string, 3-100 caracteres
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><a href="#__codelineno-6-16"><span class="linenos" data-linenos="16 "></span></a><span class="k">2.</span> <span class="sb">`email`</span> — string válida, única
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><a href="#__codelineno-6-17"><span class="linenos" data-linenos="17 "></span></a><span class="k">3.</span> <span class="sb">`senha`</span> — string, mínimo 8 caracteres
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><a href="#__codelineno-6-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Deve conter letra maiúscula
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><a href="#__codelineno-6-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Deve conter número
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><a href="#__codelineno-6-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Deve conter caractere especial
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><a href="#__codelineno-6-21"><span class="linenos" data-linenos="21 "></span></a>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a><a href="#__codelineno-6-22"><span class="linenos" data-linenos="22 "></span></a>!!! example "Exemplo de Requisição"
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a><a href="#__codelineno-6-23"><span class="linenos" data-linenos="23 "></span></a><span class="sb">    ```json</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a><a href="#__codelineno-6-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><a href="#__codelineno-6-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">      </span><span class="nt">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a><a href="#__codelineno-6-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@exemplo.com"</span><span class="p">,</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a><a href="#__codelineno-6-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">      </span><span class="nt">"senha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senha@123"</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a><a href="#__codelineno-6-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a><a href="#__codelineno-6-29"><span class="linenos" data-linenos="29 "></span></a><span class="sb">    ```</span>
+</span></code></pre></div>
+<h3 id="2-tutorial-passo-a-passo">2️⃣ Tutorial Passo a Passo<a class="headerlink" href="#2-tutorial-passo-a-passo" title="Permanent link">¶</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="gu">## Instalação Completa do MkDocs</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>!!! warning "Pré-requisitos"
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a>    Antes de começar, certifique-se de ter:
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Python 3.8+ instalado
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Pip funcionando corretamente
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Acesso à linha de comando
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a><span class="gu">### Procedimento</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a><span class="k">1.</span> <span class="gs">**Abra o terminal**</span> e navegue até a pasta desejada
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><a href="#__codelineno-7-13"><span class="linenos" data-linenos="13 "></span></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><a href="#__codelineno-7-14"><span class="linenos" data-linenos="14 "></span></a><span class="k">2.</span> <span class="gs">**Crie um ambiente virtual**</span> (altamente recomendado)
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><a href="#__codelineno-7-15"><span class="linenos" data-linenos="15 "></span></a><span class="sb">   ```bash</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><a href="#__codelineno-7-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">   </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>mkdocs-env
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a><span class="sb">   ```</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a><a href="#__codelineno-7-19"><span class="linenos" data-linenos="19 "></span></a><span class="k">3.</span> <span class="gs">**Ative o ambiente virtual**</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><a href="#__codelineno-7-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>Windows: <span class="sb">`mkdocs-env\Scripts\activate`</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><a href="#__codelineno-7-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>macOS/Linux: <span class="sb">`source mkdocs-env/bin/activate`</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a><a href="#__codelineno-7-22"><span class="linenos" data-linenos="22 "></span></a>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a><a href="#__codelineno-7-23"><span class="linenos" data-linenos="23 "></span></a><span class="k">4.</span> <span class="gs">**Instale MkDocs**</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a><a href="#__codelineno-7-24"><span class="linenos" data-linenos="24 "></span></a><span class="sb">   ```bash</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a><a href="#__codelineno-7-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">   </span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a><a href="#__codelineno-7-26"><span class="linenos" data-linenos="26 "></span></a><span class="sb">   ```</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a><a href="#__codelineno-7-27"><span class="linenos" data-linenos="27 "></span></a>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a><a href="#__codelineno-7-28"><span class="linenos" data-linenos="28 "></span></a><span class="k">5.</span> <span class="gs">**Crie seu projeto**</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a><a href="#__codelineno-7-29"><span class="linenos" data-linenos="29 "></span></a><span class="sb">   ```bash</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a><a href="#__codelineno-7-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">   </span>mkdocs<span class="w"> </span>new<span class="w"> </span>meu-projeto
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a><a href="#__codelineno-7-31"><span class="linenos" data-linenos="31 "></span></a><span class="sb">   ```</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a><a href="#__codelineno-7-32"><span class="linenos" data-linenos="32 "></span></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33"></a><a href="#__codelineno-7-33"><span class="linenos" data-linenos="33 "></span></a>!!! success "Sucesso!"
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34"></a><a href="#__codelineno-7-34"><span class="linenos" data-linenos="34 "></span></a>    Se chegou aqui sem erros, parabéns! Seu MkDocs está instalado e pronto.
+</span></code></pre></div>
+<h3 id="3-documentacao-de-caracteristicas">3️⃣ Documentação de Características<a class="headerlink" href="#3-documentacao-de-caracteristicas" title="Permanent link">¶</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="gu">## Por Que Escolher MkDocs?</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos=" 2 "></span></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos=" 3 "></span></a>!!! tip "Vantagem Estratégica"
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos=" 4 "></span></a>    MkDocs é escolhido por empresas como Netflix, Uber e Slack porque oferece:
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos=" 5 "></span></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Simplicidade extrema**</span> — escreva em Markdown puro
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><a href="#__codelineno-8-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Velocidade**</span> — carrega em milissegundos
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><a href="#__codelineno-8-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Beleza padrão**</span> — tema Material pronto para usar
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><a href="#__codelineno-8-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Responsivo em mobile
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><a href="#__codelineno-8-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Dark mode nativo
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><a href="#__codelineno-8-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Navegação intuitiva
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><a href="#__codelineno-8-12"><span class="linenos" data-linenos="12 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Busca integrada**</span> — seus usuários encontram respostas rápido
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><a href="#__codelineno-8-13"><span class="linenos" data-linenos="13 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Extensível**</span> — plugins para cada necessidade
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><a href="#__codelineno-8-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>API de plugins robusta
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><a href="#__codelineno-8-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Comunidade ativa criando extensões
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a><a href="#__codelineno-8-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Documentação clara para desenvolver seus próprios
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><a href="#__codelineno-8-17"><span class="linenos" data-linenos="17 "></span></a>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><a href="#__codelineno-8-18"><span class="linenos" data-linenos="18 "></span></a>!!! info "Comparação de Desempenho"
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><a href="#__codelineno-8-19"><span class="linenos" data-linenos="19 "></span></a>    MkDocs gera sites estáticos, o que significa:
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a><a href="#__codelineno-8-20"><span class="linenos" data-linenos="20 "></span></a>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a><a href="#__codelineno-8-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="k">1.</span> Zero dependências de servidor
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a><a href="#__codelineno-8-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="k">2.</span> Hospedagem em qualquer lugar (GitHub Pages, Netlify, etc)
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a><a href="#__codelineno-8-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="k">3.</span> Velocidade de carregamento superior
+</span></code></pre></div>
+<hr>
+<h2 id="erros-criticos-que-documentadores-cometem">🚨 Erros Críticos Que Documentadores Cometem<a class="headerlink" href="#erros-criticos-que-documentadores-cometem" title="Permanent link">¶</a></h2>
+<h3 id="1-listas-mal-formatadas">1️⃣ Listas Mal Formatadas<a class="headerlink" href="#1-listas-mal-formatadas" title="Permanent link">¶</a></h3>
+<div class="admonition failure">
+<p class="admonition-title"> ERRADO ❌</p>
+<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item 1 - Item 2 - Item 3
+</span></code></pre></div>
+Isso não é uma lista, é um parágrafo ilegível.<p></p>
+</div>
+<div class="admonition success">
+<p class="admonition-title"> CERTO ✅</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item 1
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">-</span><span class="w"> </span>Item 2
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>Item 3
+</span></code></pre></div>
+</div>
+<h3 id="2-aninhamento-inconsistente">2️⃣ Aninhamento Inconsistente<a class="headerlink" href="#2-aninhamento-inconsistente" title="Permanent link">¶</a></h3>
+<div class="admonition failure">
+<p class="admonition-title"> ERRADO ❌</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item principal
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>Subitém (2 espaços — MkDocs pode não reconhecer)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>Outro item
+</span></code></pre></div>
+</div>
+<div class="admonition success">
+<p class="admonition-title"> CERTO ✅</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item principal
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="k">-</span><span class="w"> </span>Subitém (4 espaços — padrão universal)
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>Outro item
+</span></code></pre></div>
+</div>
+<h3 id="3-misturar-marcadores">3️⃣: Misturar Marcadores<a class="headerlink" href="#3-misturar-marcadores" title="Permanent link">¶</a></h3>
+<div class="admonition failure">
+<p class="admonition-title"> ERRADO ❌</p>
+<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item com hífen
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">*</span><span class="w"> </span>Item com asterisco
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos="3 "></span></a>+ Item com plus
+</span></code></pre></div>
+Embora funcionem, a inconsistência parece amadora.<p></p>
+</div>
+<div class="admonition success">
+<p class="admonition-title"> CERTO ✅</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Item com hífen
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">-</span><span class="w"> </span>Outro item com hífen
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><a href="#__codelineno-14-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>Mais um item com hífen
+</span></code></pre></div>
+</div>
+<h3 id="4-listas-sem-contexto">4️⃣ Listas Sem Contexto<a class="headerlink" href="#4-listas-sem-contexto" title="Permanent link">¶</a></h3>
+<div class="admonition failure">
+<p class="admonition-title"> ERRADO ❌</p>
+<p></p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>Maçã
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><a href="#__codelineno-15-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">-</span><span class="w"> </span>Bicicleta
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><a href="#__codelineno-15-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>Computador
+</span></code></pre></div>
+O leitor não sabe por que essas coisas estão juntas.<p></p>
+</div>
+<div class="admonition success">
+<p class="admonition-title"> CERTO ✅</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a><span class="gu">## Itens Necessários para o Projeto</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos="2 "></span></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos="3 "></span></a>Você vai precisar de:
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos="4 "></span></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><a href="#__codelineno-16-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">-</span><span class="w"> </span>Maçã (como quebra durante intervalo)
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><a href="#__codelineno-16-6"><span class="linenos" data-linenos="6 "></span></a><span class="k">-</span><span class="w"> </span>Bicicleta (para mobilidade entre salas)
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><a href="#__codelineno-16-7"><span class="linenos" data-linenos="7 "></span></a><span class="k">-</span><span class="w"> </span>Computador (para desenvolvimento do código)
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Regra de Ouro</p>
+<p><strong>Toda lista deve ser precedida de uma frase descritiva.</strong> Isso cria contexto e aumenta compreensão.</p>
+</div>
+<hr>
+<h2 id="tecnicas-avancadas-de-escaneabilidade">🛰️ Técnicas Avançadas de Escaneabilidade<a class="headerlink" href="#tecnicas-avancadas-de-escaneabilidade" title="Permanent link">¶</a></h2>
+<h3 id="1-listas-com-descricoes-detalhadas">1️⃣ Listas com Descrições Detalhadas<a class="headerlink" href="#1-listas-com-descricoes-detalhadas" title="Permanent link">¶</a></h3>
+<p>Quando um item precisa de explicação, formate assim:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Nome da Ferramenta**</span> — descrição breve, uma ou duas linhas máximo
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><a href="#__codelineno-17-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Outra Ferramenta**</span> — seu propósito e por que está na lista
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><a href="#__codelineno-17-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span><span class="gs">**Terceira Ferramenta**</span> — informações essenciais destacadas
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização</p>
+<ul>
+<li><strong>Python</strong> — linguagem versátil, ideal para automação e ciência de dados</li>
+<li><strong>Node.js</strong> — runtime JavaScript, perfeito para aplicações web em tempo real</li>
+<li><strong>Go</strong> — linguagem compilada, ultra-rápida para microsserviços</li>
+</ul>
+</div>
+<h3 id="2-listas-com-links">2️⃣ Listas com Links<a class="headerlink" href="#2-listas-com-links" title="Permanent link">¶</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Documentação oficial</span>](<span class="na">https://www.mkdocs.org</span>) — referência completa
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><a href="#__codelineno-18-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Tema Material para MkDocs</span>](<span class="na">https://squidfunk.github.io/mkdocs-material/</span>) — design profissional
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><a href="#__codelineno-18-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Galeria de Plugins</span>](<span class="na">https://mkdocs.org/plugins/</span>) — extensões incríveis
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização</p>
+<ul>
+<li><a href="https://www.mkdocs.org">Documentação oficial</a> — referência completa</li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/">Tema Material para MkDocs</a> — design profissional</li>
+<li><a href="https://mkdocs.org/plugins/">Galeria de Plugins</a> — extensões incríveis</li>
+</ul>
+</div>
+<h3 id="3-listas-numeradas-com-estimativas-de-tempo">3️⃣ Listas Numeradas com Estimativas de Tempo<a class="headerlink" href="#3-listas-numeradas-com-estimativas-de-tempo" title="Permanent link">¶</a></h3>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">1.</span> <span class="gs">**Instalação**</span> (~5 minutos) — configure seu ambiente
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">2.</span> <span class="gs">**Primeiro Projeto**</span> (~10 minutos) — crie seu site
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">3.</span> <span class="gs">**Customização**</span> (~30 minutos) — ajuste cores e layout
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><a href="#__codelineno-19-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">4.</span> <span class="gs">**Deploy**</span> (~5 minutos) — publique online
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Renderização</p>
+<ol>
+<li><strong>Instalação</strong> (~5 minutos) — configure seu ambiente</li>
+<li><strong>Primeiro Projeto</strong> (~10 minutos) — crie seu site</li>
+<li><strong>Customização</strong> (~30 minutos) — ajuste cores e layout</li>
+<li><strong>Deploy</strong> (~5 minutos) — publique online</li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Gatilho Mental: Urgência Reduzida</p>
+<p>Quando você informa tempo estimado, reduz a fricção psicológica. O leitor pensa: "Posso fazer isso em 5 minutos" em vez de "Isso parece complicado".</p>
+</div>
+<hr>
+<h2 id="otimizacoes-para-seo-e-acessibilidade">🚏 Otimizações para SEO e Acessibilidade<a class="headerlink" href="#otimizacoes-para-seo-e-acessibilidade" title="Permanent link">¶</a></h2>
+<p>MkDocs renderiza listas como <code>&lt;ul&gt;</code> e <code>&lt;ol&gt;</code>. Isso significa:</p>
+<ul>
+<li>Mecanismos de busca entendem a estrutura</li>
+<li>Leitores de tela para deficientes visuais navegam melhor</li>
+<li>Sua documentação fica mais profissional</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Boas Práticas</p>
+<ul>
+<li>Use listas quando apropriado, não abuse</li>
+<li>Mantenha itens concisos (máximo 15 palavras por item)</li>
+<li>Deixe espaço em branco adequado</li>
+<li>Use negritos para destacar termos-chave</li>
+</ul>
+</div>
+<hr>
+<h2 id="checklist-final-listas-profissionais">🚊 Checklist Final: Listas Profissionais<a class="headerlink" href="#checklist-final-listas-profissionais" title="Permanent link">¶</a></h2>
+<div class="admonition success">
+<p class="admonition-title">Lista de Verificação Completa</p>
+<p>Antes de publicar qualquer artigo com listas, passe por esse checklist:</p>
+<p><strong>Formatação</strong>
+- Usei <code>-</code> consistentemente (não misturo com <code>*</code> ou <code>+</code>)
+- Aninhei com 4 espaços exatamente
+- Não excedi 3 níveis de profundidade</p>
+<p><strong>Conteúdo</strong>
+- Cada lista tem uma frase introdutória descritiva
+- Os itens são concisos (máximo 15 palavras)
+- A ordem é lógica e intuitiva</p>
+<p><strong>Visualização</strong>
+- Usei admonitions para destacar informações críticas
+- Adicionei exemplos práticos em <code>!!! example</code>
+- Avisos aparentam em <code>!!! warning</code> ou <code>!!! danger</code></p>
+<p><strong>Experiência do Leitor</strong>
+- Conseguem escanear rapidamente
+- Entendem por que cada item está ali
+- Podem usar a informação imediatamente</p>
+</div>
+<hr>
+<h2 id="conclusao-o-poder-das-listas-bem-feitas">🚉 Conclusão: O Poder das Listas Bem Feitas<a class="headerlink" href="#conclusao-o-poder-das-listas-bem-feitas" title="Permanent link">¶</a></h2>
+<p>Listas não são detalhes menores da documentação — <strong>são arquitetura de compreensão</strong>. Uma lista bem estruturada:</p>
+<ul>
+<li>Reduz tempo de leitura</li>
+<li>Aumenta retenção de informação</li>
+<li>Melhora a experiência do usuário drasticamente</li>
+<li>Reforça sua autoridade como especialista</li>
+</ul>
+<p>Quando você domina listas em MkDocs, você domina a arte de comunicar clareza. E clareza é o que diferencia documentação excepcional de documentação esquecida.</p>
+<div class="admonition tip">
+<p class="admonition-title">Próximos Passos</p>
+<p>Agora que você entende listas profundamente:</p>
+<ol>
+<li>Revise suas documentações anteriores</li>
+<li>Refatore com as técnicas deste artigo</li>
+<li>Teste com usuários reais</li>
+<li>Observe o engajamento aumentar</li>
+</ol>
+<p>A excelência em documentação é uma jornada, não um destino. Cada artigo que você escreve, aprende. Cada lista que você refatora, melhora.</p>
+</div>
+<p>Comece hoje. Seus usuários vão agradecer.</p>
+<hr>
+<h2 id="recursos-adicionais">🚆 Recursos Adicionais<a class="headerlink" href="#recursos-adicionais" title="Permanent link">¶</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Continue Aprendendo</p>
+<p>Para aprofundar seus conhecimentos em MkDocs:</p>
+<ul>
+<li><a href="https://www.mkdocs.org">Documentação Oficial do MkDocs</a></li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/">Material para MkDocs — Guia Completo</a></li>
+<li><a href="https://www.markdownguide.org">Markdown Guide — Referência Oficial</a></li>
+<li><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">Guia de Acessibilidade Web (WCAG)</a></li>
+</ul>
+</div>
+<hr>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Este conteúdo foi revisado e otimizado com o apoio de <strong>IA Generativa</strong>, garantindo as melhores práticas de SEO e legibilidade.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Luis Rodrigo - Net
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/luisrodrigonet" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/luisrodrigoog" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://linkedin.com/in/luisrodrigoog" target="_blank" rel="noopener" title="Linkedin" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.instagram.com/luisrodrigoog/" target="_blank" rel="noopener" title="Instagram" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs", "content.tabs.link", "content.tooltips", "content.code.select", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

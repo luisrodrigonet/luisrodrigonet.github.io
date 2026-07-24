@@ -1,0 +1,29 @@
+/************************************************************
+        Custom Admonition: Terminal
+ ************************************************************/
+.md-typeset .admonition.terminal,
+.md-typeset details.terminal {
+  border-left-color: #4cfb4c; /* Verde neon para a borda */
+  background-color: #1a1a1a;  /* Fundo grafite escuro */
+}
+
+/* Estilização do Título do Terminal */
+.md-typeset .terminal > .admonition-title,
+.md-typeset .terminal > summary {
+  background-color: #2d2d2d; /* Fundo do título */
+  border-left-color: #4cfb4c;
+  color: #4cfb4c;            /* Texto do título em verde */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Ícone de Terminal (>_) */
+.md-typeset .terminal > .admonition-title::before,
+.md-typeset .terminal > summary::before {
+  background-color: #4cfb4c;
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 18H4v-2h16v2m-16-3l5.5-5L4 5h2.5l5.5 5-5.5 5H4z"/></svg>');
+}
+
+/* Ajuste de cor do texto dentro do terminal */
+.md-typeset .admonition.terminal {
+  color: #e0e0e0;
+}

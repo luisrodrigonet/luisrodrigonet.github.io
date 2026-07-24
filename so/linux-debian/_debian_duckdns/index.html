@@ -1,0 +1,2162 @@
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Configure um DNS dinâmico gratuito com Duck DNS no Debian 13 para acessar sua rede de qualquer lugar.">
+      
+      
+        <meta name="author" content="Luís Rodrigo - Net">
+      
+      
+        <link rel="canonical" href="https://luisrodrigonet.github.io/so/linux-debian/_debian_duckdns/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Como usar Duck DNS no Debian Linux 13 - Luis Rodrigo - Net</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+  
+      
+    
+  <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tables = document.querySelectorAll("article table:not([class])");
+      tables.forEach(table => new Tablesort(table));
+    });
+  </script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+      <link rel="stylesheet" href="../../../static/css/admonition.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introducao-acessando-seu-servidor-de-qualquer-lugar" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Luis Rodrigo - Net" class="md-header__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
+      
+  <img src="../../../assets/favicon/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Luis Rodrigo - Net
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Como usar Duck DNS no Debian Linux 13
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple" aria-label="Mudar para o modo claro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange" aria-label="Mudar para o modo escuro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cursos/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cursos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../dicas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Dicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../iot/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  IOT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programacao/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sobre/licenca/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Sobre
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Luis Rodrigo - Net" class="md-nav__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
+      
+  <img src="../../../assets/favicon/favicon.png" alt="logo">
+
+    </a>
+    Luis Rodrigo - Net
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cursos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cursos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cursos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/html_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/css_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/bootstrap_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cursos/django_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dicas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dicas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dicas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/lnx_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/docker_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/mkdocs_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dicas/copywriting_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copywriting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../iot/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IOT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IOT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/arduino/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/esp_8266/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP 8266
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/esp_32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP 32
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/thingsboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ThingsBoard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../iot/componentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programacao/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/django/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sobre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/licenca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licença
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/privacidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#introducao-acessando-seu-servidor-de-qualquer-lugar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introdução: acessando seu servidor de qualquer lugar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-ip-dinamico-e-frustracao-no-acesso-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema: IP dinâmico e frustração no acesso remoto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duck-dns-debian-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duck DNS + Debian 13
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisitos-no-debian-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pré-requisitos no Debian 13
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-1-criar-conta-e-dominio-no-duck-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: criar conta e domínio no Duck DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 1: criar conta e domínio no Duck DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-criar-conta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Criar conta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-criar-o-subdominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Criar o subdomínio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-2-preparar-o-debian-13-pacotes-e-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: preparar o Debian 13 (pacotes e usuário)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 2: preparar o Debian 13 (pacotes e usuário)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-atualizar-o-sistema-e-instalar-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Atualizar o sistema e instalar curl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-escolher-onde-guardar-os-arquivos-do-duck-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Escolher onde guardar os arquivos do Duck DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-3-criar-o-script-de-atualizacao-do-duck-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: criar o script de atualização do Duck DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 3: criar o script de atualização do Duck DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-montar-o-script-ducksh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Montar o script duck.sh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ajustar-permissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Ajustar permissões
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-4-testar-o-script-manualmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 4: testar o script manualmente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-5-agendar-atualizacoes-com-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 5: agendar atualizações com cron
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 5: agendar atualizações com cron">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-editar-o-crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Editar o crontab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-verificar-se-o-cron-esta-rodando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Verificar se o cron está rodando
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-6-alternativa-moderna-usar-systemd-timers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 6: alternativa moderna — usar systemd timers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 6: alternativa moderna — usar systemd timers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-criar-o-servico-duckdnsservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Criar o serviço duckdns.service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-criar-o-timer-duckdnstimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Criar o timer duckdns.timer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-ativar-o-timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Ativar o timer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-7-validando-a-configuracao-na-vida-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 7: validando a configuração na vida real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplos-praticos-de-uso-do-duck-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos práticos de uso do Duck DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplos práticos de uso do Duck DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acesso-ssh-remoto-ao-servidor-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acesso SSH remoto ao servidor Debian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servidor-webnextcloud-acessivel-pela-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servidor web/Nextcloud acessível pela internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boas-praticas-de-seguranca-e-manutencao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boas práticas de segurança e manutenção
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos-recomendados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos passos recomendados
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Como usar Duck DNS no Debian Linux 13</h1>
+
+<h2 id="introducao-acessando-seu-servidor-de-qualquer-lugar">Introdução: acessando seu servidor de qualquer lugar<a class="headerlink" href="#introducao-acessando-seu-servidor-de-qualquer-lugar" title="Permanent link">¶</a></h2>
+<p>Imagine a cena: você montou com todo carinho um servidor Debian 13 em casa — com SSH, talvez um Nextcloud, ou até um servidor de jogos — e, na primeira viagem, precisa acessar tudo remotamente. Quando tenta se conectar, o IP da sua casa mudou, e de repente aquele acesso “simples” vira uma caça ao tesouro.</p>
+<p>Este guia mostra, passo a passo, como usar o Duck DNS no Debian Linux 13 para ter um endereço fixo, mesmo com IP dinâmico do provedor, usando as mesmas práticas recomendadas em documentação oficial e tutoriais consolidados.</p>
+<h2 id="problema-ip-dinamico-e-frustracao-no-acesso-remoto">Problema: IP dinâmico e frustração no acesso remoto<a class="headerlink" href="#problema-ip-dinamico-e-frustracao-no-acesso-remoto" title="Permanent link">¶</a></h2>
+<p>A maioria dos provedores residenciais entrega um IP dinâmico ao roteador, que muda de tempos em tempos sem aviso. Sempre que isso acontece, qualquer acesso remoto que dependa do IP “quebra”.</p>
+<p>Na prática, isso significa:</p>
+<ul>
+<li>Ter que descobrir o novo IP manualmente.</li>
+<li>Atualizar configurações de clientes SSH, aplicativos de acesso remoto, VPNs, etc.</li>
+<li>Interromper serviços que deveriam ser “sempre disponíveis” para você e sua equipe.</li>
+</ul>
+<p>Para quem administra servidores, mesmo que “de hobby”, isso é improdutivo, pouco profissional e inseguro (muita gente acaba usando serviços de acesso remoto duvidosos só para “facilitar”).</p>
+<p>Agora imagine que você:</p>
+<ul>
+<li>Precisa pegar um arquivo importante que está no seu servidor de arquivos em casa.</li>
+<li>Vai dar suporte remoto a um familiar usando um serviço que roda no seu Debian.</li>
+<li>Depende de um túnel SSH para automatizar backups entre casa e escritório.</li>
+</ul>
+<p>Se o IP mudou e você não tem um nome de host estável, tudo isso para. E o pior: normalmente você descobre na pior hora possível, quando está longe, sem acesso ao roteador e sem como “ver” o novo IP público.</p>
+<p>É aqui que entra o DNS dinâmico (DDNS): um serviço que atualiza automaticamente o DNS sempre que o seu IP muda, mantendo um nome estável apontando para sua casa.</p>
+<h2 id="duck-dns-debian-13">Duck DNS + Debian 13<a class="headerlink" href="#duck-dns-debian-13" title="Permanent link">¶</a></h2>
+<p>Duck DNS é um serviço de DNS dinâmico gratuito, hospedado na AWS, que oferece domínios do tipo <code>seudominio.duckdns.org</code> e uma API simples para atualizar o IP por script.</p>
+<p>A própria documentação oficial mostra como integrar o serviço com scripts em Linux usando <code>curl</code> e <code>cron</code>, que é exatamente o que será feito (e melhorado) neste guia para Debian 13.</p>
+<p>Em alto nível, o que você vai montar:</p>
+<ol>
+<li>Criar um subdomínio gratuito no Duck DNS.</li>
+<li>Pegar o token de autenticação da sua conta.</li>
+<li>Configurar um script no Debian 13 que chama a API do Duck DNS.</li>
+<li>Agendar esse script com <code>cron</code> ou com <code>systemd timers</code>.</li>
+<li>Testar e usar esse endereço para acessar seus serviços (SSH, HTTP, etc.).</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">O que você terá ao final</p>
+<p>Ao terminar o tutorial, você terá um hostname fixo (ex.: <code>meu-server.duckdns.org</code>) que sempre aponta para o IP público atual da sua conexão, atualizado automaticamente a cada poucos minutos.</p>
+</div>
+<hr>
+<h2 id="pre-requisitos-no-debian-13">Pré-requisitos no Debian 13<a class="headerlink" href="#pre-requisitos-no-debian-13" title="Permanent link">¶</a></h2>
+<p>Antes de começar, garanta que você tem:</p>
+<ul>
+<li>Uma máquina com Debian Linux 13 já instalada (servidor ou desktop).</li>
+<li>Acesso de terminal com privilégios <code>sudo</code>.</li>
+<li>Acesso à internet a partir desse Debian.</li>
+<li>Possibilidade de abrir portas no seu roteador (para usar SSH, HTTP etc.).</li>
+<li>Um navegador para criar a conta no Duck DNS.</li>
+</ul>
+<p>No Debian, usaremos:</p>
+<ul>
+<li><code>curl</code>: para chamar a API do Duck DNS.</li>
+<li><code>cron</code> ou <code>systemd</code>: para agendar as atualizações de IP.</li>
+</ul>
+<hr>
+<h2 id="passo-1-criar-conta-e-dominio-no-duck-dns">Passo 1: criar conta e domínio no Duck DNS<a class="headerlink" href="#passo-1-criar-conta-e-dominio-no-duck-dns" title="Permanent link">¶</a></h2>
+<p>O primeiro passo é criar sua identidade “fixa” na internet usando o Duck DNS.</p>
+<h3 id="11-criar-conta">1.1 Criar conta<a class="headerlink" href="#11-criar-conta" title="Permanent link">¶</a></h3>
+<ol>
+<li>Acesse o site oficial: <a href="https://www.duckdns.org">https://www.duckdns.org</a>.</li>
+<li>Faça login usando uma das opções suportadas (por exemplo, GitHub ou Google).</li>
+<li>Após o login, você verá a tela principal com:<ul>
+<li>Seu endereço de e-mail.</li>
+<li>Seu token de autenticação (um UUID).</li>
+<li>A área para criar domínios.</li>
+</ul>
+</li>
+</ol>
+<p>Duck DNS é gratuito e foi criado justamente para oferecer DDNS simples, sem necessidade de pagamento nem renovações chatas de conta.</p>
+<div class="admonition tip">
+<p class="admonition-title">Escolha um nome fácil de memorizar</p>
+<p>Pense em algo curto e descritivo, como <code>casa-rodrigo</code>, <code>lab-debian</code> ou <code>homelab13</code>. Esse será o nome que você usará em aplicativos, scripts e bookmarks.</p>
+</div>
+<h3 id="12-criar-o-subdominio">1.2 Criar o subdomínio<a class="headerlink" href="#12-criar-o-subdominio" title="Permanent link">¶</a></h3>
+<ol>
+<li>Na tela principal do Duck DNS, encontre o campo para adicionar um novo domínio.</li>
+<li>Digite o nome desejado (ex.: <code>debian13-lab</code>).</li>
+<li>Clique em <strong>Add domain</strong>.</li>
+<li>O site irá detectar o IP público atual da sua conexão e associá-lo a esse domínio.</li>
+</ol>
+<p>A partir desse momento você já tem algo como:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>debian13-lab.duckdns.org
+</span></code></pre></div>
+<p>Mas, por enquanto, o IP só é atualizado manualmente pelo site; o próximo passo é automatizar isso via Debian.</p>
+<hr>
+<h2 id="passo-2-preparar-o-debian-13-pacotes-e-usuario">Passo 2: preparar o Debian 13 (pacotes e usuário)<a class="headerlink" href="#passo-2-preparar-o-debian-13-pacotes-e-usuario" title="Permanent link">¶</a></h2>
+<p>Agora é hora de preparar o ambiente no Debian.</p>
+<h3 id="21-atualizar-o-sistema-e-instalar-curl">2.1 Atualizar o sistema e instalar <code>curl</code><a class="headerlink" href="#21-atualizar-o-sistema-e-instalar-curl" title="Permanent link">¶</a></h3>
+<p>Abra um terminal no Debian 13 e rode:</p>
+<pre class="terminal"><code>sudo apt update
+sudo apt install curl</code></pre>
+<p>O Duck DNS usa chamadas HTTPS simples para atualizar o IP, e a própria documentação oficial demonstra o uso de <code>curl</code> para isso.</p>
+<div class="admonition note">
+<p class="admonition-title">E o <code>cron</code>?</p>
+<p>Em instalações padrão do Debian, o <code>cron</code> costuma vir instalado por padrão. Para conferir se está rodando:</p>
+<div class="codehilite"><table class="codehilitetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">```</span><span class="n">bash</span>
+<span class="n">ps</span><span class="w"> </span><span class="o">-</span><span class="n">ef</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="n">cr</span><span class="o">[</span><span class="n">o</span><span class="o">]</span><span class="n">n</span>
+<span class="err">```</span>
+
+<span class="n">Se</span><span class="w"> </span><span class="n">não</span><span class="w"> </span><span class="n">aparecer</span><span class="w"> </span><span class="n">nada</span><span class="p">,</span><span class="w"> </span><span class="n">instale</span><span class="w"> </span><span class="nl">com</span><span class="p">:</span>
+
+<span class="err">```</span><span class="n">bash</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">cron</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="c1">--now cron</span>
+</code></pre></div></td></tr></tbody></table></div>
+
+<p>```</p>
+</div>
+<h3 id="22-escolher-onde-guardar-os-arquivos-do-duck-dns">2.2 Escolher onde guardar os arquivos do Duck DNS<a class="headerlink" href="#22-escolher-onde-guardar-os-arquivos-do-duck-dns" title="Permanent link">¶</a></h3>
+<p>Há duas abordagens comuns:</p>
+<ul>
+<li><strong>Diretório no seu <code>$HOME</code></strong>: mais simples para ambiente pessoal.</li>
+<li><strong>Diretório em <code>/opt/duckdns</code> com usuário dedicado</strong>: mais “profissional” e organizado.</li>
+</ul>
+<p>Para manter o tutorial simples e ainda assim organizado, será usado <code>/opt/duckdns</code> com um usuário de sistema.</p>
+<pre class="terminal"><code>sudo useradd -r -d /opt/duckdns -s /usr/sbin/nologin duckdns
+sudo mkdir -p /opt/duckdns
+sudo chown duckdns:duckdns /opt/duckdns</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Por que um usuário dedicado?</p>
+<p>Um usuário de sistema dedicado reduz o impacto de um eventual problema de segurança no script, seguindo a boa prática de <strong>mínimo privilégio</strong>.</p>
+</div>
+<hr>
+<h2 id="passo-3-criar-o-script-de-atualizacao-do-duck-dns">Passo 3: criar o script de atualização do Duck DNS<a class="headerlink" href="#passo-3-criar-o-script-de-atualizacao-do-duck-dns" title="Permanent link">¶</a></h2>
+<p>O coração da solução é um script que chama periodicamente a API de atualização do Duck DNS.</p>
+<h3 id="31-montar-o-script-ducksh">3.1 Montar o script <code>duck.sh</code><a class="headerlink" href="#31-montar-o-script-ducksh" title="Permanent link">¶</a></h3>
+<p>Entre no diretório:</p>
+<pre class="terminal"><code>cd /opt/duckdns
+sudo -u duckdns nano duck.sh</code></pre>
+<p>Cole o conteúdo abaixo (ajuste <code>DOMINIOS</code> e <code>TOKEN</code>):</p>
+<pre class="terminal"><code>#!/bin/bash
+
+DOMINIOS="debian13-lab"        # seu domínio ou lista separada por vírgula
+TOKEN="SEU_TOKEN_AQUI"         # copie da página principal do Duck DNS
+LOGFILE="/opt/duckdns/duck.log"
+
+echo url="https://www.duckdns.org/update?domains=${DOMINIOS}&amp;token=${TOKEN}&amp;ip=" \
+  | curl -k -o "${LOGFILE}" -K -</code></pre>
+<p>A forma de chamada com <code>echo url="..." | curl -k -o duck.log -K -</code> segue exatamente o padrão mostrado na documentação oficial de instalação Linux com cron. </p>
+<div class="admonition warning">
+<p class="admonition-title">Não exponha seu token</p>
+<p>O token do Duck DNS é uma credencial de API. Evite:
+    - Subir esse arquivo em repositórios públicos.
+    - Compartilhar prints onde o token aparece.
+    - Deixar o arquivo com permissões muito abertas.</p>
+</div>
+<h3 id="32-ajustar-permissoes">3.2 Ajustar permissões<a class="headerlink" href="#32-ajustar-permissoes" title="Permanent link">¶</a></h3>
+<p>Torne o script executável e mantenha as permissões restritas:</p>
+<pre class="terminal"><code>sudo chown duckdns:duckdns /opt/duckdns/duck.sh
+sudo chmod 700 /opt/duckdns/duck.sh</code></pre>
+<hr>
+<h2 id="passo-4-testar-o-script-manualmente">Passo 4: testar o script manualmente<a class="headerlink" href="#passo-4-testar-o-script-manualmente" title="Permanent link">¶</a></h2>
+<p>Antes de automatizar, é fundamental testar manualmente.</p>
+<p>Execute:</p>
+<pre class="terminal"><code>sudo -u duckdns /opt/duckdns/duck.sh</code></pre>
+<p>Agora verifique o log:</p>
+<pre class="terminal"><code>cat /opt/duckdns/duck.log</code></pre>
+<p>Se tudo estiver certo, o arquivo deverá conter algo como <code>OK</code>, indicando que a atualização foi bem-sucedida, exatamente como descrito na documentação oficial.</p>
+<div class="admonition example">
+<p class="admonition-title">Testando a partir de outra máquina</p>
+<p>Em outra máquina na internet (por exemplo, uma VPS ou o 4G do celular em modo hotspot), teste:</p>
+<div class="codehilite"><table class="codehilitetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n n-Quoted">`</span><span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">bash</span>
+<span class="n n-Quoted">ping debian13-lab.duckdns.org</span>
+<span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">`</span>
+
+<span class="n">O</span><span class="w"> </span><span class="n">hostname</span><span class="w"> </span><span class="n">deve</span><span class="w"> </span><span class="n">resolver</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">público</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="n">sua</span><span class="w"> </span><span class="n">casa</span><span class="o">/</span><span class="n">servidor</span><span class="p">.</span>
+<span class="n">Se</span><span class="w"> </span><span class="n">aparecer</span><span class="w"> </span><span class="n n-Quoted">`KO`</span><span class="p">,</span><span class="w"> </span><span class="n">confira</span><span class="w"> </span><span class="n">se</span><span class="o">:</span>
+</code></pre></div></td></tr></tbody></table></div>
+
+<ul>
+<li>O domínio foi digitado corretamente no script.</li>
+<li>O token corresponde ao exibido no site.</li>
+<li>Seu IP público está acessível.</li>
+</ul>
+</div>
+<hr>
+<h2 id="passo-5-agendar-atualizacoes-com-cron">Passo 5: agendar atualizações com cron<a class="headerlink" href="#passo-5-agendar-atualizacoes-com-cron" title="Permanent link">¶</a></h2>
+<p>Agora que o script funciona, é hora de automatizar.</p>
+<h3 id="51-editar-o-crontab">5.1 Editar o crontab<a class="headerlink" href="#51-editar-o-crontab" title="Permanent link">¶</a></h3>
+<p>Edite o crontab do usuário <code>duckdns</code>:</p>
+<pre class="terminal"><code>sudo crontab -u duckdns -e</code></pre>
+<p>Adicione a linha:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>*/5 * * * * /opt/duckdns/duck.sh &gt;/dev/null 2&gt;&amp;1
+</span></code></pre></div>
+<p>Essa linha agenda o script a cada 5 minutos, seguindo exatamente o exemplo de cron recomendado pelo próprio Duck DNS e por tutoriais consolidados.</p>
+<ul>
+<li><code>*/5 * * * *</code> → a cada 5 minutos.</li>
+<li><code>&gt;/dev/null 2&gt;&amp;1</code> → descarta qualquer saída, mantendo tudo limpo.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Por que 5 minutos?</p>
+<p>O intervalo de 5 minutos equilibra bem atualização rápida do IP com baixo consumo de recursos. Para ambientes críticos você pode reduzir, mas raramente é necessário.</p>
+</div>
+<h3 id="52-verificar-se-o-cron-esta-rodando">5.2 Verificar se o cron está rodando<a class="headerlink" href="#52-verificar-se-o-cron-esta-rodando" title="Permanent link">¶</a></h3>
+<p>Use:</p>
+<pre class="terminal"><code>ps -ef | grep cr[o]n</code></pre>
+<p>Se o processo cron estiver ativo, o IP será enviado periodicamente para o Duck DNS, mantendo seu domínio sempre atualizado.</p>
+<hr>
+<h2 id="passo-6-alternativa-moderna-usar-systemd-timers">Passo 6: alternativa moderna — usar systemd timers<a class="headerlink" href="#passo-6-alternativa-moderna-usar-systemd-timers" title="Permanent link">¶</a></h2>
+<p>Em sistemas mais novos (como o Debian 13), é cada vez mais comum usar <strong>systemd timers</strong> no lugar do <code>cron</code>.</p>
+<p>A ideia é criar:</p>
+<ul>
+<li>Uma unidade de serviço (<code>duckdns.service</code>) que roda o script.</li>
+<li>Uma unidade de timer (<code>duckdns.timer</code>) que define o agendamento.</li>
+</ul>
+<h3 id="61-criar-o-servico-duckdnsservice">6.1 Criar o serviço <code>duckdns.service</code><a class="headerlink" href="#61-criar-o-servico-duckdnsservice" title="Permanent link">¶</a></h3>
+<p>Crie o arquivo:</p>
+<pre class="terminal"><code>sudo nano /etc/systemd/system/duckdns.service</code></pre>
+<p>Conteúdo sugerido:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[Unit]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="na">Description</span><span class="o">=</span><span class="s">Atualizar DuckDNS (DNS dinâmico)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">[Service]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a><span class="na">User</span><span class="o">=</span><span class="s">duckdns</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos="7 "></span></a><span class="na">Group</span><span class="o">=</span><span class="s">duckdns</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos="8 "></span></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/opt/duckdns/duck.sh</span>
+</span></code></pre></div>
+<p>Essa abordagem é alinhada com exemplos de uso de systemd timers para serviços de DNS dinâmico, onde o serviço executa um script com <code>curl</code> para atualizar o IP.</p>
+<h3 id="62-criar-o-timer-duckdnstimer">6.2 Criar o timer <code>duckdns.timer</code><a class="headerlink" href="#62-criar-o-timer-duckdnstimer" title="Permanent link">¶</a></h3>
+<p>Crie o arquivo:</p>
+<pre class="terminal"><code>sudo nano /etc/systemd/system/duckdns.timer</code></pre>
+<p>Conteúdo:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[Unit]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="na">Description</span><span class="o">=</span><span class="s">Timer para atualização DuckDNS (a cada 5 minutos)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">[Timer]</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="na">OnCalendar</span><span class="o">=</span><span class="s">*:0/5</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a><span class="na">Persistent</span><span class="o">=</span><span class="s">true</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos="8 "></span></a><span class="k">[Install]</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos="9 "></span></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">timers.target</span>
+</span></code></pre></div>
+<ul>
+<li><code>OnCalendar=*:0/5</code> → executa a cada 5 minutos.</li>
+<li><code>Persistent=true</code> → se o sistema ficou desligado, o systemd tenta compensar a próxima execução.[^3]</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Entendendo o OnCalendar</p>
+<p>Você pode usar expressões mais “humanas”, como <code>OnCalendar=hourly</code> ou <code>OnCalendar=*-*-* *:0/10</code> (a cada 10 minutos). Consulte <code>man systemd.timer</code> para mais exemplos.</p>
+</div>
+<h3 id="63-ativar-o-timer">6.3 Ativar o timer<a class="headerlink" href="#63-ativar-o-timer" title="Permanent link">¶</a></h3>
+<p>Execute:</p>
+<pre class="terminal"><code>sudo systemctl daemon-reload
+sudo systemctl enable --now duckdns.timer</code></pre>
+<p>Verifique:</p>
+<pre class="terminal"><code>systemctl list-timers | grep duckdns</code></pre>
+<p>Você deve ver o <code>duckdns.timer</code> listado, com a última e próxima execução agendadas, comportamento idêntico aos exemplos de timers para serviços de DNS dinâmico.</p>
+<hr>
+<h2 id="passo-7-validando-a-configuracao-na-vida-real">Passo 7: validando a configuração na vida real<a class="headerlink" href="#passo-7-validando-a-configuracao-na-vida-real" title="Permanent link">¶</a></h2>
+<p>Com cron ou systemd timer configurados, é hora de testar como se estivesse em uso real.</p>
+<ol>
+<li>Anote o IP atual que o Duck DNS mostra na página principal.</li>
+<li>Force uma mudança de IP:<ul>
+<li>Reiniciando o roteador.</li>
+<li>Ligando/desligando o link (em alguns provedores).</li>
+</ul>
+</li>
+<li>Aguarde alguns minutos (de acordo com o intervalo configurado).</li>
+<li>Acesse novamente a página do Duck DNS e verifique se o IP foi atualizado.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Testando com SSH</p>
+<p>No seu cliente:</p>
+<pre class="terminal"><code>ssh usuario@debian13-lab.duckdns.org</code></pre>
+<p>Se o roteador estiver com o <strong>port forwarding</strong> configurado para a porta 22, você deve conseguir acessar seu servidor normalmente.</p>
+</div>
+<p>Se algo não funcionar:</p>
+<div class="codehilite"><table class="codehilitetable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="nv">Confira</span><span class="w"> </span><span class="nv">o</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span>`<span class="o">/</span><span class="nv">opt</span><span class="o">/</span><span class="nv">duckdns</span><span class="o">/</span><span class="nv">duck</span>.<span class="nv">log</span>`.
+<span class="o">-</span><span class="w"> </span><span class="nv">Veja</span><span class="w"> </span><span class="nv">o</span><span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nv">servi</span>ç<span class="nv">o</span><span class="o">/</span><span class="nv">timer</span><span class="w"> </span><span class="ss">(</span><span class="nv">se</span><span class="w"> </span><span class="nv">estiver</span><span class="w"> </span><span class="nv">usando</span><span class="w"> </span><span class="nv">systemd</span><span class="ss">)</span>:
+</code></pre></div></td></tr></tbody></table></div>
+
+<pre class="terminal"><code>sudo systemctl status duckdns.service
+sudo systemctl status duckdns.timer</code></pre>
+<hr>
+<h2 id="exemplos-praticos-de-uso-do-duck-dns">Exemplos práticos de uso do Duck DNS<a class="headerlink" href="#exemplos-praticos-de-uso-do-duck-dns" title="Permanent link">¶</a></h2>
+<p>Uma vez que você tem um domínio Duck DNS atualizado automaticamente, pode usá-lo em vários cenários.</p>
+<h3 id="acesso-ssh-remoto-ao-servidor-debian">Acesso SSH remoto ao servidor Debian<a class="headerlink" href="#acesso-ssh-remoto-ao-servidor-debian" title="Permanent link">¶</a></h3>
+<ul>
+<li>Configure o roteador para encaminhar a porta 22 (ou outra) para o IP interno do seu Debian.</li>
+<li>Use sempre o hostname Duck DNS no cliente SSH:</li>
+</ul>
+<pre class="terminal"><code>ssh rodrigo@debian13-lab.duckdns.org</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Nunca exponha SSH sem proteção</p>
+</div>
+<ul>
+<li>Use <strong>chaves SSH</strong> em vez de senha.</li>
+<li>Considere mudar a porta padrão.</li>
+<li>Utilize <code>fail2ban</code> ou firewall para limitar tentativas.</li>
+</ul>
+<h3 id="servidor-webnextcloud-acessivel-pela-internet">Servidor web/Nextcloud acessível pela internet<a class="headerlink" href="#servidor-webnextcloud-acessivel-pela-internet" title="Permanent link">¶</a></h3>
+<ul>
+<li>Configure um servidor web (Nginx, Apache) no Debian.</li>
+<li>Aponte o virtual host para o hostname Duck DNS.</li>
+<li>Faça port forwarding da porta 80/443 no roteador.</li>
+<li>Opcionalmente, use um proxy reverso com TLS.</li>
+</ul>
+<p>Duck DNS pode ser usado como base de um ambiente “homelab” acessível de qualquer lugar, seguindo boas práticas de DNS dinâmico e automação de IP.</p>
+<hr>
+<h2 id="boas-praticas-de-seguranca-e-manutencao">Boas práticas de segurança e manutenção<a class="headerlink" href="#boas-praticas-de-seguranca-e-manutencao" title="Permanent link">¶</a></h2>
+<p>Ter um hostname acessível pela internet é poderoso, mas exige cuidado.</p>
+<ul>
+<li><strong>Proteja seus serviços</strong>:<ul>
+<li>SSH com chave.</li>
+<li>Aplicativos web com autenticação e HTTPS.</li>
+</ul>
+</li>
+<li></li>
+<li><strong>Monitore o log do Duck DNS</strong>:<ul>
+<li>De tempos em tempos, confira <code>/opt/duckdns/duck.log</code> para garantir que as atualizações estão OK.[^2]</li>
+</ul>
+</li>
+<li></li>
+<li><strong>Mantenha o sistema atualizado</strong>:<ul>
+<li>Use <code>sudo apt update &amp;&amp; sudo apt upgrade</code> regularmente.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Multi-domínios com Duck DNS</p>
+<p>A API do Duck DNS aceita uma lista de domínios separados por vírgula (sem espaços), atualizando todos com o mesmo IP numa única chamada.
+Exemplo no script:</p>
+<pre class="terminal"><code>DOMINIOS="casa-lab,debian13-lab,media-server"</code></pre>
+</div>
+<hr>
+<h2 id="proximos-passos-recomendados">Próximos passos recomendados<a class="headerlink" href="#proximos-passos-recomendados" title="Permanent link">¶</a></h2>
+<p>Agora que o Duck DNS está funcionando no Debian 13, alguns próximos passos interessantes:</p>
+<ul>
+<li>Integrar com um <strong>servidor VPN</strong> (WireGuard, OpenVPN) usando o hostname Duck DNS.</li>
+<li>Automatizar backups remotos usando <code>rsync</code> ou <code>restic</code> apontando para o hostname.</li>
+<li>Monitorar disponibilidade do servidor usando ferramentas externas que testam <code>debian13-lab.duckdns.org</code>.</li>
+</ul>
+<p>Com um simples script e um agendador (cron ou systemd timer), você aplica na prática um padrão de infraestrutura usado há anos por administradores de sistemas, apoiado em documentação oficial e boas práticas de DNS dinâmico.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Luis Rodrigo - Net
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/luisrodrigonet" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/luisrodrigoog" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://linkedin.com/in/luisrodrigoog" target="_blank" rel="noopener" title="Linkedin" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.instagram.com/luisrodrigoog/" target="_blank" rel="noopener" title="Instagram" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs", "content.tabs.link", "content.tooltips", "content.code.select", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

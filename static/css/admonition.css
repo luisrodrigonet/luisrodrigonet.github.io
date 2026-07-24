@@ -1,0 +1,115 @@
+/************************************************************
+        Custom Admonition: Suporte 
+ ************************************************************/
+.md-typeset .admonition.suporte,
+.md-typeset details.suporte {
+  border-left-color: #8e44ad; /* Roxo */
+}
+
+.md-typeset .suporte > .admonition-title,
+.md-typeset .suporte > summary {
+  background-color: rgba(142, 68, 173, 0.1); /* Roxo claro */
+  border-left-color: #8e44ad;
+}
+
+.md-typeset .suporte > .admonition-title::before,
+.md-typeset .suporte > summary::before {
+  background-color: #8e44ad;
+  /* Aqui você pode usar um código de ícone (ex: Material Icons) */
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>');
+}
+
+/************************************************************
+        Custom Admonition: Código Fonte
+ ************************************************************/
+.md-typeset .admonition.codigo-fonte,
+.md-typeset details.codigo-fonte {
+  border-left-color: #007acc; /* Azul estilo VS Code */
+}
+
+/* Estilização do Título/Cabeçalho */
+.md-typeset .codigo-fonte > .admonition-title,
+.md-typeset .codigo-fonte > summary {
+  background-color: rgba(0, 122, 204, 0.1);
+  border-left-color: #007acc;
+  font-weight: 700;
+}
+
+/* Ícone de Código ( { } ) */
+.md-typeset .codigo-fonte > .admonition-title::before,
+.md-typeset .codigo-fonte > summary::before {
+  background-color: #007acc;
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg>');
+}
+
+/************************************************************
+        Custom Admonition: Terminal
+ ************************************************************/
+/* Custom Admonition: Terminal (Verde Escuro) */
+.md-typeset .admonition.terminal,
+.md-typeset details.terminal {
+  border-color: #2e7d32; /* Verde escuro (Material Design Green 800) */
+}
+
+/* Estilo do Título */
+.md-typeset .terminal > .admonition-title,
+.md-typeset .terminal > summary {
+  background-color: rgba(46, 125, 50, 0.1); /* Fundo sutil em verde escuro */
+  border-color: #2e7d32;
+  color: #2e7d32; /* Texto do título em verde escuro */
+}
+
+/* Ícone de Terminal em verde escuro */
+.md-typeset .terminal > .admonition-title::before,
+.md-typeset .terminal > summary::before {
+  background-color: #2e7d32;
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 18H4v-2h16v2m-16-3l5.5-5L4 5h2.5l5.5 5-5.5 5H4z"/></svg>');
+}
+
+/************************************************************
+        Custom Admonition: Solução
+ ************************************************************/
+.md-typeset .admonition.solucao,
+.md-typeset details.solucao {
+  border-left-color: #00b894; /* Verde Esmeralda */
+}
+
+/* Estilização do Cabeçalho */
+.md-typeset .solucao > .admonition-title,
+.md-typeset .solucao > summary {
+  background-color: rgba(0, 184, 148, 0.1);
+  border-left-color: #00b894;
+  font-weight: bold;
+}
+
+/* Ícone de Check/Solução (Lâmpada ou Check) */
+.md-typeset .solucao > .admonition-title::before,
+.md-typeset .solucao > summary::before {
+  background-color: #00b894;
+  /* Ícone de uma lâmpada (Ideia/Solução) */
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>');
+}
+
+/************************************************************
+        Custom Admonition: Resposta
+ ************************************************************/
+.md-typeset .admonition.resposta,
+.md-typeset details.resposta {
+  border-left-color: #3f51b5; /* Azul Indigo */
+}
+
+/* Estilização do Título da Resposta */
+.md-typeset .resposta > .admonition-title,
+.md-typeset .resposta > summary {
+  background-color: rgba(63, 81, 181, 0.1); /* Fundo suave */
+  border-left-color: #3f51b5;
+  font-weight: 600;
+}
+
+/* Ícone de Resposta (Chat Bubble) */
+.md-typeset .resposta > .admonition-title::before,
+.md-typeset .resposta > summary::before {
+  background-color: #3f51b5;
+  /* Ícone de balão de diálogo com check */
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10c-1.1 0-2.1-.2-3.1-.5L4 23l1.5-4.9C4 16.6 3.5 14.4 3.5 12c0-5.5 4.5-10 10-10m-1.9 12.1L18 8.4l-1.4-1.4-6.5 6.5-2.5-2.5L6.2 12.4l3.9 3.7z"/></svg>');
+}

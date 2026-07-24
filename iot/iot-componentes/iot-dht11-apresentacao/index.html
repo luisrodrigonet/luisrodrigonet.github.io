@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="pt" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="pt" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,11 +18,11 @@
       
       
       <link rel="icon" href="../../../assets/favicon/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Iot dht11 apresentacao - Luis Rodrigo - Net</title>
+        <title>IOT - Detalhes do Sensor DHT11 - Luis Rodrigo - Net</title>
       
     
     
@@ -39,17 +36,30 @@
 
     
     
+  
       
     
+  <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tables = document.querySelectorAll("article table:not([class])");
+      tables.forEach(table => new Tablesort(table));
+    });
+  </script>
+
     
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../../static/css/extra.css">
+    
+      <link rel="stylesheet" href="../../../static/css/admonition.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -57,7 +67,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -88,9 +108,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href="../../.." title="Luis Rodrigo - Net" class="md-header__button md-logo" aria-label="Luis Rodrigo - Net" data-md-component="logo">
       
@@ -99,7 +117,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -111,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Iot dht11 apresentacao
+              IOT - Detalhes do Sensor DHT11
             
           </span>
         </div>
@@ -124,20 +142,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple" aria-label="Mudar para o modo claro" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange" aria-label="Mudar para o modo escuro" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
       </label>
     
   
@@ -153,29 +171,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Pesquisar">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -183,7 +201,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Inicializando a pesquisa
@@ -199,8 +217,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -298,6 +322,28 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../../programacao/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programação
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../../sobre/licenca/" class="md-tabs__link">
           
   
@@ -315,13 +361,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -329,7 +369,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -348,7 +390,7 @@
     Luis Rodrigo - Net
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -413,7 +455,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -450,7 +492,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -609,7 +651,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -646,7 +688,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -790,6 +832,8 @@
       
         
       
+        
+      
     
     
     
@@ -805,7 +849,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -842,7 +886,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -860,7 +904,7 @@
   <span class="md-ellipsis">
     
   
-    Arduido
+    Arduino
   
 
     
@@ -937,6 +981,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../thingsboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ThingsBoard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../componentes/" class="md-nav__link">
         
   
@@ -945,6 +1017,172 @@
     
   
     Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programacao/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/django/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Django
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programacao/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSCode
   
 
     
@@ -993,10 +1231,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1014,8 +1252,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1023,7 +1261,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1096,7 +1334,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1112,300 +1352,104 @@
       <span class="md-nav__icon md-icon"></span>
       Índice
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#introducao" class="md-nav__link">
+  <a href="#1-introducao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introdução
+        1️⃣ Introdução
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visao-geral-e-especificacoes-do-sensor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visão Geral e Especificações do Sensor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Visão Geral e Especificações do Sensor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-o-que-e-e-como-funciona" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 O que é e Como Funciona
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-especificacoes-tecnicas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 Especificações Técnicas 🤖
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-vantagens-e-limitacoes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 Vantagens e Limitações 🎯
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardware-conexao-com-o-arduino" class="md-nav__link">
+  <a href="#2-aplicacoes-praticas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hardware: Conexão com o Arduino
+        2️⃣ Aplicações práticas
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Hardware: Conexão com o Arduino">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-materiais-necessarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 Materiais Necessários 📦
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1 Materiais Necessários 📦">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#311-kit-basico-recomendado-para-iniciantes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1.1 Kit Básico Recomendado para Iniciantes: 📦
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-esquema-de-ligacao-circuito" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 Esquema de Ligação (Circuito) 🛠️
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3.2 Esquema de Ligação (Circuito) 🛠️">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#321-descricao-detalhada-do-circuito" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.1 Descrição Detalhada do Circuito:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#322-cuidados-e-boas-praticas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2.2 Cuidados e Boas Práticas:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-passo-a-passo-da-montagem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 Passo a Passo da Montagem
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#software-programacao-na-arduino-ide" class="md-nav__link">
+  <a href="#3-visao-geral-e-especificacoes-do-sensor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Software: Programação na Arduino IDE
+        3️⃣ Visão Geral e Especificações do Sensor
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Software: Programação na Arduino IDE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-instalacao-da-biblioteca" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Instalação da Biblioteca
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4.1 Instalação da Biblioteca">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#411-instalacao-via-gerenciador-de-bibliotecas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1.1 Instalação via Gerenciador de Bibliotecas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#412-metodo-alternativo-instalacao-manual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1.2 Método Alternativo: Instalação Manual
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-aplicacoes-praticas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 Aplicações Práticas
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-observacoes-adicionais-e-melhores-praticas" class="md-nav__link">
+  <a href="#4-hardware-conexao-com-o-arduino" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Observações Adicionais e Melhores Práticas
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Observações Adicionais e Melhores Práticas">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-dicas-de-hardware" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1. Dicas de Hardware
+        4️⃣ Hardware: Conexão com o Arduino
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#52-armadilhas-comuns-troubleshooting" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#5-esquema-de-ligacao-circuito" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2. Armadilhas Comuns (Troubleshooting)
+        5️⃣ Esquema de Ligação (Circuito) 🛠️
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#53-melhores-praticas-de-codigo" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#6-passo-a-passo-da-montagem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3. Melhores Práticas de Código
+        6️⃣ Passo a Passo da Montagem
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#54-aplicacoes-avancadas" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#7-observacoes-adicionais-e-melhores-praticas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4 Aplicações Avançadas
+        7️⃣ Observações Adicionais e Melhores Práticas
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#55-manutencao-e-calibracao" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#8-armadilhas-comuns-troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5 Manutenção e Calibração
+        8️⃣ Armadilhas Comuns (Troubleshooting)
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#9-manutencao-e-calibracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9️⃣ Manutenção e Calibração
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1422,6 +1466,8 @@
               
                 
 
+  
+
 
 
   
@@ -1431,57 +1477,66 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-<hr />
-<p>title: 🤖 IOT - Detalhes do Sensor DHT11
-summary: Aprenda tudo sobre o sensor DHT11: funcionamento, montagem, uso com Arduino e aplicações em projetos IoT.
-authors:
-    - Luis Rodrigo - Papagaio
-tags:
-  - iot
-  - DHT11, 
-  - Arduino
-  - temperatura
-  - umidade
-  - sensores
-  - automação residencial
-  - monitoramento ambiental
-  - Arduino IDE
-  - prototipagem
-  - eletrônica
-  - projeto IoT
-  - sensor digital
-  - comunicação serial
-  - Adafruit
-  - microcontrolador
-  - ESP8266
-  - ESP32
-  - IoT projetos
-  - prototipagem eletrônica.</p>
-<p>date: 2025-11-05
-icon: material/home_iot_device
-lang: pt</p>
-<hr />
-<h1 id="sensor-dht11">Sensor DHT11 🧰<a class="headerlink" href="#sensor-dht11" title="Permanent link">&para;</a></h1>
-<h2 id="introducao"><img alt="1⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/31-20e3.svg" title=":one:" />  Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+
+<h1 id="sensor-dht11">Sensor DHT11 🧰<a class="headerlink" href="#sensor-dht11" title="Permanent link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/iot/banner-esp-004a.jpg" data-desc-position="bottom"><img alt="Banner" src="../../../static/img/iot/banner-esp-004a.jpg"></a></p>
+<h2 id="1-introducao">1️⃣ Introdução<a class="headerlink" href="#1-introducao" title="Permanent link">¶</a></h2>
 <p>O <code>DHT11</code> é um <strong>sensor digital amplamente utilizado em projetos de IoT</strong> para medir temperatura e umidade do ar simultânea e precisamente. Este sensor inteligente combina dois componentes principais: um <strong>sensor capacitivo</strong> para medir umidade relativa e um <strong>termistor</strong> para medir temperatura, ambos processados por um microcontrolador integrado de 8 bits.</p>
-<p>O <code>DHT11</code> destaca-se pela sua versatilidade e facilidade de uso, sendo ideal para aplicações que exigem monitoramento ambiental básico sem custos elevados. Suas principais aplicações práticas incluem:</p>
-<ul>
-<li><strong>Automação residencial inteligente</strong> para controle de climatização e conforto ambiental</li>
-<li><strong>Agricultura de precisão</strong> monitorando umidade do solo e temperatura em estufas</li>
-<li><strong>Monitoramento ambiental</strong> em data centers, laboratórios e salas de servidores</li>
-<li><strong>Estações meteorológicas pessoais</strong> para coleta de dados climáticos</li>
-<li><strong>Sistemas de incubação</strong> para aves e reptis, garantindo condições ideais de temperatura</li>
-<li><strong>Detectores de qualidade do ar</strong> integrados com sensores adicionais para ambientes internos</li>
-</ul>
 <p>Este sensor é especialmente apropriado para <strong>iniciantes e estudantes de IoT e Arduino</strong>, oferecendo uma curva de aprendizado suave com excelente retorno prático. Sua pinagem simples (apenas 3 pinos utilizados), comunicação digital direta e grande disponibilidade de bibliotecas prontas tornam a implementação rápida e eficiente.</p>
-<p>🎯 <strong>Nível de Dificuldade: Iniciante</strong></p>
-<h2 id="visao-geral-e-especificacoes-do-sensor"><img alt="2⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/32-20e3.svg" title=":two:" /> Visão Geral e Especificações do Sensor<a class="headerlink" href="#visao-geral-e-especificacoes-do-sensor" title="Permanent link">&para;</a></h2>
-<h3 id="21-o-que-e-e-como-funciona">2.1 O que é e Como Funciona<a class="headerlink" href="#21-o-que-e-e-como-funciona" title="Permanent link">&para;</a></h3>
+<p>🎯 <strong>Nível de Dificuldade: <mark>Iniciante</mark></strong></p>
+<h2 id="2-aplicacoes-praticas">2️⃣ Aplicações práticas<a class="headerlink" href="#2-aplicacoes-praticas" title="Permanent link">¶</a></h2>
+<p>A sequir temos uma lista de aplicações práticas do sensor <strong>DHT11</strong>.</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>🏡 1. Automação Residencial e Conforto Ambiental</strong></p>
+<hr>
+<ul>
+<li><strong>Controle Automático de Climatização:</strong> Monitoramento de temperatura e umidade relativa para acionamento automatizado de umidificadores, desumidificadores ou velocidade de ventiladores (via <strong>PWM</strong>), mantendo faixas pré-configuradas (ex: 40%–60% UR).</li>
+<li><strong>Alertas e Prevenção:</strong> Instalação em locais estratégicos (subsolos ou tubulações) para detecção indireta de vazamentos por elevação abrupta de umidade, enviando notificações em tempo real para o usuário via <strong>MQTT</strong> ou aplicativos móveis.</li>
+</ul>
+</li>
+<li>
+<p><strong>🌿 2. Agricultura de Precisão e Estufas Inteligentes</strong></p>
+<hr>
+<ul>
+<li><strong>Manejo de Estufas:</strong> Monitoramento ambiental contínuo para acionamento de sistemas de irrigação, ventilação e umidificação sempre que limites críticos forem atingidos (ex: temperatura acima de 30°C ou umidade abaixo de 60% UR).</li>
+<li><strong>Manejo de Incubadoras:</strong> Controle térmico e hídrico rigoroso para reprodução e incubação de ovos de aves e répteis, acionando aquecedores e prevenindo perdas</li>
+</ul>
+</li>
+<li>
+<p><strong>🏢 3. Monitoramento de Ambientes Críticos e Data Centers</strong></p>
+<hr>
+<ul>
+<li><strong>Salas de Servidores e Laboratórios:</strong> Monitoramento contínuo em ambientes que exigem estabilidade para proteção de equipamentos eletrônicos, medicamentos e alimentos, disparando alarmes visuais/sonoros e notificações remotas em caso de desvios.</li>
+<li><strong>Qualidade do Ar Interno:</strong> Integração com sensores de gás (como MQ-135 e MQ-2) para avaliar conforto térmico e ventilação adequada em escritórios e salas fechadas.</li>
+</ul>
+</li>
+<li>
+<p><strong>📊 4. Telemetria e Dashboards IoT na Nuvem</strong></p>
+<hr>
+<ul>
+<li><strong>Estações Meteorológicas Pessoais:</strong> Coleta e exibição local de dados (via displays OLED/LCD 16x2) integrados à transmissão sem fio via <strong>ESP32</strong> ou <strong>ESP8266</strong> (NodeMCU).</li>
+<li><strong>Plataformas de Nuvem:</strong> Envio de séries temporais para plataformas como <strong>ThingsBoard</strong>, <strong>ThingSpeak</strong> ou <strong>Blynk</strong>, permitindo a geração de gráficos históricos, acompanhamento remoto e armazenamento em tempo real.</li>
+</ul>
+</li>
+<li>
+<p><strong>💾 5. Registradores de Dados Off-line (Data Loggers)</strong></p>
+<hr>
+<ul>
+<li><strong>Aquisição Local:</strong> Integração com microcontroladores (Arduino), módulos <strong>RTC</strong> (Relógio de Tempo Real) e cartões micro SD para gravação autônoma e periódica de dados, viabilizando análises posteriores em planilhas sem dependência de conectividade à internet.</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="3-visao-geral-e-especificacoes-do-sensor">3️⃣ Visão Geral e Especificações do Sensor<a class="headerlink" href="#3-visao-geral-e-especificacoes-do-sensor" title="Permanent link">¶</a></h2>
 <p>O <code>DHT11</code> é um <strong>sensor digital de temperatura e umidade de baixo custo</strong> que utiliza um protocolo proprietário de comunicação serial para transmitir dados. Diferentemente de sensores analógicos que retornam valores contínuos de tensão, o <code>DHT11</code> envia informações já digitalizadas e processadas diretamente ao microcontrolador.</p>
-<p>🚨 <strong>Princípio de Funcionamento:</strong></p>
+<details class="note">
+<summary> <strong>Princípio de Funcionamento:</strong> 🚨</summary>
 <p>O sensor opera através de dois mecanismos distintos:</p>
 <ul>
 <li>
@@ -1491,35 +1546,21 @@ lang: pt</p>
 <p><strong>Medição de Temperatura</strong>: Um termistor de coeficiente negativo (NTC) detecta variações de temperatura e as converte em sinais digitais, fornecendo leituras em graus Celsius.</p>
 </li>
 </ul>
-<p>🚨 <strong>Protocolo de Comunicação:</strong></p>
+</details>
+<details class="note">
+<summary><strong>Protocolo de Comunicação:</strong> 🚨 </summary>
 <p>O <code>DHT11</code> utiliza um barramento <strong>serial de fio único</strong> (<code>single-wire</code>) que funciona de forma bidirecional:</p>
 <ol>
-<li>O Arduino envia um pulso negativo de pelo menos 18ms seguido de um pulso positivo de 20 a 40µs</li>
-<li>O sensor responde com um pulso baixo de 54µs seguido de um pulso alto de 80µs</li>
-<li>O sensor então transmite 40 bits de dados: 8 bits de umidade inteira + 8 bits de umidade decimal + 8 bits de temperatura inteira + 8 bits de temperatura decimal + 8 bits de checksum</li>
+<li>O Arduino ou o ESP enviam um pulso negativo de pelo menos <mark>18ms</mark> seguido de um pulso positivo de <mark>20 a 40µs</mark></li>
+<li>O sensor responde com um pulso baixo de <mark>54µs</mark> seguido de um pulso alto de <mark>80µs</mark></li>
+<li>O sensor então transmite 40 bits de dados: 8 bits de umidade inteira + 8 bits de umidade decimal + 8 bits de temperatura inteira + 8 bits de temperatura decimal + 8 bits de <em>checksum</em></li>
 <li>A transferência de dados ocorre aproximadamente a cada <strong>2 segundos</strong></li>
 </ol>
 <p>Cada bit é codificado pela duração do pulso: bits "0" têm pulsos curtos (26-28µs) enquanto bits "1" têm pulsos mais longos (70µs).</p>
-<p>🚨 <strong>Tipo de Saída:</strong> Dados digitais em protocolo proprietário (único fio de dados)</p>
-<p>🚨 <strong>Vantagens Principais:</strong></p>
-<ul>
-<li>Baixo custo e grande disponibilidade no mercado</li>
-<li>Duas medições em um único componente (temperatura e umidade)</li>
-<li>Fácil interfaceamento com microcontroladores através de bibliotecas prontas</li>
-<li>Confiável e calibrado em fábrica, sem necessidade de calibração externa</li>
-<li>Excelente para prototipagem rápida e educação</li>
-<li>Integração simples com projetos IoT básicos</li>
-</ul>
-<p>🚨 <strong>Limitações Principais:</strong></p>
-<ul>
-<li><strong>Precisão limitada</strong>: ±2°C para temperatura e ±5% UR para umidade</li>
-<li><strong>Faixa de operação restrita</strong>: Temperatura de 0°C a 50°C (não funciona abaixo de 0°C); umidade de 20% a 90%</li>
-<li><strong>Lentidão de resposta</strong>: Tempo mínimo de 2 segundos entre leituras consecutivas</li>
-<li><strong>Sensibilidade a interferências</strong>: Ruído elétrico em cabos longos pode causar leituras incorretas</li>
-<li><strong>Degradação com o tempo</strong>: Exposição prolongada à umidade extrema pode afetar a precisão</li>
-<li><strong>Instabilidade em ambientes frios</strong>: Desempenho inadequado abaixo de 0°C</li>
-</ul>
-<h3 id="22-especificacoes-tecnicas">2.2 Especificações Técnicas 🤖<a class="headerlink" href="#22-especificacoes-tecnicas" title="Permanent link">&para;</a></h3>
+<p><strong>Tipo de Saída:</strong> Dados digitais em protocolo proprietário (único fio de dados)</p>
+</details>
+<details class="info">
+<summary> Especificações Técnicas 🤖</summary>
 <table>
 <thead>
 <tr>
@@ -1601,54 +1642,58 @@ lang: pt</p>
 </tr>
 </tbody>
 </table>
-<p>🤖 <strong>Impacto dos Parâmetros na Compatibilidade com Arduino:</strong></p>
+</details>
+<details class="note">
+<summary> <strong>Vantagens Principais:</strong> 🚨 </summary>
+<p><strong>💸 Custo e Acessibilidade</strong></p>
+<ul>
+<li><strong>Preço Extremamente Competitivo:</strong> Um dos sensores mais acessíveis do mercado, tornando-o a escolha ideal para prototipagem rápida, projetos educacionais e sistemas com múltiplos pontos de medição.</li>
+<li><strong>Grande Disponibilidade:</strong> Facilmente encontrado no mercado com amplo suporte da comunidade maker e industrial.</li>
+</ul>
+<p><strong>🎯 Funcionalidade e Desempenho</strong></p>
+<ul>
+<li><strong>Solução Dois em Um:</strong> Realiza a leitura de temperatura e umidade relativa do ar simultaneamente, eliminando a necessidade de componentes separados.</li>
+<li><strong>Calibrado de Fábrica:</strong> Pronto para uso imediato sem a necessidade de calibração manual do elemento sensor.</li>
+<li><strong>Eficiência Energética e Tamanho Compacto:</strong> Apresenta baixo consumo elétrico (adequado para operação a bateria) e formato reduzido para integração em gabinetes e placas densas.</li>
+</ul>
+<p><strong>🔌 Integração e Compatibilidade</strong></p>
+<ul>
+<li><strong>Desenvolvimento Simplificado:</strong> Amplo ecossistema de bibliotecas prontas (como as da <em>Adafruit</em>) que abstraem a comunicação digital e aceleram a programação.</li>
+<li><strong>Compatibilidade Multiplataforma:</strong> Suporte nativo a microcontroladores de 5V e 3.3V, incluindo <strong>Arduino (Uno, Nano, Mega)</strong>, <strong>ESP8266 (NodeMCU)</strong>, <strong>ESP32</strong> e <strong>Raspberry Pi</strong>.</li>
+<li><strong>Confiabilidade Comprovada:</strong> Histórico consolidado ao longo de mais de uma década de aplicação prática em projetos de automação e Internet das Coisas (IoT).</li>
+</ul>
+</details>
+<details class="warning">
+<summary> <strong>Limitações Principais:</strong> 🚨</summary>
+<p><strong>🎯 Precisão e Limites de Operação</strong></p>
+<ul>
+<li><strong>Precisão e Faixa Restritas:</strong> Apresenta precisão limitada de 2ºC para temperatura e 5% UR para umidade, operando apenas de 0°C a 50°C e de 20% a 90% UR. Não é adequado para aplicações críticas (como laboratórios e ambientes clínicos) nem para ambientes frios ou câmaras frigoríficas.</li>
+</ul>
+<p><strong>⏱️ Desempenho e Resposta</strong></p>
+<ul>
+<li><strong>Lentidão de Resposta:</strong> Exige um intervalo mínimo de 2 segundos entre leituras consecutivas, limitando seu uso em aplicações que demandam monitoramento em tempo real de alta frequência.</li>
+<li><strong>Histórese de Umidade:</strong> Apresenta retenção/atraso na resposta ao transitar rapidamente entre diferentes níveis de umidade.</li>
+</ul>
+<p><strong>🔌 Comunicação e Sinal</strong></p>
+<ul>
+<li><strong>Protocolo Proprietário:</strong> Não utiliza barramentos padrão (como I2C ou SPI), exigindo bibliotecas específicas para interpretar seu protocolo de fio único.</li>
+<li><strong>Sensibilidade a Ruídos elétricos:</strong> Suscetível a erros de leitura ou falhas na comunicação ao utilizar cabos longos (especialmente acima de 1 metro em 3.3V) sem a devida blindagem ou ajuste do resistor de <em>pull-up</em>.</li>
+</ul>
+<p><strong>⏳ Durabilidade e Confiabilidade</strong></p>
+<ul>
+<li><strong>Degradação e Falhas Periódicas:</strong> A exposição prolongada a umidade extrema, sujeira e flutuações térmicas reduz a precisão ao longo do tempo. Além disso, interferências externas podem provocar falhas pontuais nas leituras.</li>
+</ul>
+</details>
+<details class="warning">
+<summary> <strong>Impacto dos Parâmetros na Compatibilidade com Arduino e ESP</strong> </summary>
 <p>A <strong>tensão de operação</strong> de <code>3.0</code> a <code>5.5V</code> oferece compatibilidade universal com boards Arduino convencionais (5V) e também com sistemas modernos de 3.3V como ESP32 e ESP8266. </p>
 <p>O <strong>tempo de resposta de 2 segundos</strong> é suficiente para a maioria das aplicações IoT, mas inadequado para sistemas que exigem detecção rápida de mudanças. </p>
 <p>A <strong>taxa de amostragem de 1 Hz</strong> implica que o código deve incluir delayss de pelo menos 1 a 2 segundos entre leituras consecutivas, caso contrário resultará em leituras inválidas ou repetidas.</p>
 <p>A <strong>corrente moderada</strong> (≤2.5mA) permite alimentação direta via pino 5V do Arduino, embora seja recomendável usar uma fonte de alimentação externa para projetos com múltiplos sensores. </p>
 <p>A <strong>saída digital</strong> requer obrigatoriamente uma biblioteca compatível (Adafruit DHT) para interpretar o protocolo proprietário.</p>
-<h3 id="23-vantagens-e-limitacoes">2.3 Vantagens e Limitações 🎯<a class="headerlink" href="#23-vantagens-e-limitacoes" title="Permanent link">&para;</a></h3>
-<p>🎯 <strong>Vantagens:</strong></p>
-<ul>
-<li><strong>Custo extremamente competitivo</strong>: Entre os sensores de temperatura/umidade mais acessíveis do mercado, ideal para iniciantes e projetos com múltiplos sensores</li>
-<li><strong>Fácil integração com Arduino</strong>: Bibliotecas prontas e bem documentadas (<em>Adafruit</em>) eliminam complexidade na implementação</li>
-<li><strong>Dois sensores em um</strong>: Elimina a necessidade de componentes separados para temperatura e umidade</li>
-<li><strong>Calibração em fábrica</strong>: Não requer calibração manual antes da utilização</li>
-<li><strong>Confiabilidade comprovada</strong>: Amplamente utilizado em projetos comerciais e educacionais há mais de 10 anos</li>
-<li><strong>Compatibilidade ampla</strong>: Funciona com <strong>Arduino Uno, Nano, Mega, ESP8266, ESP32</strong> e outras plataformas</li>
-<li><strong>Baixo consumo de energia</strong>: Adequado para projetos com alimentação por bateria</li>
-<li><strong>Formato compacto</strong>: Placa de módulo pequena facilita montagem em projetos densamente integrados</li>
-</ul>
-<p>🎯 <strong>Limitações:</strong></p>
-<ul>
-<li>
-<p><strong>Precisão insuficiente para aplicações críticas</strong>: ±2°C e ±5% UR limitam uso em ambientes que exigem alta precisão (laboratórios, ambientes clínicos)</p>
-</li>
-<li>
-<p><strong>Faixa de operação restrita</strong>: Não funciona abaixo de 0°C, incompatível com aplicações externas em clima frio ou câmaras frigoríficas</p>
-</li>
-<li>
-<p><strong>Velocidade reduzida</strong>: Intervalo mínimo de 2 segundos entre leituras limita aplicações que exigem monitoramento em tempo real rápido</p>
-</li>
-<li>
-<p><strong>Sensibilidade a ruído elétrico</strong>: Cabos longos (&gt;1 metro em 3.3V) causam degradação do sinal sem blindagem adequada</p>
-</li>
-<li>
-<p><strong>Degradação de precisão com tempo</strong>: Exposição prolongada a umidade extrema, flutuações térmicas ou sujeira pode reduzir a confiabilidade</p>
-</li>
-<li>
-<p><strong>Leituras ocasionalmente falhadas</strong>: Interferências eletromagnéticas ou configuração inadequada de resistor <code>pull-up</code> causam erros periódicos</p>
-</li>
-<li>
-<p><strong>Sem interface padrão</strong>: Protocolo proprietário diferente de sensores I2C/SPI, requerendo bibliotecas específicas</p>
-</li>
-<li>
-<p><strong>Histórese de umidade</strong>: O sensor pode "memorizar" níveis anteriores em transições rápidas de umidade</p>
-</li>
-</ul>
-<h2 id="hardware-conexao-com-o-arduino"><img alt="3⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/33-20e3.svg" title=":three:" /> Hardware: Conexão com o Arduino<a class="headerlink" href="#hardware-conexao-com-o-arduino" title="Permanent link">&para;</a></h2>
-<h3 id="31-materiais-necessarios">3.1 Materiais Necessários 📦<a class="headerlink" href="#31-materiais-necessarios" title="Permanent link">&para;</a></h3>
-<p>Para um projeto básico de monitoramento de temperatura e umidade com DHT11:</p>
+</details>
+<h2 id="4-hardware-conexao-com-o-arduino">4️⃣ Hardware: Conexão com o Arduino<a class="headerlink" href="#4-hardware-conexao-com-o-arduino" title="Permanent link">¶</a></h2>
+<p>Para um projeto básico de monitoramento de temperatura e umidade com DHT11 necessitamos dos seguintes componentes:</p>
 <table>
 <thead>
 <tr>
@@ -1721,12 +1766,14 @@ lang: pt</p>
 </tr>
 </tbody>
 </table>
-<h4 id="311-kit-basico-recomendado-para-iniciantes">3.1.1 <strong>Kit Básico Recomendado para Iniciantes:</strong> 📦<a class="headerlink" href="#311-kit-basico-recomendado-para-iniciantes" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary>Kit Básico Recomendado para Iniciantes:📦</summary>
 <p>Diversos fornecedores oferecem <code>kits</code> didáticos que incluem: Arduino Uno, DHT11, resistor pull-up, jumpers, protoboard e manual de instruções.</p>
 <p>Esses kits custam entre R$ 80 e R$ 150 e são ideais para primeiro contato com IoT sem necessidade de adquirir componentes separadamente.</p>
-<h3 id="32-esquema-de-ligacao-circuito">3.2 Esquema de Ligação (Circuito) 🛠️<a class="headerlink" href="#32-esquema-de-ligacao-circuito" title="Permanent link">&para;</a></h3>
+</details>
+<h2 id="5-esquema-de-ligacao-circuito">5️⃣ Esquema de Ligação (Circuito) 🛠️<a class="headerlink" href="#5-esquema-de-ligacao-circuito" title="Permanent link">¶</a></h2>
 <p>🛠️ <strong>Pinagem do DHT11:</strong></p>
-<p><img alt="dht22" src="../../../static/img/iot-comp/sensor-dht11-pinout-08.jpg" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../static/img/iot-comp/sensor-dht11-pinout-08.jpg" data-desc-position="bottom"><img align="right" alt="dht22" src="../../../static/img/iot-comp/sensor-dht11-pinout-08.jpg"></a></p>
 <table>
 <thead>
 <tr>
@@ -1768,7 +1815,8 @@ lang: pt</p>
 </tr>
 </tbody>
 </table>
-<h4 id="321-descricao-detalhada-do-circuito">3.2.1 Descrição Detalhada do Circuito:<a class="headerlink" href="#321-descricao-detalhada-do-circuito" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary>Descrição Detalhada do Circuito:</summary>
 <ol>
 <li>
 <p><strong>Alimentação do Sensor</strong>: Conecte o pino VCC do DHT11 ao pino 5V do Arduino. Este fornece os 5V DC necessários para o funcionamento completo do sensor.</p>
@@ -1790,7 +1838,9 @@ lang: pt</p>
 <li>Para projetos com múltiplos sensores ou alimentação por bateria, considere usar uma fonte dedicada de 5V em vez do pino 5V do Arduino</li>
 <li>Se usar 3.3V (compatível com ESP32/ESP8266), o comprimento do cabo <strong>não deve exceder 20cm</strong> para evitar queda de tensão</li>
 </ol>
-<h4 id="322-cuidados-e-boas-praticas">3.2.2 Cuidados e Boas Práticas:<a class="headerlink" href="#322-cuidados-e-boas-praticas" title="Permanent link">&para;</a></h4>
+</details>
+<details class="warning">
+<summary>Cuidados e Boas Práticas:</summary>
 <ul>
 <li><strong>Qualidade dos jumpers</strong>: Use fios de boa qualidade com isolamento íntegro para evitar interferências eletromagnéticas</li>
 <li><strong>Comprimento dos fios</strong>: Mantenha os cabos o máximo curtos possível (especialmente a linha DATA). Cabos longos aumentam ruído e podem causar leituras falhas</li>
@@ -1798,113 +1848,93 @@ lang: pt</p>
 <li><strong>Capacitor de filtragem (opcional mas recomendado)</strong>: Para projetos com múltiplos sensores ou em ambientes com interferência, adicione um capacitor de 100µF entre VCC e GND do sensor para estabilizar a alimentação</li>
 <li><strong>Distância entre componentes</strong>: Mantenha o sensor afastado de fontes de calor intenso (resistências, dissipadores), pois podem afetar a medição de temperatura</li>
 </ul>
-<h3 id="33-passo-a-passo-da-montagem">3.3 Passo a Passo da Montagem<a class="headerlink" href="#33-passo-a-passo-da-montagem" title="Permanent link">&para;</a></h3>
-<p>🔩 Procedimento de Conexão do DHT11:</p>
-<p><strong>Passo 1: Preparação Inicial</strong>
-- Desligue o Arduino (desconecte do computador) antes de iniciar as conexões
-- Prepare todos os componentes sobre uma superfície limpa e livre de material estático
-- Organize os jumpers por cor para facilitar identificação posterior</p>
-<p><strong>Passo 2: Conexão da Alimentação (VCC)</strong>
-- Pegue um jumper vermelho (convenção para positivo)
-- Conecte uma extremidade ao pino <strong>VCC (1)</strong> do DHT11
-- Conecte a outra extremidade ao pino <strong>5V</strong> do Arduino Uno</p>
-<p><strong>Passo 3: Conexão da Terra (GND)</strong>
-- Pegue um jumper preto (convenção para terra)
-- Conecte uma extremidade ao pino <strong>GND (4)</strong> do DHT11
-- Conecte a outra extremidade ao pino <strong>GND</strong> do Arduino Uno</p>
-<p><strong>Passo 4: Instalação do Resistor Pull-up</strong>
-- Pegue o resistor de 10kΩ
-- Insira uma extremidade do resistor no <strong>pino DATA (2)</strong> do DHT11
-- Insira a outra extremidade do resistor em uma linha vazia da protoboard próxima ao VCC
-- Alternativamente, conecte direto ao pino 5V caso use protoboard com trilhas internamente conectadas</p>
-<p><strong>Passo 5: Conexão da Linha de Dados</strong>
-- Pegue um jumper amarelo ou verde (convenção para dados)
-- Conecte uma extremidade ao <strong>pino DATA (2)</strong> do DHT11 (ou ao resistor pull-up se estiver montado)
-- Conecte a outra extremidade ao pino <strong>Digital 2</strong> do Arduino Uno (conforme configurado no código)</p>
-<p><strong>Passo 6: Verificação Visual</strong>
-- Revise todas as conexões: VCC (vermelho) → 5V, GND (preto) → GND, DATA (amarelo) → Digital 2
-- Certifique-se de que não há fios soltos ou conectados aos pinos errados
-- Confirme que o pino NC (pino 3) do sensor não está conectado a nada</p>
-<p><strong>Passo 7: Teste de Conectividade</strong>
-- Reconecte o Arduino ao computador via cabo USB
-- O Arduino deve receber alimentação (LED de alimentação acende)
-- Se usar um display LCD, ele também deve acender (teste opcional)</p>
-<p><strong>Observações de Segurança:</strong></p>
+</details>
+<h2 id="6-passo-a-passo-da-montagem">6️⃣ Passo a Passo da Montagem<a class="headerlink" href="#6-passo-a-passo-da-montagem" title="Permanent link">¶</a></h2>
+<p><strong>🔩 Procedimento de Conexão do DHT11</strong></p>
+<p><strong>Passo 1: Preparação Inicial</strong></p>
+<ul>
+<li>Desligue o Arduino (desconecte do computador) antes de iniciar as conexões</li>
+<li>Prepare todos os componentes sobre uma superfície limpa e livre de material estático</li>
+<li>Organize os jumpers por cor para facilitar identificação posterior</li>
+</ul>
+<p><strong>Passo 2: Conexão da Alimentação (VCC)</strong></p>
+<ul>
+<li>Pegue um jumper vermelho (convenção para positivo)</li>
+<li>Conecte uma extremidade ao pino <strong>VCC (1)</strong> do DHT11</li>
+<li>Conecte a outra extremidade ao pino <strong>5V</strong> do Arduino Uno</li>
+</ul>
+<p><strong>Passo 3: Conexão da Terra (GND)</strong></p>
+<ul>
+<li>Pegue um jumper preto (convenção para terra)</li>
+<li>Conecte uma extremidade ao pino <strong>GND (4)</strong> do DHT11</li>
+<li>Conecte a outra extremidade ao pino <strong>GND</strong> do Arduino Uno</li>
+</ul>
+<p><strong>Passo 4: Instalação do Resistor Pull-up</strong></p>
+<ul>
+<li>Pegue o resistor de 10kΩ</li>
+<li>Insira uma extremidade do resistor no <strong>pino DATA (2)</strong> do DHT11</li>
+<li>Insira a outra extremidade do resistor em uma linha vazia da protoboard próxima ao VCC</li>
+<li>Alternativamente, conecte direto ao pino 5V caso use protoboard com trilhas internamente conectadas</li>
+</ul>
+<p><strong>Passo 5: Conexão da Linha de Dados</strong></p>
+<ul>
+<li>Pegue um jumper amarelo ou verde (convenção para dados)</li>
+<li>Conecte uma extremidade ao <strong>pino DATA (2)</strong> do DHT11 (ou ao resistor pull-up se estiver montado)</li>
+<li>Conecte a outra extremidade ao pino <strong>Digital 2</strong> do Arduino Uno (conforme configurado no código)</li>
+</ul>
+<p><strong>Passo 6: Verificação Visual</strong></p>
+<ul>
+<li>Revise todas as conexões: VCC (vermelho) → 5V, GND (preto) → GND, DATA (amarelo) → Digital 2</li>
+<li>Certifique-se de que não há fios soltos ou conectados aos pinos errados</li>
+<li>Confirme que o pino NC (pino 3) do sensor não está conectado a nada</li>
+</ul>
+<p><strong>Passo 7: Teste de Conectividade</strong></p>
+<ul>
+<li>Reconecte o Arduino ao computador via cabo USB</li>
+<li>O Arduino deve receber alimentação (LED de alimentação acende)</li>
+<li>Se usar um display LCD, ele também deve acender (teste opcional)</li>
+</ul>
+<details class="warning">
+<summary>Observações de Segurança: 🚨</summary>
 <ul>
 <li><strong>Proteção contra descargas eletrostáticas</strong>: Se trabalhar em ambiente seco, tome precaução contra descargas eletrostáticas que podem danificar componentes eletrônicos</li>
 <li><strong>Tensão correta</strong>: Verifique que o Arduino está configurado para 5V (não confunda com boards de 3.3V)</li>
 <li><strong>Sem soldagem necessária</strong>: Este procedimento usa apenas protoboard e jumpers, sem exigir soldagem</li>
 <li><strong>Cabo USB de qualidade</strong>: Use um cabo USB que transmita dados (não apenas carga) para evitar problemas de comunicação com o Arduino IDE</li>
 </ul>
-<h2 id="software-programacao-na-arduino-ide"><img alt="4⃣" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/34-20e3.svg" title=":four:" />  Software: Programação na Arduino IDE<a class="headerlink" href="#software-programacao-na-arduino-ide" title="Permanent link">&para;</a></h2>
-<h3 id="41-instalacao-da-biblioteca">4.1 Instalação da Biblioteca<a class="headerlink" href="#41-instalacao-da-biblioteca" title="Permanent link">&para;</a></h3>
-<p>🗂️ <strong>Biblioteca Recomendada</strong>: DHT Sensor Library by Adafruit</p>
-<p>A biblioteca mais utilizada e confiável para trabalhar com DHT11 é a <strong>DHT Sensor Library desenvolvida pela Adafruit</strong>, que abstrai completamente o protocolo proprietário do sensor.</p>
-<p>🗂️ <strong>Dependência Necessária:</strong>
-- <strong>Adafruit Unified Sensor Library</strong> (dependência obrigatória da DHT library)</p>
-<h4 id="411-instalacao-via-gerenciador-de-bibliotecas">4.1.1  Instalação via Gerenciador de Bibliotecas<a class="headerlink" href="#411-instalacao-via-gerenciador-de-bibliotecas" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Abra a <strong>Arduino IDE</strong> em seu computador</li>
-<li>Acesse o menu: <strong>Sketch → Incluir Biblioteca → Gerenciar Bibliotecas...</strong> (atalho: <code>Ctrl+Shift+I</code>)</li>
-<li>Na janela do <strong>Gerenciador de Bibliotecas</strong>, procure por <code>DHT</code> na barra de pesquisa</li>
-<li>Localize <strong>"DHT sensor library"</strong> (autor: Adafruit Industries) e clique nela</li>
-<li>Clique no botão <strong>Instalar</strong> (será automaticamente instalada a versão mais recente)</li>
-<li>Aguarde a conclusão da instalação (pode levar alguns segundos)</li>
-<li>Procure por <strong>"Adafruit Unified Sensor"</strong> e instale também esta dependência</li>
-<li>Feche o Gerenciador de Bibliotecas</li>
-</ol>
-<h4 id="412-metodo-alternativo-instalacao-manual">4.1.2 Método Alternativo: Instalação Manual<a class="headerlink" href="#412-metodo-alternativo-instalacao-manual" title="Permanent link">&para;</a></h4>
-<p>Caso a instalação automática falhe:</p>
-<ol>
-<li>Baixe o arquivo <code>.zip</code> da biblioteca do repositório oficial do GitHub (Adafruit DHT)</li>
-<li>No Arduino IDE, acesse: <strong>Sketch → Incluir Biblioteca → Adicionar Biblioteca .ZIP...</strong></li>
-<li>Selecione o arquivo baixado e confirme</li>
-<li>Reinicie a Arduino IDE completamente</li>
-</ol>
-<p>🗂️ <strong>Verificação de Instalação:</strong></p>
+</details>
+<h2 id="7-observacoes-adicionais-e-melhores-praticas">7️⃣ Observações Adicionais e Melhores Práticas<a class="headerlink" href="#7-observacoes-adicionais-e-melhores-praticas" title="Permanent link">¶</a></h2>
+<details class="info">
+<summary>Resistor Pull-up Essencial: 🛰️ </summary>
 <ul>
-<li>Vá para <strong>Sketch → Incluir Biblioteca</strong> e verifique se <code>DHT sensor library</code> aparece na lista</li>
-<li>Se aparecer, a instalação foi bem-sucedida</li>
+<li>O resistor de 10kΩ entre DATA e VCC não é opcional; é fundamental para o funcionamento confiável. Sem ele, a linha de dados pode "flutuar" entre estados lógicos, causando leituras incorretas ou repetidas. Se usar módulo DHT11 pré-montado em placa de desenvolvimento, verifique se já inclui resistor integrado.</li>
 </ul>
-<p>🗂️ <strong>Versão Recomendada:</strong> Versão 1.4.4 ou superior (atualizar periodicamente para correções de bugs)</p>
-<h3 id="42-aplicacoes-praticas">4.2 Aplicações Práticas<a class="headerlink" href="#42-aplicacoes-praticas" title="Permanent link">&para;</a></h3>
-<p>O DHT11 é versátil e se adapta a múltiplos cenários de IoT. As seguintes aplicações práticas demonstram o potencial do sensor em projetos reais:</p>
-<p><strong>1. Estação Meteorológica Pessoal</strong>
-Monitorar temperatura e umidade do ambiente externo ou interno, exibir dados em display LCD 16x2 ou OLED. Pode-se registrar máximas e mínimas do dia. Integração possível com plataformas na nuvem (ThingSpeak, Blynk) para visualização remota e histórico de dados em gráficos.</p>
-<p><strong>2. Sistema de Automação de Estufa Inteligente</strong>
-Controlar automaticamente a umidade e temperatura de uma estufa acionando ventiladores e sistemas de irrigação. O DHT11 detecta quando umidade cai abaixo de 60% e ativa umidificadores, ou quando temperatura sobe acima de 30°C ativa ventilação. Ideal para cultivo de plantas sensíveis.</p>
-<p><strong>3. Controlador Automático de Velocidade de Ventilador</strong>
-O sensor detecta temperatura ambiente e ajusta automaticamente a velocidade de um ventilador através de PWM (Pulse Width Modulation). Quando temperatura sobe, ventilador acelera; quando cai, ventilador reduz. Aplicável em salas de servidores ou data centers.</p>
-<p><strong>4. Monitor de Incubadora para Aves e Répteis</strong>
-Manter ambiente em temperature e umidade ideais para ovos em incubação. O DHT11 monitora continuamente e aciona aquecedores ou sistemas de umidificação conforme necessário. Reduz perdas de ovos por condições inadequadas.</p>
-<p><strong>5. Alerta de Mudanças Climáticas em Tempo Real</strong>
-Sistema que monitora sala de armazenamento (medicamentos, eletrônicos, alimentos) e dispara alarme sonoro e luminoso quando detecta desvios fora da faixa de tolerância. Integrado com MQTT pode enviar notificação para smartphone do responsável.</p>
-<p><strong>6. Dashboard IoT em Nuvem (ThingSpeak/Blynk)</strong>
-Dados do DHT11 são enviados via ESP8266/ESP32 para plataforma ThingSpeak, gerando gráficos históricos de temperatura e umidade acessíveis de qualquer lugar via web ou app mobile. Útil para monitoramento remoto de múltiplas localizações.</p>
-<p><strong>7. Monitor de Qualidade do Ar em Ambientes Internos</strong>
-Integrar DHT11 com sensores adicionais (MQ135 para CO₂, MQ2 para gases) em sistema IoT que avalia conforto térmico e qualidade do ar, recomendando abertura de janelas ou ativação de ventilação.</p>
-<p><strong>8. Detector de Vazamentos de Água por Umidade</strong>
-Sensor colocado em locais críticos (debaixo de pias, próximo a canos, subsolo) monitora umidade relativa. Aumento anormal de umidade dispara alerta de possível vazamento antes de dano maior.</p>
-<p><strong>9. Controle de Humidificador/Desumidificador Automático</strong>
-Sistema que mantem umidade ambiente em faixa pré-configurada (ex: 40-60%). Se cair abaixo, ativa umidificador; se subir acima, ativa desumidificador. Essencial para proteger instrumentos musicais, coleções, ou garantir conforto.</p>
-<p><strong>10. Registrador de Dados Temporal (Data Logger)</strong>
-Usa Arduino com módulo RTC (Real Time Clock) e cartão SD para registrar temperatura e umidade a intervalos regulares. Posteriormente, dados são baixados e analisados em planilhas Excel para estudos de variação climática ou validação de projetos.</p>
-<h2 id="5-observacoes-adicionais-e-melhores-praticas">5. Observações Adicionais e Melhores Práticas<a class="headerlink" href="#5-observacoes-adicionais-e-melhores-praticas" title="Permanent link">&para;</a></h2>
-<h3 id="51-dicas-de-hardware">5.1. Dicas de Hardware<a class="headerlink" href="#51-dicas-de-hardware" title="Permanent link">&para;</a></h3>
-<p>🛰️ <strong>Resistor Pull-up Essencial:</strong>
-- O resistor de 10kΩ entre DATA e VCC não é opcional; é fundamental para o funcionamento confiável. Sem ele, a linha de dados pode "flutuar" entre estados lógicos, causando leituras incorretas ou repetidas. Se usar módulo DHT11 pré-montado em placa de desenvolvimento, verifique se já inclui resistor integrado.</p>
-<p>🛰️ <strong>Qualidade dos Cabos e Jumpers:</strong>
-- Utilize jumpers de boa qualidade com isolamento de silicone. Fios danificados, com isolamento rachado ou conexões soltas são as causas mais comuns de falhas intermitentes. Para instalações permanentes, considere usar fio blindado ou tranças para reduzir interferência eletromagnética.</p>
-<p>🛰️ <strong>Fonte de Alimentação Adequada:</strong>
-- <strong>Para Arduino Uno via USB</strong>: A porta USB fornece até 500mA, suficiente para Arduino + DHT11. Para múltiplos sensores, use fonte externa de 5V com pelo menos 1A de capacidade.
-- <strong>Para ESP8266/ESP32</strong>: Use fonte de 3.3V/5V conforme especificação. Alimentação instável causa leituras falhadas; agregue capacitor de 100µF entre VCC e GND.
-- <strong>Para projetos com bateria</strong>: O consumo moderado do DHT11 (≤2.5mA) permite funcionamento com baterias 9V ou 4×AA por várias horas.</p>
-<p>🛰️ <strong>Comprimento Máximo de Cabos:</strong>
-- Em 5V: até 1 metro sem blindagem é aceitável
-- Em 3.3V: máximo 20cm recomendado, caso contrário queda de tensão compromete sinal
-- Para distâncias maiores, use blindagem ou adicione repeaters de sinal</p>
-<h3 id="52-armadilhas-comuns-troubleshooting">5.2. Armadilhas Comuns (Troubleshooting)<a class="headerlink" href="#52-armadilhas-comuns-troubleshooting" title="Permanent link">&para;</a></h3>
-<p>🛸 <strong>Problema: Leituras "Failed to read from DHT"</strong></p>
+</details>
+<details class="info">
+<summary>Qualidade dos Cabos e Jumpers: 🛰️ </summary>
+<ul>
+<li>Utilize jumpers de boa qualidade com isolamento de silicone. Fios danificados, com isolamento rachado ou conexões soltas são as causas mais comuns de falhas intermitentes. Para instalações permanentes, considere usar fio blindado ou tranças para reduzir interferência eletromagnética.</li>
+</ul>
+</details>
+<details class="info">
+<summary>Fonte de Alimentação Adequada: 🛰️ </summary>
+<ul>
+<li><strong>Para Arduino Uno via USB</strong>: A porta USB fornece até 500mA, suficiente para Arduino + DHT11. Para múltiplos sensores, use fonte externa de 5V com pelo menos 1A de capacidade.</li>
+<li><strong>Para ESP8266/ESP32</strong>: Use fonte de 3.3V/5V conforme especificação. Alimentação instável causa leituras falhadas; agregue capacitor de 100µF entre VCC e GND.</li>
+<li><strong>Para projetos com bateria</strong>: O consumo moderado do DHT11 (≤2.5mA) permite funcionamento com baterias 9V ou 4×AA por várias horas.</li>
+</ul>
+</details>
+<details class="info">
+<summary>Comprimento Máximo de Cabos: 🛰️ </summary>
+<ul>
+<li>Em 5V: até 1 metro sem blindagem é aceitável</li>
+<li>Em 3.3V: máximo 20cm recomendado, caso contrário queda de tensão compromete sinal</li>
+<li>Para distâncias maiores, use blindagem ou adicione repeaters de sinal</li>
+</ul>
+</details>
+<h2 id="8-armadilhas-comuns-troubleshooting">8️⃣ Armadilhas Comuns (Troubleshooting)<a class="headerlink" href="#8-armadilhas-comuns-troubleshooting" title="Permanent link">¶</a></h2>
+<details class="bug">
+<summary>Problema: Leituras Failed to read from DHT 🛸</summary>
 <table>
 <thead>
 <tr>
@@ -1935,7 +1965,9 @@ Usa Arduino com módulo RTC (Real Time Clock) e cartão SD para registrar temper
 </tr>
 </tbody>
 </table>
-<p>🛸 <strong>Problema: Leituras Instáveis ou Variando Aleatoriamente</strong></p>
+</details>
+<details class="bug">
+<summary>Problema: Leituras Instáveis ou Variando Aleatoriamente  🛸</summary>
 <table>
 <thead>
 <tr>
@@ -1962,7 +1994,9 @@ Usa Arduino com módulo RTC (Real Time Clock) e cartão SD para registrar temper
 </tr>
 </tbody>
 </table>
-<p>🛸 <strong>Problema: Sensor Retorna -22°C ou 82% UR (Travado)</strong></p>
+</details>
+<details class="bug">
+<summary>Problema: Sensor Retorna -22°C ou 82% UR (Travado)  🛸</summary>
 <table>
 <thead>
 <tr>
@@ -1985,7 +2019,9 @@ Usa Arduino com módulo RTC (Real Time Clock) e cartão SD para registrar temper
 </tr>
 </tbody>
 </table>
-<p>🛸 <strong>Problema: Código Compila mas Não Envia Dados ao Monitor Serial</strong></p>
+</details>
+<details class="bug">
+<summary>Problema: Código Compila mas Não Envia Dados ao Monitor Serial  🛸</summary>
 <table>
 <thead>
 <tr>
@@ -2012,73 +2048,39 @@ Usa Arduino com módulo RTC (Real Time Clock) e cartão SD para registrar temper
 </tr>
 </tbody>
 </table>
-<h3 id="53-melhores-praticas-de-codigo">5.3.  Melhores Práticas de Código<a class="headerlink" href="#53-melhores-praticas-de-codigo" title="Permanent link">&para;</a></h3>
-<p>📑 <strong>Uso de Tipos Float vs. Int:</strong>
-Sempre use <code>float</code> para variáveis de temperatura e umidade, pois o DHT11 fornece valores decimais. Nunca use <code>int</code>, que truncaria os valores.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">temperatura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span><span class="w">  </span><span class="c1">// Correto</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">temperatura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span><span class="w">    </span><span class="c1">// Incorreto - perderá decimais</span>
-</code></pre></div>
-<p>📑 <strong>Verificação de Erros com isnan():</strong>
-Sempre verifique se a leitura é válida usando <code>isnan()</code> antes de usar os dados:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">umidade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">temperatura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">umidade</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isnan</span><span class="p">(</span><span class="n">temperatura</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Erro ao ler sensor!&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// Não processa dados inválidos</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-</code></pre></div>
-<p>📑 <strong>Intervalo Entre Leituras:</strong>
-Respeite o mínimo de 2 segundos entre leituras consecutivas. Tentar ler mais frequentemente causa timeouts ou retorna dados repetidos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Aguarde 2 segundos mínimo</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dht</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span><span class="w"> </span><span class="c1">// Nova leitura</span>
-</code></pre></div>
-<p>📑 <strong>Estabilização Inicial:</strong>
-Após ligar o Arduino, aguarde 1-2 segundos antes da primeira leitura de DHT11:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="n">dht</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Aguardar estabilização</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="54-aplicacoes-avancadas">5.4 Aplicações Avançadas<a class="headerlink" href="#54-aplicacoes-avancadas" title="Permanent link">&para;</a></h3>
-<p>🚀 <strong>Integração com ESP8266/NodeMCU:</strong>
-- Substitua Arduino Uno por NodeMCU (ESP8266) para adicionar WiFi nativo. O sensor DHT11 funciona sem modificações; apenas altere o pino DATA para GPIO 4 (pino D2). Benefício: dados transmitidos via MQTT ou HTTP para servidores em nuvem.</p>
-<p>🚀 <strong>Envio de Dados via MQTT:</strong>
-- Use biblioteca PubSubClient para publicar temperatura/umidade em tópico MQTT. Broker MQTT (Mosquitto, CloudMQTT) centraliza dados para múltiplos sensores:</p>
-<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>```
-Tópico: sensores/sala/temperatura → 25.5
-Tópico: sensores/sala/umidade → 65.2
-```
-</code></pre></div></td></tr></table></div>
-
-<p>🚀 <strong>Integração com ThingSpeak:</strong>
-- Plataforma IoT gratuita que armazena dados e gera gráficos históricos acessíveis via web. Ideal para monitoramento remoto e análise de tendências de temperatura/umidade.</p>
-<p>🚀 <strong>Dashboard em Nuvem com Blynk:</strong>
-- Aplicativo móvel que conecta ao Arduino/ESP32 via internet, exibindo temperatura/umidade em tempo real com widgets personalizados.</p>
-<p>🚀 <strong>Estação Meteorológica Completa:</strong>
-- Integre múltiplos sensores: DHT11 (temperatura/umidade), BMP280 (pressão), LDR (luminosidade), anemômetro (velocidade do vento). Centralize dados em banco dados PostgreSQL/MySQL e gere dashboards em web interface (Node.js + Express).</p>
-<p>🚀 <strong>Calibração Personalizada:</strong>
-Embora o DHT11 chegue calibrado de fábrica, podem ocorrer erros sistemáticos. Compare leituras com termômetro de referência (mercúrio) e aplique offset no código:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">temp_corrigida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temperatura</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Se DHT11 lê 0.5°C abaixo</span>
-</code></pre></div>
-<h3 id="55-manutencao-e-calibracao">5.5 Manutenção e Calibração<a class="headerlink" href="#55-manutencao-e-calibracao" title="Permanent link">&para;</a></h3>
-<p>🏗️ <strong>Cuidados Físicos:</strong>
-- Evite exposição direta a chuva ou respingos de água (sensor não é à prova d'água)
-- Mantenha afastado de fontes de calor direto (aquecedores, lâmpadas infravermelhas)
-- Proteja de pó ou sujeira que obstrua a membrana porosa do sensor de umidade</p>
-<p>🏗️ <strong>Limpeza e Conservação:</strong>
-Se o sensor acumular pó, limpe delicadamente com pincél macio seco. Nunca use água ou solventes que possam danificar componentes eletrônicos.</p>
-<p>🏗️ <strong>Recalibração Periódica:</strong>
-A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e sensor de umidade confiável (psicrômetro). Se desvio &gt; ±2°C, considere substituição, pois calibração manual não é possível neste sensor.</p>
-<p>🏗️ <strong>Sinais de Degradação:</strong>
-- Leituras fora da faixa esperada sem motivo aparente
-- Erros frequentes de comunicação ("Failed to read")
-- Drift (tendência) contínua em direção à leitura mínima ou máxima
-- Incapacidade de detectar mudanças reais de temperatura/umidade</p>
+</details>
+<h2 id="9-manutencao-e-calibracao">9️⃣ Manutenção e Calibração<a class="headerlink" href="#9-manutencao-e-calibracao" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Cuidados Físicos: 🏗️</summary>
+<ul>
+<li>Evite exposição direta a chuva ou respingos de água (sensor não é à prova d'água)</li>
+<li>Mantenha afastado de fontes de calor direto (aquecedores, lâmpadas infravermelhas)</li>
+<li>Proteja de pó ou sujeira que obstrua a membrana porosa do sensor de umidade</li>
+</ul>
+</details>
+<details class="tip">
+<summary>Limpeza e Conservação: 🏗️</summary>
+<p>Se o sensor acumular pó, limpe delicadamente com pincél macio seco. Nunca use água ou solventes que possam danificar componentes eletrônicos.</p>
+</details>
+<details class="tip">
+<summary>Recalibração Periódica: 🏗️</summary>
+<p>A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e sensor de umidade confiável (psicrômetro). Se desvio &gt; ±2°C, considere substituição, pois calibração manual não é possível neste sensor.</p>
+</details>
+<details class="tip">
+<summary>Sinais de Degradação: 🏗️</summary>
+<ul>
+<li>Leituras fora da faixa esperada sem motivo aparente</li>
+<li>Erros frequentes de comunicação ("Failed to read")</li>
+<li>Drift (tendência) contínua em direção à leitura mínima ou máxima</li>
+<li>Incapacidade de detectar mudanças reais de temperatura/umidade</li>
+</ul>
+</details>
+<hr>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Este conteúdo foi revisado e otimizado com o apoio de <strong>IA Generativa</strong>, garantindo as melhores práticas de SEO e legibilidade.</p>
+</div>
+<hr>
 
 
 
@@ -2086,8 +2088,13 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -2101,9 +2108,9 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Voltar ao topo
 </button>
         
@@ -2118,7 +2125,7 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2025 Luis Rodrigo - Net
+      Copyright © 2026 Luis Rodrigo - Net
     </div>
   
   
@@ -2132,7 +2139,7 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
     
     
     <a href="https://github.com/luisrodrigonet" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
     </a>
   
     
@@ -2140,7 +2147,7 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
     
     
     <a href="https://x.com/luisrodrigoog" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
     </a>
   
     
@@ -2148,7 +2155,7 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
     
     
     <a href="https://linkedin.com/in/luisrodrigoog" target="_blank" rel="noopener" title="Linkedin" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
     </a>
   
     
@@ -2156,7 +2163,7 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
     
     
     <a href="https://www.instagram.com/luisrodrigoog/" target="_blank" rel="noopener" title="Instagram" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
     </a>
   
 </div>
@@ -2174,11 +2181,13 @@ A cada 6-12 meses, compare leituras DHT11 com termômetro de referência e senso
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs", "content.tabs.link", "content.tooltips", "content.code.select", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

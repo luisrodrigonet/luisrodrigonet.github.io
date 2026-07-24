@@ -2,134 +2,274 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://luisrodrigonet.github.io/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/cursos/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/cursos/bootstrap_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/cursos/css_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/cursos/django_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/cursos/html_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/copywriting_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/docker_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/lnx_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/mkdocs_index/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/copywriting/copywriting_si-01_24_poder_das_palavras/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/copywriting/copywriting_si-02_24_caracteristica/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/_mkdocs_teste/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_abas/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_admonitions/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_annotations/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_code_blocks/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_data-tables/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_diagramas/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_formating/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_grid/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_icons-emojis/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_images/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_instalacao/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_linha_de_comando/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_listas/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_material-01/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_material-02-claro_escuro/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_material-03-icones_material/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_material-04-icones_material-p1/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/dicas/mkdocs/mkdocs_tooltips/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/arduino/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/componentes/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/esp_32/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/esp_8266/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/thingsboard/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot-componentes/iot-dht11-apresentacao/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot-componentes/iot-dht22-apresentacao/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot-componentes/iot-display-7segments-74HC595/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot-componentes/iot-display-7segments-TM1637/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
-         <loc>https://luisrodrigonet.github.io/iot/iot_arduino/00_arduino_plataforma_arduino/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <loc>https://luisrodrigonet.github.io/iot/iot-things_board/tb_install_debian_docker/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_arduino/arduino_plataforma_arduino/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot_bibliotecas/DHT_Sensor-Library-by-Adafruit/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_arduino/arduino_esp8266_e_esp32/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_arduino/arduino_nodeMCU10/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot_esp_arduino/esp32-WiFiScan-2.4e5GHz/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot_esp_arduino/esp32-wifi-001-modo-station/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot_esp_arduino/esp32-wifi-intro/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/iot/iot_esp_arduino/esp8266_wifi-Intro/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_micropython/_esp32_thingsBoard-001/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_micropython/esp-nodeMCU-thonny-debian/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_micropython/esp32-thonny-debian/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_micropython/esp32-thonny-win11/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_micropython/esp32-vscode-win11/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/iot/iot_esp_micropython/esp32-wifi-micropython/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/programacao/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/programacao/django/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/programacao/python/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/programacao/python/python_pip_01-uso/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/programacao/vscode/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/programacao/vscode/vscode_portable/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/so/linux-debian/_debian_duckdns/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/so/linux-debian/_debian_ip_fixo/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://luisrodrigonet.github.io/so/linux-debian/_debian_macmini_wifi/</loc>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/sobre/licenca/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
     <url>
          <loc>https://luisrodrigonet.github.io/sobre/privacidade/</loc>
-         <lastmod>2025-12-29</lastmod>
+         <lastmod>2026-07-24</lastmod>
     </url>
 </urlset>
