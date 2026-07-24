@@ -9,6 +9,12 @@ img[src*='#center'] {
     margin: auto;
 }
 
+img.imagem-centralizada {
+    display: block;
+    margin: auto;
+    
+}
+
 .md-typeset code,
 .md-typeset pre > code  {
   font-size: 15px;
